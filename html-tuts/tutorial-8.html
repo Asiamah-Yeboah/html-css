@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 8: Text Formatting | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .code-tag {
+            color: #569cd6;
+        }
+
+        .code-attr {
+            color: #9cdcfe;
+        }
+
+        .code-value {
+            color: #ce9178;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .tip h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .formatting-demo {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4b6cb7;
+            font-size: 1.1rem;
+        }
+
+        .formatting-demo p {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #4b6cb7;
+        }
+
+        .formatting-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .formatting-table th,
+        .formatting-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .formatting-table th {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        .formatting-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .formatting-table .example {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .formatting-table .demo {
+            font-size: 1rem;
+        }
+
+        .semantic-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4caf50;
+        }
+
+        .presentational-box {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #f44336;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .comparison-grid .column {
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .comparison-grid .semantic {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .comparison-grid .presentational {
+            background: #fff8e1;
+            border: 2px solid #ff9800;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .formatting-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-7.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-9.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-bold"></i> Tutorial 8: Text Formatting</h1>
+            <p>Bold, italic, underline, and other text styling elements</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 7-9 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-text-height"></i> Text Styling
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:50]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with energetic, creative tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned about headings and paragraphs. Today, we're learning how to <strong>style text within those elements using HTML formatting tags</strong>.</p>
+                    <p>Think of text formatting like <strong>highlighters and pens in a notebook</strong> - they help emphasize important points, show relationships, and make content more readable and engaging.</p>
+                    <p>By the end of this video, you'll know all the essential text formatting elements and when to use each one. Let's get started!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-book"></i> Real-World Analogy</h4>
+                        <p>Imagine you're reading a textbook:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Bold text</strong> = Key terms and definitions</li>
+                            <li><strong>Italic text</strong> = Book titles or foreign words</li>
+                            <li><strong>Underlined text</strong> = Important passages you want to remember</li>
+                            <li><strong>Strikethrough</strong> = Corrections or outdated information</li>
+                            <li><strong>Superscript/Subscript</strong> = Mathematical formulas or footnotes</li>
+                        </ul>
+                        <p>These visual cues help readers process information more effectively!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Semantic vs Presentational Formatting -->
+            <div class="section">
+                <div class="timing-indicator">[0:50 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i> Semantic vs Presentational Formatting</h2>
+                <div class="script-content">
+                    <p>Before we learn specific tags, it's crucial to understand a fundamental concept in HTML: <strong>Semantic vs Presentational markup</strong>.</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="column semantic">
+                            <h4 style="color: #2e7d32;">Semantic Elements</h4>
+                            <p><strong>Describe the meaning/purpose</strong> of the text:</p>
+                            <ul style="margin: 15px 0 15px 20px;">
+                                <li><code>&lt;strong&gt;</code> - Important text</li>
+                                <li><code>&lt;em&gt;</code> - Emphasized text</li>
+                                <li><code>&lt;mark&gt;</code> - Highlighted text</li>
+                                <li><code>&lt;cite&gt;</code> - Citation</li>
+                            </ul>
+                            <p><strong>Why use them:</strong> Better for accessibility, SEO, and future-proofing</p>
+                        </div>
+                        
+                        <div class="column presentational">
+                            <h4 style="color: #ff9800;">Presentational Elements</h4>
+                            <p><strong>Describe only the appearance</strong> of the text:</p>
+                            <ul style="margin: 15px 0 15px 20px;">
+                                <li><code>&lt;b&gt;</code> - Bold text</li>
+                                <li><code>&lt;i&gt;</code> - Italic text</li>
+                                <li><code>&lt;u&gt;</code> - Underlined text</li>
+                                <li><code>&lt;s&gt;</code> - Strikethrough</li>
+                            </ul>
+                            <p><strong>When to use them:</strong> When appearance is the only concern</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> Modern Best Practice</h4>
+                        <p>In HTML5, <strong>prefer semantic elements</strong> whenever possible:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Use <code>&lt;strong&gt;</code> instead of <code>&lt;b&gt;</code> for important text</li>
+                            <li>Use <code>&lt;em&gt;</code> instead of <code>&lt;i&gt;</code> for emphasis</li>
+                            <li>Use CSS for purely visual styling</li>
+                            <li>Reserve presentational tags for specific use cases</li>
+                        </ul>
+                        <p>Semantic HTML is more accessible to screen readers and better for SEO!</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-universal-access"></i> Accessibility Example</h4>
+                        <p>A screen reader will:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Say "strong"</strong> when it encounters <code>&lt;strong&gt;</code> text</li>
+                            <li><strong>Change tone</strong> for <code>&lt;em&gt;</code> text</li>
+                            <li><strong>Ignore</strong> the semantic meaning of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code></li>
+                        </ul>
+                        <p>Semantic elements provide context that helps visually impaired users understand your content!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Essential Text Formatting Elements -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-star"></i> Essential Text Formatting Elements</h2>
+                <div class="script-content">
+                    <p>Let's explore the most commonly used text formatting elements with examples:</p>
+                    
+                    <div class="formatting-demo">
+                        <p>This is <strong>strong text</strong> (semantic importance).</p>
+                        <p>This is <em>emphasized text</em> (semantic emphasis).</p>
+                        <p>This is <mark>highlighted text</mark> (like a marker).</p>
+                        <p>This is <small>smaller text</small> (fine print).</p>
+                        <p>This is <del>deleted text</del> and this is <ins>inserted text</ins>.</p>
+                        <p>This is <sub>subscript</sub> and this is <sup>superscript</sup>.</p>
+                        <p>This is <code>inline code</code> (monospace font).</p>
+                        <p>This is <kbd>keyboard input</kbd> (user input).</p>
+                    </div>
+                    
+                    <table class="formatting-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Type</th>
+                                <th>Purpose</th>
+                                <th>Example Code</th>
+                                <th>Visual Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;strong&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Important text</td>
+                                <td class="example">&lt;strong&gt;Warning&lt;/strong&gt;</td>
+                                <td class="demo"><strong>Warning</strong></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;em&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Emphasized text</td>
+                                <td class="example">&lt;em&gt;Really&lt;/em&gt; important</td>
+                                <td class="demo"><em>Really</em> important</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;mark&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Highlighted text</td>
+                                <td class="example">&lt;mark&gt;Key point&lt;/mark&gt;</td>
+                                <td class="demo"><mark>Key point</mark></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;small&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Side comments, fine print</td>
+                                <td class="example">&lt;small&gt;Terms apply&lt;/small&gt;</td>
+                                <td class="demo"><small>Terms apply</small></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;del&gt; & &lt;ins&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Deleted & inserted text</td>
+                                <td class="example">&lt;del&gt;$100&lt;/del&gt; &lt;ins&gt;$80&lt;/ins&gt;</td>
+                                <td class="demo"><del>$100</del> <ins>$80</ins></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;sub&gt; & &lt;sup&gt;</code></td>
+                                <td>Presentational</td>
+                                <td>Subscript & superscript</td>
+                                <td class="example">H&lt;sub&gt;2&lt;/sub&gt;O and x&lt;sup&gt;2&lt;/sup&gt;</td>
+                                <td class="demo">H<sub>2</sub>O and x<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;code&gt;</code></td>
+                                <td>Semantic</td>
+                                <td>Inline code</td>
+                                <td class="example">Use &lt;code&gt;console.log()&lt;/code&gt;</td>
+                                <td class="demo">Use <code>console.log()</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Complete example using various formatting elements --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;The <span class="code-tag">&lt;strong&gt;</span>chemical formula<span class="code-tag">&lt;/strong&gt;</span> for water is <br>
+                        &nbsp;&nbsp;H<span class="code-tag">&lt;sub&gt;</span>2<span class="code-tag">&lt;/sub&gt;</span>O. This was <span class="code-tag">&lt;em&gt;</span>really<span class="code-tag">&lt;/em&gt;</span> important<br>
+                        &nbsp;&nbsp;to remember for the test. <span class="code-tag">&lt;mark&gt;</span>Key fact:<span class="code-tag">&lt;/mark&gt;</span><br>
+                        &nbsp;&nbsp;water freezes at 0°C. In JavaScript, you would write<br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;code&gt;</span>temperature = 0;<span class="code-tag">&lt;/code&gt;</span><br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;The original price was <span class="code-tag">&lt;del&gt;</span>$199<span class="code-tag">&lt;/del&gt;</span><br>
+                        &nbsp;&nbsp;but now it's <span class="code-tag">&lt;ins&gt;</span>$149<span class="code-tag">&lt;/ins&gt;</span>!<br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;small&gt;</span>Limited time offer. Terms apply.<span class="code-tag">&lt;/small&gt;</span><br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Presentational Formatting Elements -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 5:00]</div>
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> Presentational Formatting Elements</h2>
+                <div class="script-content">
+                    <p>While semantic elements are preferred, there are still valid use cases for presentational formatting elements:</p>
+                    
+                    <div class="formatting-demo">
+                        <p>This is <b>bold text</b> (presentational only).</p>
+                        <p>This is <i>italic text</i> (presentational only).</p>
+                        <p>This is <u>underlined text</u> (use carefully!).</p>
+                        <p>This is <s>strikethrough text</s>.</p>
+                        <p>This is <span style="font-weight: bold;">bold using span</span>.</p>
+                        <p>This is <span style="font-style: italic;">italic using span</span>.</p>
+                    </div>
+                    
+                    <table class="formatting-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Modern Use Case</th>
+                                <th>Example</th>
+                                <th>Better Alternative</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;b&gt;</code></td>
+                                <td>Styling without importance (keywords, product names)</td>
+                                <td class="example">&lt;b&gt;NASA&lt;/b&gt; launched a rocket</td>
+                                <td class="demo"><b>NASA</b> launched a rocket</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;i&gt;</code></td>
+                                <td>Technical terms, foreign phrases, thoughts</td>
+                                <td class="example">The word &lt;i&gt;bonjour&lt;/i&gt; is French</td>
+                                <td class="demo">The word <i>bonjour</i> is French</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;u&gt;</code></td>
+                                <td>Proper names in Chinese, misspelling indicators</td>
+                                <td class="example">My name is &lt;u&gt;Zhang Wei&lt;/u&gt;</td>
+                                <td class="demo">My name is <u>Zhang Wei</u></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;s&gt;</code></td>
+                                <td>No longer accurate/correct information</td>
+                                <td class="example">&lt;s&gt;Meeting at 2 PM&lt;/s&gt; Now 3 PM</td>
+                                <td class="demo"><s>Meeting at 2 PM</s> Now 3 PM</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;span&gt;</code></td>
+                                <td>Generic inline container for CSS styling</td>
+                                <td class="example">&lt;span style="color:red;"&gt;Red text&lt;/span&gt;</td>
+                                <td class="demo"><span style="color:red;">Red text</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="warning">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Avoid Underline Confusion!</h4>
+                        <p><strong>Be careful with <code>&lt;u&gt;</code> (underline):</strong></p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Underlined text on the web usually indicates <strong>clickable links</strong></li>
+                            <li>Using underline for non-links can confuse users</li>
+                            <li>In HTML5, <code>&lt;u&gt;</code> has specific semantic meaning (proper names, misspellings)</li>
+                            <li><strong>Better alternative:</strong> Use CSS for visual underlining if needed</li>
+                        </ul>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- Instead of &lt;u&gt; for styling --&gt;</span><br>
+                            <span class="code-tag">&lt;span</span> <span class="code-attr">style=</span><span class="code-value">"text-decoration: underline;"</span><span class="code-tag">&gt;</span>Text<span class="code-tag">&lt;/span&gt;</span><br>
+                            <span class="code-comment">&lt;!-- Or better, use CSS class --&gt;</span><br>
+                            <span class="code-tag">&lt;span</span> <span class="code-attr">class=</span><span class="code-value">"underline"</span><span class="code-tag">&gt;</span>Text<span class="code-tag">&lt;/span&gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- When to Use Each Element -->
+            <div class="section">
+                <div class="timing-indicator">[5:00 - 6:00]</div>
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> When to Use Each Element</h2>
+                <div class="script-content">
+                    <p>Choosing the right formatting element depends on your intent. Here's a practical guide:</p>
+                    
+                    <div class="comparison-grid">
+                        <div class="column semantic">
+                            <h4 style="color: #2e7d32;">Use Semantic Elements For:</h4>
+                            <ul style="margin: 15px 0 15px 20px;">
+                                <li><strong>&lt;strong&gt;</strong>: Warnings, critical information</li>
+                                <li><strong>&lt;em&gt;</strong>: Vocal stress, emphasis in reading</li>
+                                <li><strong>&lt;mark&gt;</strong>: Search results, highlights</li>
+                                <li><strong>&lt;small&gt;</strong>: Legal text, disclaimers</li>
+                                <li><strong>&lt;del&gt;/&lt;ins&gt;</strong>: Document revisions</li>
+                                <li><strong>&lt;code&gt;</strong>: Code snippets in text</li>
+                                <li><strong>&lt;kbd&gt;</strong>: Keyboard shortcuts</li>
+                                <li><strong>&lt;cite&gt;</strong>: Book/movie/article titles</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="column presentational">
+                            <h4 style="color: #ff9800;">Use Presentational Elements For:</h4>
+                            <ul style="margin: 15px 0 15px 20px;">
+                                <li><strong>&lt;b&gt;</strong>: Styling without semantic meaning</li>
+                                <li><strong>&lt;i&gt;</strong>: Technical terms, foreign words</li>
+                                <li><strong>&lt;u&gt;</strong>: Chinese proper names only</li>
+                                <li><strong>&lt;s&gt;</strong>: No longer relevant info</li>
+                                <li><strong>&lt;sub&gt;/&lt;sup&gt;</strong>: Mathematical notation</li>
+                                <li><strong>&lt;span&gt;</strong>: CSS styling hook</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Correct usage examples --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- &lt;strong&gt; for importance --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;strong&gt;</span>Warning:<span class="code-tag">&lt;/strong&gt;</span> This chemical is hazardous.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- &lt;em&gt; for vocal emphasis --&gt;</span><br>
+                        &nbsp;&nbsp;You <span class="code-tag">&lt;em&gt;</span>must<span class="code-tag">&lt;/em&gt;</span> complete this step first.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- &lt;b&gt; for styling without importance --&gt;</span><br>
+                        &nbsp;&nbsp;The <span class="code-tag">&lt;b&gt;</span>CSS<span class="code-tag">&lt;/b&gt;</span> stands for Cascading Style Sheets.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- &lt;i&gt; for foreign words --&gt;</span><br>
+                        &nbsp;&nbsp;The French word <span class="code-tag">&lt;i&gt;</span>croissant<span class="code-tag">&lt;/i&gt;</span> means crescent.<br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-question-circle"></i> Decision Flowchart</h4>
+                        <p>When choosing a formatting element, ask yourself:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><strong>Is the text important/critical?</strong> → Use <code>&lt;strong&gt;</code></li>
+                            <li><strong>Should it be emphasized when read aloud?</strong> → Use <code>&lt;em&gt;</code></li>
+                            <li><strong>Is it a code snippet?</strong> → Use <code>&lt;code&gt;</code></li>
+                            <li><strong>Is it just visual styling without meaning?</strong> → Use <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, or CSS</li>
+                            <li><strong>Is it a foreign word or technical term?</strong> → Use <code>&lt;i&gt;</code></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nesting Formatting Elements -->
+            <div class="section">
+                <div class="timing-indicator">[6:00 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-box"></i> Nesting Formatting Elements</h2>
+                <div class="script-content">
+                    <p>You can nest formatting elements inside each other, but you must maintain proper structure:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- CORRECT: Proper nesting --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;This is <span class="code-tag">&lt;strong&gt;</span><span class="code-tag">&lt;em&gt;</span>really important<span class="code-tag">&lt;/em&gt;</span><span class="code-tag">&lt;/strong&gt;</span> text.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- Also correct: Multiple separate formats --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;H<span class="code-tag">&lt;sub&gt;</span>2<span class="code-tag">&lt;/sub&gt;</span>O is <span class="code-tag">&lt;strong&gt;</span>water<span class="code-tag">&lt;/strong&gt;</span>,<br>
+                        &nbsp;&nbsp;and CO<span class="code-tag">&lt;sub&gt;</span>2<span class="code-tag">&lt;/sub&gt;</span> is <span class="code-tag">&lt;em&gt;</span>carbon dioxide<span class="code-tag">&lt;/em&gt;</span>.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- WRONG: Overlapping tags --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- &lt;strong&gt;&lt;em&gt;Text&lt;/strong&gt;&lt;/em&gt; --&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-layer-group"></i> Nesting Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Close inner elements first:</strong> First opened, last closed</li>
+                            <li><strong>Avoid excessive nesting:</strong> Don't nest more than 2-3 levels deep</li>
+                            <li><strong>Maintain readability:</strong> Complex nesting makes code hard to read</li>
+                            <li><strong>Consider CSS classes:</strong> For complex styling, use CSS instead</li>
+                            <li><strong>VS Code helps:</strong> It highlights matching tags and shows structure</li>
+                        </ul>
+                        <p>When nesting gets complex, it's often better to use CSS classes for styling!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 6:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Formatting Mistakes</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> Formatting Mistakes to Avoid</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Using <code>&lt;b&gt;</code> for important content<br>
+                        <strong>Bad:</strong> <code>&lt;b&gt;Danger: High voltage!&lt;/b&gt;</code><br>
+                        <strong>Good:</strong> <code>&lt;strong&gt;Danger: High voltage!&lt;/strong&gt;</code></p>
+                        
+                        <p><strong>Mistake 2:</strong> Using <code>&lt;i&gt;</code> for emphasis<br>
+                        <strong>Bad:</strong> <code>You &lt;i&gt;must&lt;/i&gt; do this.</code><br>
+                        <strong>Good:</strong> <code>You &lt;em&gt;must&lt;/em&gt; do this.</code></p>
+                        
+                        <p><strong>Mistake 3:</strong> Using <code>&lt;u&gt;</code> for non-link styling<br>
+                        <strong>Bad:</strong> <code>&lt;u&gt;Important notice&lt;/u&gt;</code><br>
+                        <strong>Good:</strong> Use CSS or <code>&lt;strong&gt;</code> instead</p>
+                        
+                        <p><strong>Mistake 4:</strong> Using headings for bold text<br>
+                        <strong>Bad:</strong> <code>&lt;h3&gt;Special offer!&lt;/h3&gt;</code> in paragraph<br>
+                        <strong>Good:</strong> <code>&lt;strong&gt;Special offer!&lt;/strong&gt;</code></p>
+                        
+                        <p><strong>Mistake 5:</strong> Using <code>&lt;font&gt;</code> or <code>&lt;center&gt;</code><br>
+                        <strong>Bad:</strong> <code>&lt;font color="red"&gt;Text&lt;/font&gt;</code><br>
+                        <strong>Good:</strong> Use CSS: <code>&lt;span style="color:red"&gt;Text&lt;/span&gt;</code></p>
+                        
+                        <p><strong>Mistake 6:</strong> Overusing formatting<br>
+                        <strong>Bad:</strong> Every other word is bold/italic<br>
+                        <strong>Good:</strong> Use formatting sparingly for maximum impact</p>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-magic"></i> VS Code Formatting Shortcuts</h4>
+                        <p>In VS Code, you can quickly wrap text in formatting tags:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Select text, press <strong>Ctrl+B</strong> → Wraps in <code>&lt;strong&gt;</code></li>
+                            <li>Select text, press <strong>Ctrl+I</strong> → Wraps in <code>&lt;em&gt;</code></li>
+                            <li>Install "Wrap with Abbreviation" extension for more options</li>
+                            <li>Use Emmet: Type <code>strong&gt;</code> then Tab → <code>&lt;strong&gt;&lt;/strong&gt;</code></li>
+                        </ul>
+                        <p>These shortcuts save time and reduce typing errors!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:45 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-edit"></i> Text Formatting Challenge</h4>
+                        <p><strong>Task 1:</strong> Create an HTML page about a scientific concept using various formatting elements.</p>
+                        
+                        <p><strong>Task 2:</strong> Include at least one example of each:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> (semantic emphasis)</li>
+                            <li><code>&lt;mark&gt;</code> (highlighted text)</li>
+                            <li><code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code> (chemical/math notation)</li>
+                            <li><code>&lt;code&gt;</code> (inline code example)</li>
+                            <li><code>&lt;small&gt;</code> (disclaimer/fine print)</li>
+                            <li><code>&lt;del&gt;</code> and <code>&lt;ins&gt;</code> (corrections)</li>
+                        </ul></p>
+                        
+                        <p><strong>Task 3:</strong> Write a paragraph explaining when you would use <code>&lt;strong&gt;</code> vs <code>&lt;b&gt;</code>, and <code>&lt;em&gt;</code> vs <code>&lt;i&gt;</code>.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Find a webpage that uses formatting elements incorrectly. Take a screenshot and explain in the comments what they should have used instead!</p>
+                        
+                        <p>This practice will help you master text formatting - essential for creating professional, accessible, and well-structured content!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now understand HTML text formatting. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The difference between semantic and presentational formatting</li>
+                        <li>When to use <code>&lt;strong&gt;</code> vs <code>&lt;b&gt;</code></li>
+                        <li>When to use <code>&lt;em&gt;</code> vs <code>&lt;i&gt;</code></li>
+                        <li>All the essential formatting elements and their purposes</li>
+                        <li>How to properly nest formatting elements</li>
+                        <li>Common mistakes and best practices</li>
+                    </ul>
+                    
+                    <p>Text formatting is like <strong>punctuation for the web</strong> - it adds meaning, emphasis, and clarity to your content.</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll learn about HTML lists - how to create ordered lists, unordered lists, and description lists to organize information!</p>
+                    
+                    <p>If you have questions about text formatting or want feedback on your challenge, share in the comments below!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-book"></i> Resources & Practice</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                Formatting Practice Template
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                Formatting Decision Guide
+                            </a>
+                            <a href="tutorial-9.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: HTML Lists
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable templates, formatting cheat sheets, and accessibility testing tools!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If this tutorial helped you understand HTML text formatting, please give it a thumbs up and subscribe for the rest of the series!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 8: Text Formatting | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Semantic vs presentational comparison • Complete element reference • Usage guidelines • Practice exercises
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 12: HTML Entities & Symbols | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .symbol-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .symbol-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #4b6cb7;
+        }
+
+        .symbol-entity {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4b6cb7;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .symbol-code {
+            font-family: 'Courier New', monospace;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .symbol-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .entity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .entity-table th,
+        .entity-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .entity-table th {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        .entity-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .entity-table td:first-child {
+            font-family: 'Courier New', monospace;
+            background: #f8f8f8;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .symbols-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .entity-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-symbols"></i> Tutorial 12: HTML Entities & Symbols</h1>
+            <p>Using special characters, mathematical symbols, and currency signs in HTML</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 6-8 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with engaging question]</p>
+                    <p><strong>Have you ever tried to type a copyright symbol © or a less than sign < in HTML, only to have it disappear or break your code?</strong> Welcome back to our HTML tutorial series!</p>
+                    <p>In the last video, we learned about working with images. Today, we're going to solve that problem by learning about <strong>HTML entities and symbols</strong> - the secret codes that let us display special characters in our web pages!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-globe"></i> Real-World Hook</h4>
+                        <p>Right now, look at any professional website - you'll see copyright notices (©), trademark symbols (™), currency signs ($€£¥), mathematical symbols (×÷±), and special characters (—•…). All of these are created using HTML entities!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What are HTML Entities Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> What are HTML Entities?</h2>
+                <div class="script-content">
+                    <p>HTML entities are <strong>special codes</strong> that represent characters that have special meaning in HTML or characters that aren't easily typed on a keyboard.</p>
+                    
+                    <p>They always start with an ampersand (<code>&amp;</code>) and end with a semicolon (<code>;</code>):</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic entity structure --&gt;</span><br>
+                        <span class="code-tag">&amp;</span>entity_name<span class="code-tag">;</span><br>
+                        <span class="code-comment">or</span><br>
+                        <span class="code-tag">&amp;#</span>entity_number<span class="code-tag">;</span>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px 0; color: #182848;">Why Do We Need Them?</h3>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- PROBLEM: This will break your HTML! --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>5 < 10 & 20 > 15<span class="code-tag">&lt;/p&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- SOLUTION: Use HTML entities! --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>5 &lt; 10 &amp; 20 &gt; 15<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> The Critical Five</h4>
+                        <p>These 5 characters <strong>MUST</strong> always be encoded as entities in HTML:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><code>&amp;lt;</code> for <strong>&lt;</strong> (less than)</li>
+                            <li><code>&amp;gt;</code> for <strong>&gt;</strong> (greater than)</li>
+                            <li><code>&amp;amp;</code> for <strong>&amp;</strong> (ampersand)</li>
+                            <li><code>&amp;quot;</code> for <strong>"</strong> (double quote)</li>
+                            <li><code>&amp;apos;</code> for <strong>'</strong> (apostrophe/single quote)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Types of Entities Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 3:00]</div>
+                <h2 class="section-title"><i class="fas fa-list"></i> Types of HTML Entities</h2>
+                <div class="script-content">
+                    <p>There are three main ways to write HTML entities:</p>
+                    
+                    <table class="entity-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Syntax</th>
+                                <th>Example</th>
+                                <th>Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Named Entity</td>
+                                <td>&amp;entity_name;</td>
+                                <td>&amp;copy;</td>
+                                <td>©</td>
+                            </tr>
+                            <tr>
+                                <td>Decimal Number</td>
+                                <td>&amp;#number;</td>
+                                <td>&amp;#169;</td>
+                                <td>©</td>
+                            </tr>
+                            <tr>
+                                <td>Hexadecimal Number</td>
+                                <td>&amp;#xhex_number;</td>
+                                <td>&amp;#xA9;</td>
+                                <td>©</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-code"></i> Pro Tip</h4>
+                        <p><strong>Named entities are easier to remember</strong> but may not work in XML. <strong>Numeric entities always work</strong> in all contexts. For maximum compatibility, many developers prefer numeric entities.</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- All three give the same result --&gt;</span><br>
+                            Copyright &amp;copy; 2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">← Named entity</span><br>
+                            Copyright &amp;#169; 2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">← Decimal entity</span><br>
+                            Copyright &amp;#xA9; 2023 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">← Hexadecimal entity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Entities Gallery -->
+            <div class="section">
+                <div class="timing-indicator">[3:00 - 4:30]</div>
+                <h2 class="section-title"><i class="fas fa-th"></i> Common HTML Entities Gallery</h2>
+                <div class="script-content">
+                    <p>Here are the most frequently used HTML entities you'll need:</p>
+                    
+                    <div class="symbols-grid">
+                        <!-- Row 1 -->
+                        <div class="symbol-card">
+                            <div class="symbol-entity">&lt;</div>
+                            <div class="symbol-code">&amp;lt;</div>
+                            <div class="symbol-code">&amp;#60;</div>
+                            <div class="symbol-desc">Less than</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">&gt;</div>
+                            <div class="symbol-code">&amp;gt;</div>
+                            <div class="symbol-code">&amp;#62;</div>
+                            <div class="symbol-desc">Greater than</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">&amp;</div>
+                            <div class="symbol-code">&amp;amp;</div>
+                            <div class="symbol-code">&amp;#38;</div>
+                            <div class="symbol-desc">Ampersand</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">"</div>
+                            <div class="symbol-code">&amp;quot;</div>
+                            <div class="symbol-code">&amp;#34;</div>
+                            <div class="symbol-desc">Double quote</div>
+                        </div>
+                        
+                        <!-- Row 2 -->
+                        <div class="symbol-card">
+                            <div class="symbol-entity">©</div>
+                            <div class="symbol-code">&amp;copy;</div>
+                            <div class="symbol-code">&amp;#169;</div>
+                            <div class="symbol-desc">Copyright</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">®</div>
+                            <div class="symbol-code">&amp;reg;</div>
+                            <div class="symbol-code">&amp;#174;</div>
+                            <div class="symbol-desc">Registered trademark</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">™</div>
+                            <div class="symbol-code">&amp;trade;</div>
+                            <div class="symbol-code">&amp;#8482;</div>
+                            <div class="symbol-desc">Trademark</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">€</div>
+                            <div class="symbol-code">&amp;euro;</div>
+                            <div class="symbol-code">&amp;#8364;</div>
+                            <div class="symbol-desc">Euro</div>
+                        </div>
+                        
+                        <!-- Row 3 -->
+                        <div class="symbol-card">
+                            <div class="symbol-entity">£</div>
+                            <div class="symbol-code">&amp;pound;</div>
+                            <div class="symbol-code">&amp;#163;</div>
+                            <div class="symbol-desc">Pound</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">¥</div>
+                            <div class="symbol-code">&amp;yen;</div>
+                            <div class="symbol-code">&amp;#165;</div>
+                            <div class="symbol-desc">Yen/Yuan</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">¢</div>
+                            <div class="symbol-code">&amp;cent;</div>
+                            <div class="symbol-code">&amp;#162;</div>
+                            <div class="symbol-desc">Cent</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">§</div>
+                            <div class="symbol-code">&amp;sect;</div>
+                            <div class="symbol-code">&amp;#167;</div>
+                            <div class="symbol-desc">Section</div>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-search"></i> Finding Entities</h4>
+                        <p>Don't memorize all entities! Bookmark a reference like <strong>W3Schools HTML Entities</strong> or <strong>MDN Entity Reference</strong>. In VS Code, you can also use IntelliSense - just type <code>&amp;</code> and see suggestions!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mathematical Symbols -->
+            <div class="section">
+                <div class="timing-indicator">[4:30 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-square-root-alt"></i> Mathematical Symbols</h2>
+                <div class="script-content">
+                    <p>HTML entities are essential for displaying mathematical content:</p>
+                    
+                    <div class="symbols-grid">
+                        <div class="symbol-card">
+                            <div class="symbol-entity">×</div>
+                            <div class="symbol-code">&amp;times;</div>
+                            <div class="symbol-desc">Multiplication</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">÷</div>
+                            <div class="symbol-code">&amp;divide;</div>
+                            <div class="symbol-desc">Division</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">±</div>
+                            <div class="symbol-code">&amp;plusmn;</div>
+                            <div class="symbol-desc">Plus/minus</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">°</div>
+                            <div class="symbol-code">&amp;deg;</div>
+                            <div class="symbol-desc">Degree</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">½</div>
+                            <div class="symbol-code">&amp;frac12;</div>
+                            <div class="symbol-desc">One half</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">¼</div>
+                            <div class="symbol-code">&amp;frac14;</div>
+                            <div class="symbol-desc">One quarter</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">∞</div>
+                            <div class="symbol-code">&amp;infin;</div>
+                            <div class="symbol-desc">Infinity</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">π</div>
+                            <div class="symbol-code">&amp;pi;</div>
+                            <div class="symbol-desc">Pi</div>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Mathematical equation using entities --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;Area of circle = &amp;pi; &amp;times; r&amp;sup2;<br>
+                        &nbsp;&nbsp;Temperature: 25&amp;deg;C &amp;plusmn; 2&amp;deg;<br>
+                        &nbsp;&nbsp;Fraction: &amp;frac12; + &amp;frac14; = &amp;frac34;<br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <p>The code above displays: <strong>Area of circle = π × r²<br>Temperature: 25°C ± 2°<br>Fraction: ½ + ¼ = ¾</strong></p>
+                </div>
+            </div>
+            
+            <!-- Typographic Symbols -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-font"></i> Typographic Symbols</h2>
+                <div class="script-content">
+                    <p>Professional typography uses special symbols for better readability:</p>
+                    
+                    <div class="symbols-grid">
+                        <div class="symbol-card">
+                            <div class="symbol-entity">—</div>
+                            <div class="symbol-code">&amp;mdash;</div>
+                            <div class="symbol-desc">Em dash</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">–</div>
+                            <div class="symbol-code">&amp;ndash;</div>
+                            <div class="symbol-desc">En dash</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">•</div>
+                            <div class="symbol-code">&amp;bull;</div>
+                            <div class="symbol-desc">Bullet point</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">…</div>
+                            <div class="symbol-code">&amp;hellip;</div>
+                            <div class="symbol-desc">Ellipsis</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">«</div>
+                            <div class="symbol-code">&amp;laquo;</div>
+                            <div class="symbol-desc">Left angle quote</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">»</div>
+                            <div class="symbol-code">&amp;raquo;</div>
+                            <div class="symbol-desc">Right angle quote</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">·</div>
+                            <div class="symbol-code">&amp;middot;</div>
+                            <div class="symbol-desc">Middle dot</div>
+                        </div>
+                        
+                        <div class="symbol-card">
+                            <div class="symbol-entity">¶</div>
+                            <div class="symbol-code">&amp;para;</div>
+                            <div class="symbol-desc">Pilcrow (paragraph)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-edit"></i> Typography Tip</h4>
+                        <p>Use <code>&amp;mdash;</code> (—) for breaks in thought, <code>&amp;ndash;</code> (–) for ranges (pages 10–20), and <code>&amp;hellip;</code> (…) for trailing off. Never use three periods or two hyphens!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unicode vs HTML Entities -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-language"></i> Unicode vs HTML Entities</h2>
+                <div class="script-content">
+                    <p>With modern UTF-8 encoding, you can often type special characters directly. So when should you use entities?</p>
+                    
+                    <table class="entity-table">
+                        <thead>
+                            <tr>
+                                <th>Use Direct Unicode When...</th>
+                                <th>Use HTML Entities When...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Character is on your keyboard</td>
+                                <td>Character has special meaning in HTML (&lt;, &gt;, &amp;)</td>
+                            </tr>
+                            <tr>
+                                <td>Working with UTF-8 encoded pages</td>
+                                <td>Need maximum compatibility with old systems</td>
+                            </tr>
+                            <tr>
+                                <td>Character displays correctly in your editor</td>
+                                <td>Document might be saved in non-UTF-8 encoding</td>
+                            </tr>
+                            <tr>
+                                <td>Improving readability of source code</td>
+                                <td>Character might be confused with markup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-check-circle"></i> Best Practice</h4>
+                        <p><strong>Always declare</strong> <code>&lt;meta charset="UTF-8"&gt;</code> in your HTML. For the critical five (&lt;, &gt;, &amp;, ", '), <strong>always use entities</strong>. For other symbols, direct Unicode is usually fine in modern development.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes to Avoid</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-bug"></i> Entity Mistakes Beginners Make</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Forgetting the semicolon</strong>: <code>&amp;copy</code> (wrong) vs <code>&amp;copy;</code> (correct)</li>
+                            <li><strong>Using wrong case</strong>: <code>&amp;COPY;</code> won't work, use <code>&amp;copy;</code></li>
+                            <li><strong>Not escaping special characters</strong>: Breaking HTML with &lt; or &amp;</li>
+                            <li><strong>Confusing similar symbols</strong>: Hyphen (-) vs en dash (–) vs em dash (—)</li>
+                            <li><strong>Overusing entities</strong>: For common characters that work fine in UTF-8</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:30 - 8:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Your HTML Entities Challenge</h4>
+                        <p><strong>Task 1:</strong> Create a copyright notice for your website with the current year</p>
+                        <p><strong>Task 2:</strong> Write a mathematical equation: (5 × 3) ÷ 2 = 7.5 ± 0.5</p>
+                        <p><strong>Task 3:</strong> Create a product description with price in multiple currencies: $19.99 / €18.50 / £16.75 / ¥2,200</p>
+                        <p><strong>Task 4:</strong> Write a sentence using proper typography: em dash, en dash, and ellipsis</p>
+                        <p><strong>Bonus Challenge:</strong> Create a comparison table showing at least 10 different HTML entities with their codes and outputs</p>
+                        <p><strong>Share your code:</strong> Post your HTML in the comments - I'll check your entity usage!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:00 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Excellent work! You've now mastered HTML entities and symbols. You learned:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>What HTML entities are and why we need them</li>
+                        <li>The 5 critical characters that must always be escaped</li>
+                        <li>Three types of entities: named, decimal, hexadecimal</li>
+                        <li>Common entities for symbols, math, and typography</li>
+                        <li>When to use entities vs direct Unicode</li>
+                        <li>Common mistakes and how to avoid them</li>
+                    </ul>
+                    
+                    <p>In the <strong>next tutorial</strong>, we'll have some fun with emojis! We'll learn how to add emojis to your web pages, accessibility considerations, performance tips, and creative ways to use emojis in web design.</p>
+                    
+                    <p>If you have questions about entities or want feedback on your challenge, drop them in the comments. <strong>I'll help you get those symbols right!</strong></p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Support the Series!</h3>
+                        <p>If this tutorial helped you understand HTML entities:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-13.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Adding Emojis
+                            </a>
+                            <a href="tutorial-11.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous: Images Tutorial
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for HTML entity cheat sheets, reference links, and symbol lookup tools!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Thanks for watching, and remember: &amp; always escape your &lt; &gt; &amp;! I'll see you in the next tutorial.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 12: HTML Entities & Symbols | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Interactive symbol gallery • Mathematical symbols • Typography guide • Unicode vs Entities comparison
+            </p>
+        </div>
+    </div>
+</body>
+</html>

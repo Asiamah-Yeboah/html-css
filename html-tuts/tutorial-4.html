@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 4: HTML Comments | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .code-tag {
+            color: #569cd6;
+        }
+
+        .code-attr {
+            color: #9cdcfe;
+        }
+
+        .code-value {
+            color: #ce9178;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .tip h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .comment-visual {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+
+        .comment-visual .comment-line {
+            color: #6a9955;
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 3px solid #6a9955;
+        }
+
+        .comment-visual .code-line {
+            color: #333;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .before-after .column {
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .before-after .bad {
+            background: #ffebee;
+            border: 2px solid #f44336;
+        }
+
+        .before-after .good {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .before-after h4 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-3.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-5.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-comment"></i> Tutorial 4: HTML Comments</h1>
+            <p>Learn how to document your code with comments that browsers ignore but developers love</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 5-6 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-sticky-note"></i> Code Documentation
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with friendly, conversational tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned about HTML document structure. Today, we're covering one of the most underrated but essential skills in programming: <strong>writing comments in your HTML code</strong>.</p>
+                    <p>Comments are notes you leave in your code that browsers ignore but are incredibly helpful for developers. Think of them like <strong>sticky notes in a recipe book</strong> - they don't change the recipe, but they provide valuable context!</p>
+                    <p>By the end of this video, you'll know how to write effective comments that make your code more readable and maintainable. Let's dive in!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-book"></i> Real-World Analogy</h4>
+                        <p>Imagine you're cooking from a family recipe. The recipe itself (the ingredients and instructions) is like your HTML code. The notes in the margin like <em>"Grandma says to use butter, not oil"</em> or <em>"Double this for large groups"</em> are like comments. They don't change how the dish cooks, but they make the recipe much more useful!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What are HTML Comments? -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 1:30]</div>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> What are HTML Comments?</h2>
+                <div class="script-content">
+                    <p>HTML comments are pieces of text in your code that are <strong>not displayed in the browser</strong>. They're only visible when looking at the source code.</p>
+                    
+                    <p>Comments start with <code>&lt;!--</code> and end with <code>--&gt;</code>. Anything between these markers is completely ignored by the browser.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- This is an HTML comment --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>This heading IS visible<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-comment">&lt;!-- The heading above will appear on the webpage --&gt;</span>
+                    </div>
+                    
+                    <div class="comment-visual">
+                        <div class="comment-line">&lt;!-- This text is invisible to users --&gt;</div>
+                        <div class="code-line">&lt;h1&gt;This text IS visible to users&lt;/h1&gt;</div>
+                        <div class="comment-line">&lt;!-- Another comment explaining the code --&gt;</div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-eye-slash"></i> Browser Behavior</h4>
+                        <p>When a browser reads your HTML, it completely skips anything between <code>&lt;!--</code> and <code>--&gt;</code>. These comments are only for human readers - you, other developers, or your future self!</p>
+                        <p>[DEMONSTRATE] Show a simple HTML page with comments in VS Code, then show that they don't appear in the browser.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Why Use Comments? -->
+            <div class="section">
+                <div class="timing-indicator">[1:30 - 2:45]</div>
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Why Use Comments?</h2>
+                <div class="script-content">
+                    <p>Comments serve several important purposes in professional web development:</p>
+                    
+                    <div class="before-after">
+                        <div class="column bad">
+                            <h4>❌ Without Comments</h4>
+                            <p>• Mysterious, hard-to-understand code</p>
+                            <p>• Future you won't remember why you did things</p>
+                            <p>• Team members get confused</p>
+                            <p>• Difficult to maintain and update</p>
+                        </div>
+                        
+                        <div class="column good">
+                            <h4>✅ With Good Comments</h4>
+                            <p>• Clear, understandable code</p>
+                            <p>• Future you knows exactly what's happening</p>
+                            <p>• Team collaboration is smooth</p>
+                            <p>• Easy to maintain and update</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-bullseye"></i> 5 Main Reasons to Comment</h4>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><strong>Explain complex code</strong>: Help others (and your future self) understand what tricky code does</li>
+                            <li><strong>Section organization</strong>: Divide your HTML into logical sections</li>
+                            <li><strong>Temporarily disable code</strong>: "Comment out" code you don't want to delete but don't want to run</li>
+                            <li><strong>Leave TODOs</strong>: Mark areas that need work or improvements</li>
+                            <li><strong>Documentation</strong>: Provide information about the file, author, or last update</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-users"></i> Team Development Reality</h4>
+                        <p>In professional web development, teams of developers work on the same codebase. Good comments help everyone understand each other's code without having to ask questions constantly.</p>
+                        <p>It's like leaving a map for others who will travel the same path later. The time you spend writing comments today saves hours of confusion tomorrow!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Types of Comments -->
+            <div class="section">
+                <div class="timing-indicator">[2:45 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-list"></i> Types of HTML Comments</h2>
+                <div class="script-content">
+                    <p>There are several ways to use comments in HTML. Let's look at the most common types:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- 1. Single-line comment --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>Welcome<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 2. Multi-line comment<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;This comment spans<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;multiple lines --&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 3. Inline comment --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>This is a paragraph <span class="code-comment">&lt;!-- with an inline comment --&gt;</span> with text.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 4. Section divider comment --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- =============== HEADER SECTION =============== --&gt;</span><br>
+                        <span class="code-tag">&lt;header&gt;</span>...<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 5. TODO comment --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- TODO: Add contact form here --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- FIXME: This causes mobile layout issues --&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-code"></i> VS Code Comment Shortcuts</h4>
+                        <p>In Visual Studio Code, you can use keyboard shortcuts to comment code quickly:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Windows/Linux:</strong> Ctrl + / (slash)</li>
+                            <li><strong>Mac:</strong> Cmd + / (slash)</li>
+                        </ul>
+                        <p>Select any code and press this shortcut to automatically wrap it in comment tags. Press again to remove the comments!</p>
+                        <p>[DEMONSTRATE] Show this shortcut in action in VS Code.</p>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-tags"></i> Commenting Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Be clear and concise</strong>: Don't write essays, but be descriptive enough</li>
+                            <li><strong>Use proper grammar</strong>: Treat comments like documentation</li>
+                            <li><strong>Update comments when you update code</strong>: Outdated comments are worse than no comments</li>
+                            <li><strong>Use TODO/FIXME consistently</strong>: These are searchable markers for future work</li>
+                            <li><strong>Don't state the obvious</strong>: <code>&lt;!-- This is a heading --&gt;</code> before <code>&lt;h1&gt;</code> is unnecessary</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Practical Examples -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 5:00]</div>
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Practical Comment Examples</h2>
+                <div class="script-content">
+                    <p>Let's look at some practical examples of good commenting in real HTML code:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- ============================================ --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- FILE: index.html --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- AUTHOR: [Your Name] --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- CREATED: 2023-10-15 --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- DESCRIPTION: Main landing page for website --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- ============================================ --&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- HEAD SECTION: Metadata only --&gt;</span><br>
+                        <span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;meta charset="UTF-8"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>My Website<span class="code-tag">&lt;/title&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- External CSS file --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;link rel="stylesheet" href="styles.css"&gt;</span><br>
+                        <span class="code-tag">&lt;/head&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- BODY SECTION: All visible content --&gt;</span><br>
+                        <span class="code-tag">&lt;body&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- MAIN HEADER --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Welcome<span class="code-tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- TODO: Add navigation menu here --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- &lt;nav&gt;...&lt;/nav&gt; --&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- MAIN CONTENT AREA --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;main&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;article&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h2&gt;</span>About Us<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- FIXME: This paragraph needs updating --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Company information goes here.<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/article&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/main&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- FOOTER --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;footer&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>&copy; 2023 My Site<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/footer&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- JavaScript for interactivity --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;script src="script.js"&gt;</span><span class="code-tag">&lt;/script&gt;</span><br>
+                        <span class="code-tag">&lt;/body&gt;</span><br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-industry"></i> Professional Benefits</h4>
+                        <p>This commented code shows several professional practices:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><strong>File header</strong> with metadata (author, date, purpose)</li>
+                            <li><strong>Section dividers</strong> to organize large files</li>
+                            <li><strong>TODO markers</strong> for planned features</li>
+                            <li><strong>FIXME markers</strong> for known issues</li>
+                            <li><strong>Explanatory comments</strong> for non-obvious code</li>
+                        </ol>
+                        <p>This makes the code <strong>self-documenting</strong> - anyone can understand it without asking the original author!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Commenting Out Code -->
+            <div class="section">
+                <div class="timing-indicator">[5:00 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-ban"></i> Commenting Out Code</h2>
+                <div class="script-content">
+                    <p>One of the most useful features of comments is the ability to <strong>temporarily disable code</strong> without deleting it. This is called "commenting out" code.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Old navigation - keeping for reference --&gt;</span><br>
+                        <span class="code-comment">&lt;!--</span><br>
+                        <span class="code-comment">&lt;nav&gt;</span><br>
+                        <span class="code-comment">&nbsp;&nbsp;&lt;a href="#"&gt;Home&lt;/a&gt;</span><br>
+                        <span class="code-comment">&nbsp;&nbsp;&lt;a href="#"&gt;About&lt;/a&gt;</span><br>
+                        <span class="code-comment">&lt;/nav&gt;</span><br>
+                        <span class="code-comment">--&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- New navigation --&gt;</span><br>
+                        <span class="code-tag">&lt;nav&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;a href="#"&gt;</span>Home<span class="code-tag">&lt;/a&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;a href="#"&gt;</span>About<span class="code-tag">&lt;/a&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;a href="#"&gt;</span>Contact<span class="code-tag">&lt;/a&gt;</span> <span class="code-comment">&lt;!-- New! --&gt;</span><br>
+                        <span class="code-tag">&lt;/nav&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-history"></i> When to Comment Out Code</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Debugging</strong>: Temporarily remove code to isolate problems</li>
+                            <li><strong>A/B testing</strong>: Try different versions of a feature</li>
+                            <li><strong>Keeping old code for reference</strong>: Don't delete, just comment out</li>
+                            <li><strong>Temporary features</strong>: Holiday themes, special promotions</li>
+                            <li><strong>Incomplete work</strong>: Save work in progress without breaking the site</li>
+                        </ul>
+                        <p><strong>Remember:</strong> Don't leave large blocks of commented-out code in production. Use version control (like Git) for keeping history instead.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 5:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Comment Mistakes</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> Commenting Mistakes to Avoid</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Over-commenting (stating the obvious)<br>
+                        <strong>Bad:</strong> <code>&lt;!-- This is a paragraph --&gt;</code> before <code>&lt;p&gt;</code><br>
+                        <strong>Good:</strong> Only comment when it adds real value</p>
+                        
+                        <p><strong>Mistake 2:</strong> Under-commenting complex code<br>
+                        <strong>Bad:</strong> No comments on tricky algorithm or workaround<br>
+                        <strong>Good:</strong> Explain why you did something unusual</p>
+                        
+                        <p><strong>Mistake 3:</strong> Outdated comments<br>
+                        <strong>Bad:</strong> Comments that no longer match the code<br>
+                        <strong>Good:</strong> Update comments when you update code</p>
+                        
+                        <p><strong>Mistake 4:</strong> Rude or unprofessional comments<br>
+                        <strong>Bad:</strong> <code>&lt;!-- This is stupid but it works --&gt;</code><br>
+                        <strong>Good:</strong> Keep comments professional and helpful</p>
+                        
+                        <p><strong>Mistake 5:</strong> Nested comments (not allowed in HTML)<br>
+                        <strong>Bad:</strong> <code>&lt;!-- Comment &lt;!-- inside --&gt; comment --&gt;</code><br>
+                        <strong>Good:</strong> HTML doesn't allow nested comments. Use single comments.</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-balance-scale"></i> The Goldilocks Principle</h4>
+                        <p>Good commenting is like Goldilocks' porridge: <strong>not too much, not too little, but just right</strong>.</p>
+                        <p>• <strong>Too few comments</strong>: Code is hard to understand<br>
+                        • <strong>Too many comments</strong>: Code is cluttered and hard to read<br>
+                        • <strong>Just right</strong>: Comments explain the "why" not the "what"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[5:45 - 6:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-comment-medical"></i> Commenting Challenge</h4>
+                        <p><strong>Task 1:</strong> Take the HTML document you created in the last tutorial and add appropriate comments to it.</p>
+                        
+                        <p><strong>Task 2:</strong> Include at least:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>A file header comment with your name and date</li>
+                            <li>Section dividers for head, body, header, main, and footer</li>
+                            <li>One TODO comment for a future improvement</li>
+                            <li>One explanatory comment for something non-obvious</li>
+                        </ul></p>
+                        
+                        <p><strong>Task 3:</strong> Use the VS Code shortcut (Ctrl+/ or Cmd+/) to comment out a paragraph temporarily, then uncomment it.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> View the page source of a popular website (like GitHub or Twitter) and see how they use comments in their HTML. Share your findings in the comments below!</p>
+                        
+                        <p>This practice will help you develop good commenting habits from the start - a skill that will serve you throughout your programming career!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:00 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Great job!</strong> You now understand how to use HTML comments effectively. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>What HTML comments are and how they work</li>
+                        <li>5 key reasons to use comments in your code</li>
+                        <li>Different types of comments (single-line, multi-line, inline)</li>
+                        <li>How to "comment out" code temporarily</li>
+                        <li>Common mistakes to avoid when commenting</li>
+                        <li>VS Code shortcuts for faster commenting</li>
+                    </ul>
+                    
+                    <p>Good comments make your code <strong>self-documenting</strong> - easy for others (and your future self) to understand. This is especially important in professional development teams.</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll dive into HTML elements and tags - the building blocks of every webpage!</p>
+                    
+                    <p>If you have any questions about comments or want feedback on your commented code, share it in the comments below!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-file-alt"></i> Resources & Templates</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                Commented HTML Template
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                Commenting Checklist
+                            </a>
+                            <a href="tutorial-5.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: HTML Elements
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable templates with professional commenting patterns and a VS Code shortcuts cheat sheet!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If you found this tutorial helpful, please give it a thumbs up and subscribe for more web development content!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 4: HTML Comments | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Practical examples • Professional patterns • Common mistakes • Interactive challenges
+            </p>
+        </div>
+    </div>
+</body>
+</html>

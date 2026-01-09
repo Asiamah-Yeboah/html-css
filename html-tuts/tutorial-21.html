@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 21: Introduction to CSS | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .css-property {
+            color: #66d9ef;
+        }
+
+        .css-value {
+            color: #e6db74;
+        }
+
+        .css-selector {
+            color: #a6e22e;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-paint-brush"></i> Tutorial 21: Introduction to CSS</h1>
+            <p>Learn how to style and beautify your HTML with CSS</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 7-9 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with enthusiastic, engaging tone]</p>
+                    <p><strong>Welcome to Part 2 of our HTML Tutorial Series - CSS Basics!</strong> I'm [Your Name], and if you've been following along, you now know how to create the structure of a webpage with HTML.</p>
+                    <p>But let's be honest - plain HTML looks pretty boring, right? It's like building a house with just the frame and no paint, no decorations, no personality.</p>
+                    <p>That's where CSS comes in! <strong>CSS is what makes websites beautiful, engaging, and memorable.</strong> Today, we're going to learn what CSS is and how it transforms your HTML from plain to stunning.</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-magic"></i> Transformation Example</h4>
+                        <p>Look at this page right now. See the beautiful gradients, the smooth buttons, the clean layout? Every single visual aspect you see - from the colors to the spacing to the fonts - is controlled by CSS!</p>
+                        <p><strong>Without CSS, YouTube would just be a list of blue links on a white background.</strong> Not very appealing, is it?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What is CSS Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:15]</div>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> What is CSS?</h2>
+                <div class="script-content">
+                    <p>CSS stands for <strong>Cascading Style Sheets</strong>. Let's break down what that means:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li><strong>Cascading</strong>: Styles can be inherited and overridden (like a waterfall cascading down)</li>
+                        <li><strong>Style</strong>: Controls the visual presentation of HTML elements</li>
+                        <li><strong>Sheets</strong>: Separate files (or sections) that contain styling rules</li>
+                    </ul>
+                    
+                    <p>Think of it this way:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li><strong>HTML = Structure & Content</strong> (The "what")</li>
+                        <li><strong>CSS = Presentation & Design</strong> (The "how it looks")</li>
+                        <li><strong>JavaScript = Behavior & Interactivity</strong> (The "what it does")</li>
+                    </ul>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-book"></i> Magazine Analogy</h4>
+                        <p>Imagine HTML as the raw text of a magazine article - just the words. CSS is the designer who comes in and decides:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>What font to use and what size</li>
+                            <li>What colors for headings and text</li>
+                            <li>How much space between paragraphs</li>
+                            <li>Where to place images</li>
+                            <li>What the borders and backgrounds look like</li>
+                        </ul>
+                        <p><strong>The same content (HTML) can look completely different with different CSS!</strong> This is why websites can have "themes" or "skins."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- How CSS Works Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:15 - 3:45]</div>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> How CSS Works</h2>
+                <div class="script-content">
+                    <p>CSS works by <strong>selecting</strong> HTML elements and applying <strong>style rules</strong> to them. Here's the basic syntax:</p>
+                    
+                    <div class="code-example">
+<span class="css-selector">selector</span> {<br>
+&nbsp;&nbsp;<span class="css-property">property</span>: <span class="css-value">value</span>;<br>
+&nbsp;&nbsp;<span class="css-property">another-property</span>: <span class="css-value">another-value</span>;<br>
+}
+                    </div>
+                    
+                    <p>Let me show you a real example:</p>
+                    
+                    <div class="code-example">
+<span class="css-comment">/* This CSS makes all h1 elements red and centered */</span><br>
+<span class="css-selector">h1</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">red</span>;<br>
+&nbsp;&nbsp;<span class="css-property">text-align</span>: <span class="css-value">center</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">32px</span>;<br>
+}
+                    </div>
+                    
+                    <p>And here's how we can target multiple elements at once:</p>
+                    
+                    <div class="code-example">
+<span class="css-comment">/* Style multiple elements */</span><br>
+<span class="css-selector">h1, h2, h3</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'Arial', sans-serif</span>;<br>
+}<br><br>
+<span class="css-comment">/* Style paragraphs */</span><br>
+<span class="css-selector">p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">line-height</span>: <span class="css-value">1.6</span>;<br>
+&nbsp;&nbsp;<span class="css-property">margin-bottom</span>: <span class="css-value">20px</span>;<br>
+}
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> Viewer Interaction</h4>
+                        <p><strong>Try this right now:</strong> On any website, right-click an element and select "Inspect." Look for the "Styles" panel on the right side of the developer tools.</p>
+                        <p>You'll see all the CSS rules being applied to that element! Try changing some values (like colors or font sizes) and watch the page update in real-time. This is a great way to learn how CSS works!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Connecting CSS to HTML Section -->
+            <div class="section">
+                <div class="timing-indicator">[3:45 - 5:15]</div>
+                <h2 class="section-title"><i class="fas fa-link"></i> Connecting CSS to HTML</h2>
+                <div class="script-content">
+                    <p>There are <strong>three ways</strong> to add CSS to your HTML documents:</p>
+                    
+                    <ol style="margin: 20px 0 20px 30px;">
+                        <li><strong>Inline CSS</strong> (Style directly on HTML elements)</li>
+                        <li><strong>Internal CSS</strong> (Style tag in the head section)</li>
+                        <li><strong>External CSS</strong> (Separate .css file linked to HTML)</li>
+                    </ol>
+                    
+                    <p>Here's what each method looks like:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. INLINE CSS (Not recommended for most cases) */</span><br>
+<span class="code-tag">&lt;h1</span> <span class="code-attr">style</span>=<span class="code-value">"color: blue; font-size: 24px;"</span><span class="code-tag">&gt;</span>Hello World<span class="code-tag">&lt;/h1&gt;</span><br><br>
+<span class="code-comment">/* 2. INTERNAL CSS (In the head section) */</span><br>
+<span class="code-tag">&lt;style&gt;</span><br>
+<span class="css-selector">h1</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">blue</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">24px</span>;<br>
+}<br>
+<span class="code-tag">&lt;/style&gt;</span><br><br>
+<span class="code-comment">/* 3. EXTERNAL CSS (Recommended approach) */</span><br>
+<span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-value">"styles.css"</span><span class="code-tag">&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-star"></i> Best Practice</h4>
+                        <p><strong>Always use External CSS for real projects!</strong> Here's why:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>Separation of concerns (HTML for structure, CSS for styling)</li>
+                            <li>One CSS file can style multiple HTML pages</li>
+                            <li>Easier to maintain and update</li>
+                            <li>Better performance (browser can cache CSS files)</li>
+                        </ul>
+                        <p>Inline CSS should only be used for quick testing or when you need to override other styles in specific cases.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSS Selectors Basics Section -->
+            <div class="section">
+                <div class="timing-indicator">[5:15 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-crosshairs"></i> Basic CSS Selectors</h2>
+                <div class="script-content">
+                    <p>CSS selectors are how you "target" HTML elements to style them. Here are the most basic selectors:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. Element Selector - selects all elements of that type */</span><br>
+<span class="css-selector">p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">#333</span>;<br>
+}<br><br>
+<span class="code-comment">/* 2. Class Selector - selects elements with a specific class */</span><br>
+<span class="css-selector">.button</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background-color</span>: <span class="css-value">blue</span>;<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">white</span>;<br>
+}<br><br>
+<span class="code-comment">/* 3. ID Selector - selects ONE element with a specific ID */</span><br>
+<span class="css-selector">#header</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background-color</span>: <span class="css-value">#f8f8f8</span>;<br>
+&nbsp;&nbsp;<span class="css-property">padding</span>: <span class="css-value">20px</span>;<br>
+}<br><br>
+<span class="code-comment">/* 4. Universal Selector - selects ALL elements */</span><br>
+<span class="css-selector">*</span> {<br>
+&nbsp;&nbsp;<span class="css-property">box-sizing</span>: <span class="css-value">border-box</span>;<br>
+&nbsp;&nbsp;<span class="css-property">margin</span>: <span class="css-value">0</span>;<br>
+}
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-bullseye"></i> Selector Priority</h4>
+                        <p>CSS has a specific order of priority (called "specificity"):</p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li><strong>Inline styles</strong> (highest priority)</li>
+                            <li><strong>ID selectors</strong></li>
+                            <li><strong>Class selectors</strong></li>
+                            <li><strong>Element selectors</strong></li>
+                            <li><strong>Universal selector</strong> (lowest priority)</li>
+                        </ol>
+                        <p>This is why it's called "Cascading" Style Sheets - styles cascade down from general to specific!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common CSS Properties Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 7:15]</div>
+                <h2 class="section-title"><i class="fas fa-palette"></i> Common CSS Properties</h2>
+                <div class="script-content">
+                    <p>Here are some of the most commonly used CSS properties you'll start with:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Text and Font Properties */</span><br>
+<span class="css-selector">h1</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">#ff5733</span>; <span class="code-comment">/* Text color */</span><br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'Arial', sans-serif</span>; <span class="code-comment">/* Font */</span><br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">2rem</span>; <span class="code-comment">/* Size */</span><br>
+&nbsp;&nbsp;<span class="css-property">text-align</span>: <span class="css-value">center</span>; <span class="code-comment">/* Alignment */</span><br>
+&nbsp;&nbsp;<span class="css-property">font-weight</span>: <span class="css-value">bold</span>; <span class="code-comment">/* Boldness */</span><br>
+}<br><br>
+<span class="code-comment">/* Box Properties */</span><br>
+<span class="css-selector">.box</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background-color</span>: <span class="css-value">#f0f0f0</span>; <span class="code-comment">/* Background */</span><br>
+&nbsp;&nbsp;<span class="css-property">padding</span>: <span class="css-value">20px</span>; <span class="code-comment">/* Inner space */</span><br>
+&nbsp;&nbsp;<span class="css-property">margin</span>: <span class="css-value">10px</span>; <span class="code-comment">/* Outer space */</span><br>
+&nbsp;&nbsp;<span class="css-property">border</span>: <span class="css-value">2px solid #333</span>; <span class="code-comment">/* Border */</span><br>
+&nbsp;&nbsp;<span class="css-property">border-radius</span>: <span class="css-value">10px</span>; <span class="code-comment">/* Rounded corners */</span><br>
+}
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-flask"></i> Quick Experiment</h4>
+                        <p>Open your browser's developer tools (F12) and try changing some CSS properties on this page. Change the background color of the header, modify the font size of paragraphs, or adjust the padding of elements.</p>
+                        <p>This hands-on practice is the best way to understand how CSS properties work!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:15 - 7:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common CSS Mistakes</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-bug"></i> Beginner CSS Mistakes</h4>
+                        <p>When starting with CSS, people often:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Use too many inline styles</strong> (makes code hard to maintain)</li>
+                            <li><strong>Forget to link their CSS file</strong> (check the file path!)</li>
+                            <li><strong>Use IDs when classes would be better</strong> (IDs should be unique)</li>
+                            <li><strong>Not using browser developer tools</strong> (your best debugging tool)</li>
+                            <li><strong>Forgetting the semicolon at the end of properties</strong></li>
+                            <li><strong>Not organizing their CSS</strong> (use comments and grouping)</li>
+                        </ul>
+                        <p><strong>Don't worry</strong> - we'll cover CSS organization and best practices as we go through the next 9 CSS tutorials!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:45 - 8:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Your First CSS Challenge</h4>
+                        <p><strong>Task:</strong> Create a simple HTML file and link an external CSS file to it.</p>
+                        <p><strong>What to do:</strong></p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>Create an HTML file with a heading, paragraph, and a button</li>
+                            <li>Create a CSS file and link it to your HTML</li>
+                            <li>Style the heading with a different color and font</li>
+                            <li>Style the paragraph with line height and margin</li>
+                            <li>Style the button with background color, padding, and rounded corners</li>
+                        </ol>
+                        <p><strong>Bonus Challenge:</strong> Create a second CSS file with different styles (like a dark theme) and switch between them by changing the link tag in your HTML.</p>
+                        <p>Share your code in the comments below! I'll pick a few to review and provide feedback on.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:00 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>That's it for our introduction to CSS! You now understand:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>What CSS is and why it's essential for web design</li>
+                        <li>How CSS syntax works with selectors and properties</li>
+                        <li>The three ways to add CSS to HTML</li>
+                        <li>Basic selectors and common properties</li>
+                    </ul>
+                    
+                    <p>In the <strong>next video</strong>, we'll dive deeper into CSS selectors! We'll learn about advanced selectors, combinators, and pseudo-classes that will give you precise control over styling your web pages.</p>
+                    
+                    <p><strong>Remember:</strong> CSS is where you get to be creative and make your websites stand out. It's the difference between a plain document and an engaging web experience!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Practice Makes Perfect!</h3>
+                        <p>The key to mastering CSS is practice. Try the challenge, experiment with code, and don't be afraid to break things!</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-22.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next Tutorial: CSS Selectors
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for CSS cheat sheets, browser dev tool guides, and starter templates!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        CSS is the art of web development. Have fun creating beautiful websites! See you in the next tutorial!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 21: Introduction to CSS | Part 2 of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: YouTube timing indicators • Real-world examples • Code demonstrations • Viewer challenges
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 3: HTML Document Structure & DOCTYPE | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #9c27b0;
+        }
+
+        .step h4 {
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #9c27b0;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .document-visual {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px dashed #4b6cb7;
+        }
+
+        .document-visual h4 {
+            color: #182848;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .document-part {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #4b6cb7;
+            border-radius: 5px;
+        }
+
+        .document-part .part-title {
+            font-weight: bold;
+            color: #182848;
+            margin-bottom: 5px;
+        }
+
+        .document-part .part-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-2.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-4.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-file-alt"></i> Tutorial 3: HTML Document Structure & DOCTYPE</h1>
+            <p>Learn the proper structure of every HTML document and understand DOCTYPE declarations</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 6-8 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-sitemap"></i> Document Structure
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:40]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with confident, teaching tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we set up our development environment. Today, we're going to learn about the <strong>proper structure of an HTML document</strong>.</p>
+                    <p>Just like a letter has a specific format (date, greeting, body, closing), HTML documents have a standard structure that all browsers expect. Understanding this structure is <strong>fundamental to writing correct HTML</strong>.</p>
+                    <p>By the end of this video, you'll understand every part of an HTML document and why each piece is important. Let's get started!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-file-contract"></i> Real-World Comparison</h4>
+                        <p>Think of HTML structure like a legal document. A contract has specific sections: title, parties involved, terms, signatures. If you mix these up or leave parts out, the contract becomes invalid.</p>
+                        <p>Similarly, an HTML document needs specific parts in the right order for browsers to understand it correctly. Today, we'll learn that structure!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The HTML Boilerplate Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:40 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-file-code"></i> The HTML Boilerplate</h2>
+                <div class="script-content">
+                    <p>Every HTML document starts with a standard template called the <strong>"boilerplate"</strong>. This is the foundation that all HTML pages are built upon.</p>
+                    
+                    <p>Here's what a complete HTML5 boilerplate looks like:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Metadata goes here --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Visible content goes here --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/body&gt;</span><br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="document-visual">
+                        <h4><i class="fas fa-project-diagram"></i> HTML Document Structure Visualized</h4>
+                        
+                        <div class="document-part">
+                            <div class="part-title">1. DOCTYPE Declaration</div>
+                            <div class="part-desc">Tells the browser this is an HTML5 document</div>
+                        </div>
+                        
+                        <div class="document-part">
+                            <div class="part-title">2. HTML Element</div>
+                            <div class="part-desc">The root element containing everything</div>
+                        </div>
+                        
+                        <div class="document-part">
+                            <div class="part-title">3. Head Section</div>
+                            <div class="part-desc">Contains metadata (title, styles, scripts)</div>
+                        </div>
+                        
+                        <div class="document-part">
+                            <div class="part-title">4. Body Section</div>
+                            <div class="part-desc">Contains visible content (text, images, etc.)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-industry"></i> Professional Shortcut</h4>
+                        <p>In VS Code, remember you can type <code>!</code> and press <strong>Tab</strong> to generate this entire HTML boilerplate automatically!</p>
+                        <p>This is called an <strong>Emmet abbreviation</strong> and is used by professional developers daily to save time.</p>
+                        <p>[DEMONSTRATE] Let me show you: Create new file, type !, press Tab... Magic! The complete structure appears.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The DOCTYPE Declaration -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 3:00]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> The DOCTYPE Declaration</h2>
+                <div class="script-content">
+                    <p>The very first line of every HTML document must be the <strong>DOCTYPE declaration</strong>:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+                    </div>
+                    
+                    <p>This one line tells the browser: <strong>"Hey, this is an HTML5 document!"</strong></p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> What DOCTYPE Does</h4>
+                        <p>DOCTYPE tells the browser which version of HTML the document is using</p>
+                        <p>Without it, browsers might render your page in <strong>"quirks mode"</strong> - an old, inconsistent rendering mode that can break your layout</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Always Use HTML5 DOCTYPE</h4>
+                        <p>For all modern websites, always use <code>&lt;!DOCTYPE html&gt;</code></p>
+                        <p>It's short, simple, and works in all browsers</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-history"></i> Historical Context</h4>
+                        <p>In older HTML versions, DOCTYPE was much more complicated. For example, HTML 4.01 had this monster:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span>
+                        </div>
+                        <p>Thankfully, <strong>HTML5 simplified it to just <code>&lt;!DOCTYPE html&gt;</code></strong>. This is one of many reasons developers love HTML5!</p>
+                        <p>[SHOW ON SCREEN] Compare the old vs new DOCTYPE declarations side by side.</p>
+                    </div>
+                    
+                    <div class="warning">
+                        <h4><i class="fas fa-exclamation-circle"></i> Critical Warning</h4>
+                        <p><strong>Never forget the DOCTYPE!</strong> If you do, browsers will assume you're using very old HTML and your page might look completely wrong.</p>
+                        <p>The DOCTYPE must be the <strong>very first thing</strong> in your HTML file, before anything else, even before comments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The html Element -->
+            <div class="section">
+                <div class="timing-indicator">[3:00 - 3:45]</div>
+                <h2 class="section-title"><i class="fas fa-code"></i> The html Element</h2>
+                <div class="script-content">
+                    <p>After DOCTYPE, we have the <code>&lt;html&gt;</code> element. This is the <strong>root element</strong> that contains all other HTML elements.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Everything goes inside here --&gt;</span><br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> The lang Attribute</h4>
+                        <p>The <code>lang</code> attribute specifies the language of the document's content:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;html lang="en"&gt;</span> <span class="code-comment">&lt;!-- English --&gt;</span><br>
+                            <span class="code-tag">&lt;html lang="es"&gt;</span> <span class="code-comment">&lt;!-- Spanish --&gt;</span><br>
+                            <span class="code-tag">&lt;html lang="fr"&gt;</span> <span class="code-comment">&lt;!-- French --&gt;</span><br>
+                            <span class="code-tag">&lt;html lang="de"&gt;</span> <span class="code-comment">&lt;!-- German --&gt;</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Why Language Matters</h4>
+                        <p>Specifying the language is important for:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Screen readers</strong> (accessibility - they need to know which language to read in)</li>
+                            <li><strong>Search engines</strong> (SEO - helps them understand and rank your content)</li>
+                            <li><strong>Browser translation tools</strong> (Chrome's "Translate this page" feature)</li>
+                            <li><strong>Spell checkers</strong> (they need to know which dictionary to use)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-globe-americas"></i> Internationalization Tip</h4>
+                        <p>If your page contains multiple languages, you can specify the main language on the <code>&lt;html&gt;</code> tag, then use the <code>lang</code> attribute on specific elements for other languages:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>This is in English.<span class="code-tag">&lt;/p&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;p lang="es"&gt;</span>Esto está en español.<span class="code-tag">&lt;/p&gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The head Section -->
+            <div class="section">
+                <div class="timing-indicator">[3:45 - 5:00]</div>
+                <h2 class="section-title"><i class="fas fa-brain"></i> The head Section</h2>
+                <div class="script-content">
+                    <p>The <code>&lt;head&gt;</code> section contains <strong>metadata</strong> - information about the document that isn't displayed on the page itself.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;meta charset="UTF-8"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>My Website Title<span class="code-tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;link rel="stylesheet" href="styles.css"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;script src="script.js" defer&gt;</span><span class="code-tag">&lt;/script&gt;</span><br>
+                        <span class="code-tag">&lt;/head&gt;</span>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Character Encoding (charset)</h4>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;meta charset="UTF-8"&gt;</span>
+                        </div>
+                        <p><strong>UTF-8</strong> is the standard character encoding for the web. It supports <strong>all languages and symbols</strong> including emojis! 🎉</p>
+                        <p>Without this, special characters might display as gibberish: "Hello" could become "HÃ©llÃ¶"</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Viewport Meta Tag</h4>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+                        </div>
+                        <p>This tag makes your site <strong>responsive on mobile devices</strong>. Without it, mobile users might see a tiny, zoomed-out version of your desktop site.</p>
+                        <p><strong>Always include this</strong> for modern, mobile-friendly websites.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Title Element</h4>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;title&gt;</span>My Awesome Website<span class="code-tag">&lt;/title&gt;</span>
+                        </div>
+                        <p>The title appears in three key places:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><strong>Browser tab</strong> (what you see at the top of your browser)</li>
+                            <li><strong>Search engine results</strong> (the blue clickable link in Google)</li>
+                            <li><strong>Bookmarks</strong> (when someone saves your page)</li>
+                        </ol>
+                        <p>Make titles descriptive and under 60 characters for SEO!</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> SEO & Social Media Meta Tags</h4>
+                        <p>Professional websites often include additional meta tags for SEO and social media sharing:</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- Search engine description --&gt;</span><br>
+                            <span class="code-tag">&lt;meta</span> <span class="code-attr">name=</span><span class="code-value">"description"</span> <span class="code-attr">content=</span><span class="code-value">"Learn HTML with our complete tutorial series"</span><span class="code-tag">&gt;</span><br><br>
+                            <span class="code-comment">&lt;!-- Facebook/Open Graph tags --&gt;</span><br>
+                            <span class="code-tag">&lt;meta</span> <span class="code-attr">property=</span><span class="code-value">"og:title"</span> <span class="code-attr">content=</span><span class="code-value">"HTML Tutorial Series"</span><span class="code-tag">&gt;</span><br>
+                            <span class="code-tag">&lt;meta</span> <span class="code-attr">property=</span><span class="code-value">"og:image"</span> <span class="code-attr">content=</span><span class="code-value">"thumbnail.jpg"</span><span class="code-tag">&gt;</span>
+                        </div>
+                        <p>We'll cover these in more detail in our SEO-focused tutorials later in the series!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The body Section -->
+            <div class="section">
+                <div class="timing-indicator">[5:00 - 5:45]</div>
+                <h2 class="section-title"><i class="fas fa-eye"></i> The body Section</h2>
+                <div class="script-content">
+                    <p>The <code>&lt;body&gt;</code> section contains <strong>all the visible content</strong> of your webpage - everything users see and interact with.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Welcome to My Website<span class="code-tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;main&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>This is the main content area.<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;img src="image.jpg" alt="Description"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/main&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;footer&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>&copy; 2023 My Website<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/footer&gt;</span><br>
+                        <span class="code-tag">&lt;/body&gt;</span>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-shopping-cart"></i> Real-World Example</h4>
+                        <p>Look at any major website like Amazon. The <strong>body</strong> contains:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Product images and prices</li>
+                            <li>"Add to Cart" buttons</li>
+                            <li>Navigation menus</li>
+                            <li>Product descriptions</li>
+                            <li>Customer reviews</li>
+                        </ul>
+                        <p>The <strong>head</strong> contains things like the page title (which appears in the browser tab) and links to CSS files that style those products beautifully.</p>
+                        <p>[SHOW ON SCREEN] Use browser dev tools to show Amazon's head vs body sections.</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-sitemap"></i> Semantic HTML in Body</h4>
+                        <p>Notice we used <strong>semantic HTML tags</strong> like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> instead of just <code>&lt;div&gt;</code> tags.</p>
+                        <p>Semantic HTML (which we'll cover in detail in Tutorial 16) makes your code more readable and helps with accessibility and SEO.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Complete Document Example -->
+            <div class="section">
+                <div class="timing-indicator">[5:45 - 6:15]</div>
+                <h2 class="section-title"><i class="fas fa-check-double"></i> Complete Document Example</h2>
+                <div class="script-content">
+                    <p>Here's a complete, properly structured HTML document with everything we've learned:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- 1. DOCTYPE Declaration --&gt;</span><br>
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 2. HTML Root Element with Language --&gt;</span><br>
+                        <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 3. Head Section (Metadata) --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Character Encoding --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;meta charset="UTF-8"&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Viewport for Mobile --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Page Title --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>My First Proper HTML Document<span class="code-tag">&lt;/title&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Link to CSS --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;link rel="stylesheet" href="styles.css"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/head&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- 4. Body Section (Visible Content) --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Welcome to My Website!<span class="code-tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;main&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>This is my first properly structured HTML document.&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>I'm learning HTML with [Your Channel Name]!&lt;/p&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/main&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;footer&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>&copy; 2023 My Learning Journey<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/footer&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/body&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-clipboard-check"></i> Checklist for Every HTML Document</h4>
+                        <p>Every HTML file you create should have:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li>✅ DOCTYPE declaration</li>
+                            <li>✅ HTML element with lang attribute</li>
+                            <li>✅ Head section with charset, viewport, and title</li>
+                            <li>✅ Body section with your content</li>
+                            <li>✅ Proper indentation (for readability)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:15 - 6:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes to Avoid</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> Structure Mistakes & Solutions</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Forgetting the DOCTYPE declaration<br>
+                        <strong>Solution:</strong> Always start with <code>&lt;!DOCTYPE html&gt;</code> as the very first line</p>
+                        
+                        <p><strong>Mistake 2:</strong> Putting visible content in the head section<br>
+                        <strong>Solution:</strong> All visible content goes in <code>&lt;body&gt;</code>, metadata goes in <code>&lt;head&gt;</code></p>
+                        
+                        <p><strong>Mistake 3:</strong> Missing the viewport meta tag<br>
+                        <strong>Solution:</strong> Always include <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> for mobile responsiveness</p>
+                        
+                        <p><strong>Mistake 4:</strong> Not specifying the language<br>
+                        <strong>Solution:</strong> Always add <code>lang="en"</code> (or your language) to the html element</p>
+                        
+                        <p><strong>Mistake 5:</strong> Forgetting to close tags<br>
+                        <strong>Solution:</strong> Always close your HTML tags. VS Code will help by auto-closing for you!</p>
+                        
+                        <p><strong>Mistake 6:</strong> Poor indentation (makes code hard to read)<br>
+                        <strong>Solution:</strong> Use consistent indentation (2 or 4 spaces). VS Code can auto-format with Shift+Alt+F</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:45 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-file-medical-alt"></i> Document Structure Challenge</h4>
+                        <p><strong>Task 1:</strong> Create a new HTML file with the proper structure we learned today. Don't use the Emmet shortcut - type it out manually to practice.</p>
+                        
+                        <p><strong>Task 2:</strong> Add a meaningful title about your favorite hobby and set the language appropriately.</p>
+                        
+                        <p><strong>Task 3:</strong> Create a simple page about your favorite hobby with:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>A main heading</li>
+                            <li>Two paragraphs explaining why you love it</li>
+                            <li>A copyright notice in the footer</li>
+                        </ul></p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Validate your HTML structure using the W3C Markup Validation Service (validator.w3.org). Take a screenshot of the "No errors" message and share it in the comments!</p>
+                        
+                        <p>This practice will help you internalize the proper HTML document structure - a fundamental skill for all web development!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now understand the proper structure of an HTML document. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The importance of <strong>DOCTYPE declaration</strong> and what it does</li>
+                        <li>The four main parts of an HTML document</li>
+                        <li>What goes in the <strong>head</strong> vs <strong>body</strong> sections</li>
+                        <li>Essential meta tags like <strong>charset</strong> and <strong>viewport</strong></li>
+                        <li>How to use the <strong>lang attribute</strong> for accessibility</li>
+                        <li>Common mistakes and how to avoid them</li>
+                    </ul>
+                    
+                    <p>This foundation is <strong>crucial for all the HTML you'll write</strong>. With proper structure, your pages will work correctly across all browsers and devices.</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll learn about HTML comments - how to leave notes in your code that browsers ignore but developers love!</p>
+                    
+                    <p>If you have any questions about document structure, ask in the comments below. I'll help you get it right!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-file-download"></i> Resources & Templates</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                HTML Template Download
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-check-square"></i>
+                                Structure Checklist
+                            </a>
+                            <a href="tutorial-4.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: HTML Comments
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable templates, validation tools, and a quick reference guide for HTML document structure!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If this video helped you understand HTML structure, please give it a thumbs up and subscribe for the rest of the series!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 3: HTML Document Structure & DOCTYPE | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Complete code examples • Common mistakes • Validation exercises • Professional templates
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 16: Semantic HTML | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .semantic-demo {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+
+        .semantic-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .semantic-box {
+            padding: 15px;
+            border: 2px solid;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .semantic-header {
+            background: #4b6cb7;
+            color: white;
+            border-color: #182848;
+        }
+
+        .semantic-nav {
+            background: #6c8ce0;
+            color: white;
+            border-color: #4b6cb7;
+        }
+
+        .semantic-main {
+            background: #e8f4ff;
+            border-color: #2196F3;
+            min-height: 100px;
+        }
+
+        .semantic-article {
+            background: #fff3cd;
+            border-color: #ffc107;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .semantic-aside {
+            background: #d1e7dd;
+            border-color: #198754;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .semantic-footer {
+            background: #182848;
+            color: white;
+            border-color: #4b6cb7;
+        }
+
+        .semantic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .semantic-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .semantic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #4b6cb7;
+        }
+
+        .semantic-card h3 {
+            color: #182848;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .semantic-card code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .semantic-comparison {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-box {
+            flex: 1;
+            min-width: 300px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .non-semantic {
+            border: 2px solid #ff6b6b;
+        }
+
+        .semantic {
+            border: 2px solid #51cf66;
+        }
+
+        .seo-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .semantic-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .semantic-comparison {
+                flex-direction: column;
+            }
+            
+            .comparison-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-sitemap"></i> Tutorial 16: Semantic HTML</h1>
+            <p>Using meaningful tags for better accessibility, SEO, and maintainability</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 8-10 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Intermediate Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with thoughtful, professional tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series! 🎯</strong> After mastering forms in our last tutorial, we're now diving into one of the most important concepts in modern web development: <strong>Semantic HTML!</strong></p>
+                    <p>Semantic HTML isn't just about making your code look pretty - it's about giving your HTML structure <strong>meaning</strong>. It's the difference between telling someone "that rectangular thing over there" versus "the book on the shelf."</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> Real-World Impact</h4>
+                        <p>Did you know that websites using proper semantic HTML have <strong>up to 30% better SEO rankings</strong> and are <strong>40% more accessible</strong> to screen reader users? That's because search engines and assistive technologies understand semantic markup better!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What is Semantic HTML -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 1:45]</div>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> What is Semantic HTML?</h2>
+                <div class="script-content">
+                    <p><strong>Semantic HTML</strong> uses HTML tags that clearly describe their meaning to both the browser and the developer. Instead of using generic <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> for everything, we use specific elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, etc.</p>
+                    
+                    <div class="semantic-comparison">
+                        <div class="comparison-box non-semantic">
+                            <h3>❌ Non-Semantic HTML</h3>
+                            <div class="code-example" style="margin: 10px 0; padding: 10px; font-size: 0.9rem;">
+                                <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-value">"header"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/div&gt;</span><br>
+                                <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-value">"nav"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/div&gt;</span><br>
+                                <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-value">"main"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/div&gt;</span><br>
+                                <span class="code-tag">&lt;div</span> <span class="code-attr">class</span>=<span class="code-value">"footer"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/div&gt;</span>
+                            </div>
+                            <p><strong>Problem:</strong> Computers see only "div" elements - no inherent meaning</p>
+                        </div>
+                        
+                        <div class="comparison-box semantic">
+                            <h3>✅ Semantic HTML</h3>
+                            <div class="code-example" style="margin: 10px 0; padding: 10px; font-size: 0.9rem;">
+                                <span class="code-tag">&lt;header&gt;</span>...<span class="code-tag">&lt;/header&gt;</span><br>
+                                <span class="code-tag">&lt;nav&gt;</span>...<span class="code-tag">&lt;/nav&gt;</span><br>
+                                <span class="code-tag">&lt;main&gt;</span>...<span class="code-tag">&lt;/main&gt;</span><br>
+                                <span class="code-tag">&lt;footer&gt;</span>...<span class="code-tag">&lt;/footer&gt;</span>
+                            </div>
+                            <p><strong>Benefit:</strong> Computers understand "this is a header, this is navigation"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> The Key Principle</h4>
+                        <p><strong>Use HTML elements for their intended purpose.</strong> A <code>&lt;button&gt;</code> is for actions, <code>&lt;nav&gt;</code> is for navigation, <code>&lt;article&gt;</code> is for self-contained content. This makes your code self-documenting and more maintainable.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Semantic Elements Gallery -->
+            <div class="section">
+                <div class="timing-indicator">[1:45 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-th"></i> Semantic Elements Gallery</h2>
+                <div class="script-content">
+                    <p>HTML5 introduced many semantic elements. Here are the most important ones:</p>
+                    
+                    <div class="semantic-grid">
+                        <!-- Row 1 -->
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-heading"></i> &lt;header&gt;</h3>
+                            <code>&lt;header&gt;...&lt;/header&gt;</code>
+                            <p>Introductory content or navigation aids. Can contain logos, search, navigation.</p>
+                            <div style="background: #4b6cb7; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Page header, article header
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-bars"></i> &lt;nav&gt;</h3>
+                            <code>&lt;nav&gt;...&lt;/nav&gt;</code>
+                            <p>Major navigation links. Not for every link group - only main navigation.</p>
+                            <div style="background: #6c8ce0; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Main menu, table of contents
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-home"></i> &lt;main&gt;</h3>
+                            <code>&lt;main&gt;...&lt;/main&gt;</code>
+                            <p>The dominant content of the document. Only ONE per page.</p>
+                            <div style="background: #2196F3; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Primary content area
+                            </div>
+                        </div>
+                        
+                        <!-- Row 2 -->
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-newspaper"></i> &lt;article&gt;</h3>
+                            <code>&lt;article&gt;...&lt;/article&gt;</code>
+                            <p>Self-contained composition that could be distributed independently.</p>
+                            <div style="background: #ffc107; color: #333; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Blog post, news article, comment
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-columns"></i> &lt;section&gt;</h3>
+                            <code>&lt;section&gt;...&lt;/section&gt;</code>
+                            <p>Thematic grouping of content, typically with a heading.</p>
+                            <div style="background: #17a2b8; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Chapter, tabbed content, grouped content
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-columns"></i> &lt;aside&gt;</h3>
+                            <code>&lt;aside&gt;...&lt;/aside&gt;</code>
+                            <p>Content indirectly related to main content (sidebars, pull quotes).</p>
+                            <div style="background: #198754; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Sidebar, advertisement, related links
+                            </div>
+                        </div>
+                        
+                        <!-- Row 3 -->
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-shoe-prints"></i> &lt;footer&gt;</h3>
+                            <code>&lt;footer&gt;...&lt;/footer&gt;</code>
+                            <p>Footer for its nearest ancestor. Contains metadata, copyright, contact.</p>
+                            <div style="background: #182848; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Page footer, article footer
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-images"></i> &lt;figure&gt; & &lt;figcaption&gt;</h3>
+                            <code>&lt;figure&gt;&lt;figcaption&gt;...&lt;/figcaption&gt;&lt;/figure&gt;</code>
+                            <p>Self-contained content with optional caption (images, diagrams).</p>
+                            <div style="background: #6f42c1; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Image with caption, chart with description
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-card">
+                            <h3><i class="fas fa-time"></i> &lt;time&gt;</h3>
+                            <code>&lt;time datetime="..."&gt;...&lt;/time&gt;</code>
+                            <p>Machine-readable date/time. The <code>datetime</code> attribute is required.</p>
+                            <div style="background: #fd7e14; color: white; padding: 5px; border-radius: 4px; margin-top: 10px; font-size: 0.8rem;">
+                                Example: Published dates, event times
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="semantic-demo">
+                        <div class="semantic-visual">
+                            <div class="semantic-box semantic-header">&lt;header&gt;</div>
+                            <div class="semantic-box semantic-nav">&lt;nav&gt;</div>
+                            <div class="semantic-box semantic-main">
+                                <div class="semantic-box semantic-article">&lt;article&gt;</div>
+                                <div class="semantic-box semantic-aside">&lt;aside&gt;</div>
+                            </div>
+                            <div class="semantic-box semantic-footer">&lt;footer&gt;</div>
+                        </div>
+                        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                            Visual representation of semantic HTML structure
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Complete Semantic Example -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-code"></i> Complete Semantic Example</h2>
+                <div class="script-content">
+                    <p>Let's look at a complete, semantic HTML5 document structure:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Complete semantic HTML5 document --&gt;</span><br>
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"en"</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Metadata --&gt;</span><br>
+                        <span class="code-tag">&lt;/head&gt;</span><br>
+                        <span class="code-tag">&lt;body&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Page header --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>My Awesome Blog<span class="code-tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>A place for my thoughts<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Main navigation --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;nav&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"/"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"/about"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"/contact"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/nav&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Main content --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;main&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Blog article --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;article&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;header&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h2&gt;</span>How Semantic HTML Changed My Life<span class="code-tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Published on <span class="code-tag">&lt;time</span> <span class="code-attr">datetime</span>=<span class="code-value">"2023-10-15"</span><span class="code-tag">&gt;</span>October 15, 2023<span class="code-tag">&lt;/time&gt;</span><span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/header&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Article sections --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;section</span> <span class="code-attr">id</span>=<span class="code-value">"introduction"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h3&gt;</span>Introduction<span class="code-tag">&lt;/h3&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>When I first learned about semantic HTML...<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/section&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Figure with caption --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;figure&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-value">"semantic-diagram.jpg"</span> <span class="code-attr">alt</span>=<span class="code-value">"Semantic HTML structure"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;figcaption&gt;</span>Diagram showing semantic HTML structure<span class="code-tag">&lt;/figcaption&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/figure&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/article&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment">&lt;!-- Sidebar --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;aside&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h3&gt;</span>Related Articles<span class="code-tag">&lt;/h3&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"#"</span><span class="code-tag">&gt;</span>HTML5 Best Practices<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/aside&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/main&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Page footer --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;footer&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>&copy; 2023 My Awesome Blog<span class="code-tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;address&gt;</span>Contact: <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"mailto:me@example.com"</span><span class="code-tag">&gt;</span>me@example.com<span class="code-tag">&lt;/a&gt;</span><span class="code-tag">&lt;/address&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/footer&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;/body&gt;</span><br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-layer-group"></i> Nesting Structure</h4>
+                        <p>Notice how semantic elements can be nested: A <code>&lt;header&gt;</code> can be inside an <code>&lt;article&gt;</code>, an <code>&lt;article&gt;</code> can have multiple <code>&lt;section&gt;</code> elements, and a <code>&lt;footer&gt;</code> can be at the page level or article level.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefits of Semantic HTML -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> Benefits of Semantic HTML</h2>
+                <div class="script-content">
+                    <div class="seo-demo">
+                        <h3 style="color: white; text-align: center; margin-bottom: 15px;"><i class="fas fa-trophy"></i> The Triple Win of Semantic HTML</h3>
+                        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px;">
+                            <div style="background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
+                                <h4 style="color: white; margin-bottom: 10px;">🚀 Better SEO</h4>
+                                <p style="color: white; font-size: 0.9rem;">Search engines understand your content structure, leading to higher rankings.</p>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
+                                <h4 style="color: white; margin-bottom: 10px;">👁️ Better Accessibility</h4>
+                                <p style="color: white; font-size: 0.9rem;">Screen readers can navigate and announce content properly.</p>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.2); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
+                                <h4 style="color: white; margin-bottom: 10px;">💻 Better Maintainability</h4>
+                                <p style="color: white; font-size: 0.9rem;">Code is self-documenting and easier for teams to understand.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px 0; color: #182848;">Specific Benefits:</h3>
+                    
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li><strong>Improved SEO</strong>: Search engines give semantic tags more weight</li>
+                        <li><strong>Enhanced Accessibility</strong>: Screen readers use semantic tags for navigation</li>
+                        <li><strong>Cleaner Code</strong>: Less need for classes like "header" or "footer"</li>
+                        <li><strong>Future-Proof</strong>: Semantic tags work better with new technologies</li>
+                        <li><strong>Better Styling</strong>: CSS can target semantic elements directly</li>
+                        <li><strong>Easier Debugging</strong>: Clear structure makes issues easier to find</li>
+                        <li><strong>Team Collaboration</strong>: New developers understand code faster</li>
+                        <li><strong>Mobile Optimization</strong>: Browsers can optimize rendering</li>
+                    </ul>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> SEO Example</h4>
+                        <p>When Google's crawler sees <code>&lt;article&gt;</code> tags, it knows "this is the main content" and gives it more weight in rankings. When it sees <code>&lt;nav&gt;</code>, it knows "these are navigation links" and doesn't give them as much weight. This helps your content rank better!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessibility Impact -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 8:00]</div>
+                <h2 class="section-title"><i class="fas fa-universal-access"></i> Accessibility Impact</h2>
+                <div class="script-content">
+                    <p>Semantic HTML has a massive impact on accessibility. Screen readers use these tags to:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Screen reader navigation --&gt;</span><br>
+                        <span class="code-comment">User: "Jump to main content"</span><br>
+                        Screen Reader: "Main content. Article: How Semantic HTML Changed My Life..."<br><br>
+                        
+                        <span class="code-comment">User: "List all headings"</span><br>
+                        Screen Reader: "Heading level 1: My Awesome Blog. Heading level 2: How Semantic..."<br><br>
+                        
+                        <span class="code-comment">User: "List all landmarks"</span><br>
+                        Screen Reader: "Banner. Navigation. Main. Complementary. Contentinfo."
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-guidelines"></i> Accessibility Features Enabled</h4>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Landmark navigation</strong>: Users can jump between <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, etc.</li>
+                            <li><strong>Heading structure</strong>: Proper heading hierarchy (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>) creates document outline</li>
+                            <li><strong>Content announcements</strong>: Screen readers announce element types</li>
+                            <li><strong>Improved keyboard navigation</strong>: Semantic focus order</li>
+                            <li><strong>ARIA compatibility</strong>: Semantic elements have built-in ARIA roles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-user-check"></i> Real User Impact</h4>
+                        <p>For a blind user, semantic HTML means they can navigate your site efficiently using screen reader shortcuts. They can jump directly to the <code>&lt;main&gt;</code> content, skip navigation, or find all <code>&lt;article&gt;</code> elements. Without semantics, they have to listen to everything linearly.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:00 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes to Avoid</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-bug"></i> Semantic HTML Mistakes</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Using &lt;div&gt; for everything</strong>: The most common anti-pattern</li>
+                            <li><strong>Multiple &lt;main&gt; elements</strong>: There should only be one per page</li>
+                            <li><strong>Using &lt;section&gt; as a wrapper</strong>: Use <code>&lt;div&gt;</code> for styling wrappers</li>
+                            <li><strong>Wrong heading hierarchy</strong>: Skipping from <code>&lt;h1&gt;</code> to <code>&lt;h3&gt;</code></li>
+                            <li><strong>Using &lt;article&gt; for non-article content</strong>: Articles should be self-contained</li>
+                            <li><strong>Forgetting the <code>datetime</code> attribute</strong> on <code>&lt;time&gt;</code> elements</li>
+                            <li><strong>Putting everything in &lt;nav&gt;</strong>: Only major navigation links</li>
+                            <li><strong>Ignoring document outline</strong>: Not using proper heading structure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:30 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Your Semantic HTML Challenge</h4>
+                        <p><strong>Task 1:</strong> Convert a div-based layout to semantic HTML (provided in description)</p>
+                        <p><strong>Task 2:</strong> Create a semantic blog post with header, article, sections, figure, and footer</p>
+                        <p><strong>Task 3:</strong> Build a product page with semantic structure (header, main, aside for sidebar, footer)</p>
+                        <p><strong>Task 4:</strong> Add proper heading hierarchy to an existing page</p>
+                        <p><strong>Bonus Challenge:</strong> Test your semantic page with a screen reader or accessibility checker</p>
+                        <p><strong>Share your code:</strong> Post your semantic conversions in the comments - I'll review for semantic correctness!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:30 - 10:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Excellent work! You've now mastered Semantic HTML. You learned:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>What semantic HTML is and why it matters</li>
+                        <li>All major semantic elements and when to use them</li>
+                        <li>Complete semantic document structure</li>
+                        <li>The triple benefits: SEO, accessibility, maintainability</li>
+                        <li>How semantic HTML improves screen reader experience</li>
+                        <li>Common mistakes and how to avoid them</li>
+                    </ul>
+                    
+                    <p>In the <strong>next tutorial</strong>, we'll learn about <strong>Iframes</strong> - how to embed external content like YouTube videos, Google Maps, and other web pages into your site!</p>
+                    
+                    <p>If you have questions about semantic HTML or want feedback on your challenge, drop them in the comments. <strong>I'll help you write perfectly semantic code!</strong></p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Support the Series!</h3>
+                        <p>If this tutorial helped you understand semantic HTML:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-17.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Iframes
+                            </a>
+                            <a href="tutorial-15.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous: HTML Forms
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for semantic HTML validators, accessibility testing tools, and semantic cheat sheets!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Thanks for watching! Remember: Write HTML that humans and computers can understand! See you in the next tutorial. 👋
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 16: Semantic HTML | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Semantic element gallery • Visual structure demo • SEO/accessibility benefits • Complete code examples
+            </p>
+        </div>
+    </div>
+</body>
+</html>

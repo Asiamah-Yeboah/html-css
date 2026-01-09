@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 2: Setting Up Development Environment | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #9c27b0;
+        }
+
+        .step h4 {
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #9c27b0;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-1.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-3.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-laptop-code"></i> Tutorial 2: Setting Up Development Environment</h1>
+            <p>Install professional tools and organize your workspace for web development</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 8-10 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-download"></i> Tools Setup
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with enthusiastic, welcoming tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned what HTML is. Today, we're getting hands-on!</p>
+                    <p>We're going to set up a <strong>professional development environment</strong> - the exact same tools that web developers at companies like Google, Facebook, and Netflix use every day.</p>
+                    <p>By the end of this video, you'll have everything installed and configured to start writing and testing your own HTML code. Let's dive in!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-briefcase"></i> Professional Comparison</h4>
+                        <p>A carpenter needs a hammer and saw. A chef needs knives and pans. As a web developer, you need the right digital tools. Today, I'm giving you the professional toolkit - and the best part? <strong>Everything we're installing is completely free!</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What You'll Need Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 1:30]</div>
+                <h2 class="section-title"><i class="fas fa-tools"></i> What You'll Need</h2>
+                <div class="script-content">
+                    <p>To write HTML professionally, you need three main things:</p>
+                    
+                    <ol style="margin: 20px 0 20px 30px;">
+                        <li><strong>A Code Editor</strong> - Where you write your HTML code</li>
+                        <li><strong>A Web Browser</strong> - Where you test your web pages</li>
+                        <li><strong>Proper File Organization</strong> - How you structure your projects</li>
+                    </ol>
+                    
+                    <p>You probably already have a web browser (Chrome, Firefox, Safari, or Edge). Today, we'll focus on the code editor and organization.</p>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> Browser Recommendation</h4>
+                        <p>I recommend <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> for web development because they have excellent developer tools. But any modern browser will work!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 1: Install VS Code -->
+            <div class="section">
+                <div class="timing-indicator">[1:30 - 3:00]</div>
+                <h2 class="section-title"><i class="fas fa-desktop"></i> Step 1: Install Visual Studio Code</h2>
+                <div class="script-content">
+                    <p><strong>Visual Studio Code (VS Code)</strong> is a free, powerful code editor from Microsoft. It's the most popular editor among web developers worldwide.</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Download VS Code</h4>
+                        <p>Go to <strong>code.visualstudio.com</strong> (I'll put the link in the description)</p>
+                        <p>Download the version for your operating system (Windows, Mac, or Linux)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Run the Installer</h4>
+                        <p>Double-click the downloaded file and follow the installation prompts</p>
+                        <p>On Windows, make sure to check "Add to PATH" - this makes it easier to open VS Code from anywhere</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Open VS Code</h4>
+                        <p>Launch Visual Studio Code once installation is complete</p>
+                        <p>You should see a welcome screen with options to open folders or create new files</p>
+                    </div>
+                    
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>[SHOW SCREENSHOT: VS Code welcome screen]</p>
+                        <p>This is what VS Code looks like when you first open it</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-industry"></i> Why VS Code?</h4>
+                        <p>VS Code is used by <strong>71% of professional developers</strong> according to Stack Overflow's 2022 survey. It has:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Built-in HTML/CSS/JavaScript support</li>
+                            <li>Thousands of free extensions</li>
+                            <li>Integrated terminal</li>
+                            <li>Git version control</li>
+                            <li>Intelligent code completion</li>
+                        </ul>
+                        <p>You're learning with industry-standard tools from day one!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Install Live Server -->
+            <div class="section">
+                <div class="timing-indicator">[3:00 - 4:15]</div>
+                <h2 class="section-title"><i class="fas fa-bolt"></i> Step 2: Install Live Server Extension</h2>
+                <div class="script-content">
+                    <p><strong>Live Server</strong> is a VS Code extension that automatically reloads your webpage whenever you save your HTML file. This saves you from constantly refreshing the browser.</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Open Extensions Panel</h4>
+                        <p>In VS Code, click the Extensions icon on the left sidebar (it looks like four squares)</p>
+                        <p>Or press <strong>Ctrl+Shift+X</strong> (Windows/Linux) or <strong>Cmd+Shift+X</strong> (Mac)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Search for Live Server</h4>
+                        <p>Type "Live Server" in the search bar</p>
+                        <p>Look for the extension by <strong>Ritwick Dey</strong> (it has over 20 million downloads!)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Install the Extension</h4>
+                        <p>Click the green "Install" button</p>
+                        <p>Wait a few seconds for installation to complete</p>
+                    </div>
+                    
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>[SHOW SCREENSHOT: Live Server extension in VS Code]</p>
+                        <p>This is what the Live Server extension looks like</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-rocket"></i> Live Server vs Manual Refresh</h4>
+                        <p><strong>Without Live Server:</strong></p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li>Write code in VS Code</li>
+                            <li>Save the file (Ctrl+S)</li>
+                            <li>Switch to browser</li>
+                            <li>Refresh the page (F5)</li>
+                            <li>Check if change worked</li>
+                            <li>Repeat 50 times per hour!</li>
+                        </ol>
+                        
+                        <p><strong>With Live Server:</strong></p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li>Write code in VS Code</li>
+                            <li>Save the file (Ctrl+S)</li>
+                            <li>Browser updates instantly!</li>
+                        </ol>
+                        <p>This <strong>saves hours of development time</strong> and makes coding much more enjoyable!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3: Organize Project Files -->
+            <div class="section">
+                <div class="timing-indicator">[4:15 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-folder"></i> Step 3: Organize Your Project Files</h2>
+                <div class="script-content">
+                    <p>Good file organization is crucial for web development. Let's set up a proper folder structure that you'll use for all your projects.</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Create Project Folder</h4>
+                        <p>Create a new folder on your computer called <strong>"my-first-website"</strong></p>
+                        <p>You can put it on your Desktop or in a "Web Development" folder</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Open Folder in VS Code</h4>
+                        <p>In VS Code, go to <strong>File > Open Folder</strong></p>
+                        <p>Navigate to and select your "my-first-website" folder</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Create Folder Structure</h4>
+                        <p>In VS Code's Explorer sidebar, create these files and folders:</p>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">// This is the structure we'll create</span><br>
+                        my-first-website/<br>
+                        &nbsp;&nbsp;├── index.html<br>
+                        &nbsp;&nbsp;├── style.css<br>
+                        &nbsp;&nbsp;├── script.js<br>
+                        &nbsp;&nbsp;└── images/<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── (will contain image files)
+                    </div>
+                    
+                    <p>To create files in VS Code:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>Right-click in the Explorer sidebar</li>
+                        <li>Select "New File" for .html, .css, .js files</li>
+                        <li>Select "New Folder" for the images folder</li>
+                    </ul>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-sitemap"></i> Why This Structure?</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>index.html</strong>: Main HTML file (browsers look for this by default)</li>
+                            <li><strong>style.css</strong>: CSS file for styling</li>
+                            <li><strong>script.js</strong>: JavaScript file for interactivity</li>
+                            <li><strong>images/</strong>: Folder for all image files (keeps things organized)</li>
+                        </ul>
+                        <p>This is the <strong>standard structure</strong> used in professional web development.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 4: Create First HTML File -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 6:45]</div>
+                <h2 class="section-title"><i class="fas fa-file-code"></i> Step 4: Create Your First HTML File</h2>
+                <div class="script-content">
+                    <p>Let's create a simple HTML file to test our setup. We'll use a VS Code shortcut to generate the basic structure.</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Open index.html</h4>
+                        <p>Click on the index.html file you created</p>
+                        <p>The file will open in the editor area (it will be empty)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Use the Emmet Shortcut</h4>
+                        <p>Type <strong>!</strong> (exclamation mark) in the empty file</p>
+                        <p>A popup will appear - press <strong>Tab</strong> or <strong>Enter</strong></p>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">// After typing ! and pressing Tab, you'll get:</span><br>
+                        <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="code-tag">&lt;html lang="en"&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;meta charset="UTF-8"&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>Document<span class="code-tag">&lt;/title&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/head&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/body&gt;</span><br>
+                        <span class="code-tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Add Some Content</h4>
+                        <p>Between the <code>&lt;body&gt;</code> tags, add:</p>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;h1&gt;</span>Hello, World!<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>I just created my first HTML page!<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">4</span> Save the File</h4>
+                        <p>Press <strong>Ctrl+S</strong> (Windows/Linux) or <strong>Cmd+S</strong> (Mac) to save</p>
+                        <p>Or go to <strong>File > Save</strong></p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-magic"></i> Emmet - The Developer's Secret Weapon</h4>
+                        <p>Emmet is a toolkit built into VS Code that helps you write HTML and CSS faster. The <code>!</code> shortcut generates a complete HTML5 boilerplate in one keystroke!</p>
+                        <p>Professional developers use Emmet daily to save time. You're already learning professional workflows!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 5: Test with Live Server -->
+            <div class="section">
+                <div class="timing-indicator">[6:45 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> Step 5: Test with Live Server</h2>
+                <div class="script-content">
+                    <p>Now let's test our setup and see our webpage in action!</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Open with Live Server</h4>
+                        <p>Right-click on your index.html file in VS Code's Explorer</p>
+                        <p>Select <strong>"Open with Live Server"</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> View in Browser</h4>
+                        <p>Your default browser should open automatically</p>
+                        <p>You should see "Hello, World!" displayed</p>
+                        <p>The address should be <strong>http://localhost:5500</strong></p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Test Auto-Refresh</h4>
+                        <p>Go back to VS Code and change the text</p>
+                        <p>For example, change "Hello, World!" to "Welcome to my website!"</p>
+                        <p>Save the file (Ctrl+S)</p>
+                        <p>The browser should update instantly!</p>
+                    </div>
+                    
+                    <div class="screenshot-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>[SHOW SCREENSHOT: Browser showing "Hello, World!" with Live Server running]</p>
+                        <p>This is what you should see in your browser</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-tachometer-alt"></i> Localhost Explained</h4>
+                        <p><strong>localhost</strong> means "this computer." Port <strong>5500</strong> is where Live Server runs.</p>
+                        <p>So <code>http://localhost:5500</code> means: "Look for a web server on this computer at port 5500."</p>
+                        <p>Live Server creates a mini web server on your computer so you can test your HTML files like they're on a real website!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Browser Developer Tools -->
+            <div class="section">
+                <div class="timing-indicator">[7:30 - 8:15]</div>
+                <h2 class="section-title"><i class="fas fa-wrench"></i> Essential Browser Developer Tools</h2>
+                <div class="script-content">
+                    <p>Every modern browser has built-in developer tools. These are essential for debugging and understanding web pages.</p>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">1</span> Open Developer Tools</h4>
+                        <p>Right-click on your webpage and select <strong>"Inspect"</strong></p>
+                        <p>Or press <strong>F12</strong> (Windows) or <strong>Cmd+Option+I</strong> (Mac)</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">2</span> Key Tabs to Know</h4>
+                        <ul style="margin: 20px 0 20px 30px;">
+                            <li><strong>Elements/Inspector</strong>: View and edit HTML/CSS in real-time</li>
+                            <li><strong>Console</strong>: See JavaScript errors and run code</li>
+                            <li><strong>Sources</strong>: View all files loaded by the page</li>
+                            <li><strong>Network</strong>: See all network requests</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step">
+                        <h4><span class="step-number">3</span> Try It Now</h4>
+                        <p>In the Elements tab, hover over different HTML elements</p>
+                        <p>You'll see them highlighted on the page</p>
+                        <p>Try double-clicking text and changing it - you can edit live!</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-graduation-cap"></i> Practice Exercise</h4>
+                        <p>Open developer tools on this YouTube page (right-click > Inspect).</p>
+                        <p>Try to find the video player element. Hover around until you see the video highlighted.</p>
+                        <p>This skill - inspecting and understanding page structure - is <strong>crucial for debugging</strong> and will save you hours of frustration!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Troubleshooting Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:15 - 8:45]</div>
+                <h2 class="section-title"><i class="fas fa-life-ring"></i> Common Problems & Solutions</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting Guide</h4>
+                        
+                        <p><strong>Problem:</strong> Live Server doesn't open a browser<br>
+                        <strong>Solution:</strong> Make sure you have a default browser set. Or manually open a browser and go to <code>http://localhost:5500</code></p>
+                        
+                        <p><strong>Problem:</strong> Changes don't appear after saving<br>
+                        <strong>Solution:</strong> Make sure you saved the file (Ctrl+S), and check that Live Server is running (look for "Go Live" in the bottom right of VS Code)</p>
+                        
+                        <p><strong>Problem:</strong> HTML file opens as text in browser<br>
+                        <strong>Solution:</strong> Make sure your file has the .html extension, not .txt. In VS Code, the file icon should look like a web page, not a document.</p>
+                        
+                        <p><strong>Problem:</strong> Can't find Extensions panel<br>
+                        <strong>Solution:</strong> Look for the square icon on the left sidebar, or press Ctrl+Shift+X (Cmd+Shift+X on Mac)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:45 - 9:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-laptop-code"></i> Setup Challenge</h4>
+                        <p><strong>Task 1:</strong> Create a folder called "practice-html" and set up the file structure we discussed (index.html, style.css, script.js, images folder).</p>
+                        
+                        <p><strong>Task 2:</strong> Create an HTML file that displays your name, a short introduction, and a list of your hobbies.</p>
+                        
+                        <p><strong>Task 3:</strong> Use Live Server to view it, then make three changes and watch them update automatically.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Take a screenshot of your VS Code setup with all files organized and share it in the comments! I'll give feedback on as many as I can.</p>
+                        
+                        <p>This hands-on practice will cement what you learned today and get you ready for actual HTML coding!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:00 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now have a professional development environment ready to go. Let's recap what you accomplished:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>Installed Visual Studio Code (industry-standard editor)</li>
+                        <li>Added Live Server extension (auto-refresh magic!)</li>
+                        <li>Set up proper file organization</li>
+                        <li>Created your first HTML file</li>
+                        <li>Tested with Live Server and browser tools</li>
+                    </ul>
+                    
+                    <p>This setup will serve you well throughout your web development journey and is exactly what professionals use.</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll dive into HTML document structure and learn about the essential elements every HTML page needs.</p>
+                    
+                    <p>If you run into any setup issues, ask for help in the comments below. <strong>I check comments daily</strong> and will help you get everything working!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-download"></i> Resources & Next Steps</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-archive"></i>
+                                VS Code Settings File
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                Setup Checklist
+                            </a>
+                            <a href="tutorial-3.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: HTML Structure
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Links to all tools, recommended extensions, and a VS Code cheat sheet with keyboard shortcuts!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Thanks for watching! If this helped you, please like and subscribe. See you in the next tutorial!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 2: Setting Up Development Environment | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Step-by-step instructions • Troubleshooting guide • Real-world developer tools
+            </p>
+        </div>
+    </div>
+</body>
+</html>

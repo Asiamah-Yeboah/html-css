@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 5: HTML Elements & Tags | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .code-tag {
+            color: #569cd6;
+        }
+
+        .code-attr {
+            color: #9cdcfe;
+        }
+
+        .code-value {
+            color: #ce9178;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .tip h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .element-visual {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4b6cb7;
+        }
+
+        .element-visual .element-demo {
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            padding: 15px;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .element-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .element-category {
+            background: #e8f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .element-category h5 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+
+        .element-category ul {
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .element-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-4.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-6.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-code"></i> Tutorial 5: HTML Elements & Tags</h1>
+            <p>Understanding the building blocks of every webpage</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 7-9 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-cubes"></i> Core Concepts
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:50]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with energetic, foundational tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned about HTML comments. Today, we're diving into the <strong>core building blocks of HTML: Elements and Tags</strong>.</p>
+                    <p>If HTML is the language of the web, then elements are its <strong>words and sentences</strong>. Understanding elements and tags is fundamental to creating any webpage.</p>
+                    <p>By the end of this video, you'll understand what HTML elements are, how they work, and you'll know the most important elements you'll use every day. Let's get started!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-building"></i> Construction Analogy</h4>
+                        <p>Think of building a house. You have different components: bricks for walls, windows for light, doors for entry, and a roof for protection. Each component has a specific purpose and way of connecting.</p>
+                        <p><strong>HTML elements are like these building components</strong>. The <code>&lt;h1&gt;</code> element is like a large sign. The <code>&lt;p&gt;</code> element is like a wall of text. The <code>&lt;img&gt;</code> element is like a window showing a view.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What are HTML Elements? -->
+            <div class="section">
+                <div class="timing-indicator">[0:50 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> What are HTML Elements?</h2>
+                <div class="script-content">
+                    <p>An HTML element is a <strong>complete component</strong> that includes:</p>
+                    
+                    <ol style="margin: 20px 0 20px 30px;">
+                        <li>An opening tag</li>
+                        <li>Optional content</li>
+                        <li>A closing tag (for most elements)</li>
+                    </ol>
+                    
+                    <div class="element-visual">
+                        <h4 style="text-align: center; color: #182848; margin-bottom: 20px;">
+                            <i class="fas fa-cube"></i> Anatomy of an HTML Element
+                        </h4>
+                        
+                        <div class="element-demo">
+                            <span style="color: #569cd6;">&lt;tagname</span> <span style="color: #9cdcfe;">attribute</span>=<span style="color: #ce9178;">"value"</span><span style="color: #569cd6;">&gt;</span>
+                            <span style="color: #f8f8f2;">Content goes here</span>
+                            <span style="color: #569cd6;">&lt;/tagname&gt;</span>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                            <div style="text-align: center;">
+                                <div style="color: #569cd6; font-weight: bold;">Opening Tag</div>
+                                <div>Starts the element</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="color: #f8f8f2; font-weight: bold;">Content</div>
+                                <div>What users see</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="color: #569cd6; font-weight: bold;">Closing Tag</div>
+                                <div>Ends the element</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>Here's a real example of a paragraph element:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-tag">&lt;p&gt;</span>This is a paragraph of text.<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-info-circle"></i> Key Terminology</h4>
+                        <p><strong>Element:</strong> The complete component (tags + content)<br>
+                        <strong>Tag:</strong> The markup symbols (<code>&lt; &gt;</code>)<br>
+                        <strong>Opening tag:</strong> <code>&lt;tagname&gt;</code><br>
+                        <strong>Closing tag:</strong> <code>&lt;/tagname&gt;</code><br>
+                        <strong>Content:</strong> What goes between the tags</p>
+                        <p>People often say "tags" when they mean "elements" - it's common in casual conversation!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Types of HTML Elements -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 3:30]</div>
+                <h2 class="section-title"><i class="fas fa-boxes"></i> Types of HTML Elements</h2>
+                <div class="script-content">
+                    <p>HTML elements can be categorized in several ways. Let's look at the most important categories:</p>
+                    
+                    <div class="element-categories">
+                        <div class="element-category">
+                            <h5><i class="fas fa-tag"></i> Container vs Empty</h5>
+                            <ul>
+                                <li><strong>Container Elements</strong>: Have opening & closing tags with content between</li>
+                                <li><strong>Empty Elements</strong>: Self-closing, no content</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="element-category">
+                            <h5><i class="fas fa-layer-group"></i> Block vs Inline</h5>
+                            <ul>
+                                <li><strong>Block Elements</strong>: Start on a new line, take full width</li>
+                                <li><strong>Inline Elements</strong>: Flow within text, don't break line</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="element-category">
+                            <h5><i class="fas fa-sitemap"></i> Semantic vs Non-semantic</h5>
+                            <ul>
+                                <li><strong>Semantic Elements</strong>: Describe their meaning</li>
+                                <li><strong>Non-semantic Elements</strong>: Generic containers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Container Element (has content) --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>This is paragraph content.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- Empty Element (self-closing) --&gt;</span><br>
+                        <span class="code-tag">&lt;img src="image.jpg" alt="Description"&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- Block Element (starts on new line) --&gt;</span><br>
+                        <span class="code-tag">&lt;div&gt;</span>This is a block-level container.<span class="code-tag">&lt;/div&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- Inline Element (flows in text) --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>This has <span class="code-tag">&lt;strong&gt;</span>inline<span class="code-tag">&lt;/strong&gt;</span> elements.<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-road"></i> Block vs Inline: Street Analogy</h4>
+                        <p>Think of block elements like <strong>city blocks</strong> - each starts on a new line (like a new block) and takes the full width available.</p>
+                        <p>Inline elements are like <strong>cars on a street</strong> - they flow within the traffic (text) without creating new blocks.</p>
+                        <p>[DEMONSTRATE] Show a simple HTML page with block and inline elements, then use browser Dev Tools to show how they occupy space differently.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Most Common HTML Elements -->
+            <div class="section">
+                <div class="timing-indicator">[3:30 - 5:00]</div>
+                <h2 class="section-title"><i class="fas fa-star"></i> Most Common HTML Elements</h2>
+                <div class="script-content">
+                    <p>While there are over 100 HTML elements, you'll use about 20-30 regularly. Here are the <strong>essential elements</strong> every beginner should know:</p>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Type</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;h1&gt; to &lt;h6&gt;</code></td>
+                                <td>Block</td>
+                                <td>Headings (h1 largest, h6 smallest)</td>
+                                <td><code>&lt;h1&gt;Title&lt;/h1&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;p&gt;</code></td>
+                                <td>Block</td>
+                                <td>Paragraphs of text</td>
+                                <td><code>&lt;p&gt;Text here&lt;/p&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;a&gt;</code></td>
+                                <td>Inline</td>
+                                <td>Links (hyperlinks)</td>
+                                <td><code>&lt;a href="#"&gt;Link&lt;/a&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;img&gt;</code></td>
+                                <td>Inline</td>
+                                <td>Images (self-closing)</td>
+                                <td><code>&lt;img src="pic.jpg"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;div&gt;</code></td>
+                                <td>Block</td>
+                                <td>Generic container</td>
+                                <td><code>&lt;div&gt;Content&lt;/div&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;span&gt;</code></td>
+                                <td>Inline</td>
+                                <td>Generic inline container</td>
+                                <td><code>&lt;span&gt;Text&lt;/span&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code></td>
+                                <td>Block</td>
+                                <td>Lists (unordered, ordered, items)</td>
+                                <td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;br&gt;</code></td>
+                                <td>Inline</td>
+                                <td>Line break (self-closing)</td>
+                                <td><code>Line 1&lt;br&gt;Line 2</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Example using common elements --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>My Webpage<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>Welcome to my site! Here's a <span class="code-tag">&lt;a href="#"&gt;</span>link<span class="code-tag">&lt;/a&gt;</span>.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <span class="code-tag">&lt;img src="photo.jpg" alt="My photo"&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;h2&gt;</span>My Hobbies<span class="code-tag">&lt;/h2&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Coding<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Reading<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        <span class="code-tag">&lt;/div&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-chart-bar"></i> Frequency of Use</h4>
+                        <p>According to web development surveys, the most frequently used HTML elements are:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><code>&lt;div&gt;</code> (the workhorse of HTML)</li>
+                            <li><code>&lt;a&gt;</code> (links - the "hyper" in hypertext)</li>
+                            <li><code>&lt;span&gt;</code> (for styling text)</li>
+                            <li><code>&lt;p&gt;</code> (paragraphs)</li>
+                            <li><code>&lt;img&gt;</code> (images)</li>
+                        </ol>
+                        <p>Master these 5, and you're 80% of the way there!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nested Elements -->
+            <div class="section">
+                <div class="timing-indicator">[5:00 - 5:45]</div>
+                <h2 class="section-title"><i class="fas fa-box"></i> Nested Elements</h2>
+                <div class="script-content">
+                    <p>HTML elements can contain other elements - this is called <strong>nesting</strong>. Proper nesting is crucial for valid HTML.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Correct nesting --&gt;</span><br>
+                        <span class="code-tag">&lt;div&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;This is a paragraph with <span class="code-tag">&lt;strong&gt;</span>bold<span class="code-tag">&lt;/strong&gt;</span> text.<br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/p&gt;</span><br>
+                        <span class="code-tag">&lt;/div&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- INCORRECT nesting (tags overlap) --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- &lt;div&gt;&lt;p&gt;Text&lt;/div&gt;&lt;/p&gt; --&gt;</span>
+                    </div>
+                    
+                    <div class="element-visual">
+                        <h4 style="text-align: center; color: #182848; margin-bottom: 15px;">
+                            <i class="fas fa-sitemap"></i> Nesting Visualization
+                        </h4>
+                        
+                        <div style="background: white; padding: 20px; border-radius: 5px; font-family: 'Courier New', monospace;">
+                            <div style="margin-left: 0px;"><span style="color: #569cd6;">&lt;html&gt;</span></div>
+                            <div style="margin-left: 20px;"><span style="color: #569cd6;">&lt;body&gt;</span></div>
+                            <div style="margin-left: 40px;"><span style="color: #569cd6;">&lt;div&gt;</span></div>
+                            <div style="margin-left: 60px;"><span style="color: #569cd6;">&lt;h1&gt;</span>Title<span style="color: #569cd6;">&lt;/h1&gt;</span></div>
+                            <div style="margin-left: 60px;"><span style="color: #569cd6;">&lt;p&gt;</span>Paragraph<span style="color: #569cd6;">&lt;/p&gt;</span></div>
+                            <div style="margin-left: 40px;"><span style="color: #569cd6;">&lt;/div&gt;</span></div>
+                            <div style="margin-left: 20px;"><span style="color: #569cd6;">&lt;/body&gt;</span></div>
+                            <div style="margin-left: 0px;"><span style="color: #569cd6;">&lt;/html&gt;</span></div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                            <i class="fas fa-info-circle"></i> Notice how elements are properly nested inside each other
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-layer-group"></i> Nesting Rules</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Close inner elements first</strong>: First opened, last closed</li>
+                            <li><strong>No overlapping</strong>: <code>&lt;a&gt;&lt;b&gt;Text&lt;/a&gt;&lt;/b&gt;</code> is wrong</li>
+                            <li><strong>Indent properly</strong>: Makes nested structure visible</li>
+                            <li><strong>VS Code helps</strong>: It auto-indents and shows matching tags</li>
+                        </ul>
+                        <p>Good nesting creates a clear <strong>document tree</strong> that browsers can understand easily.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Self-Closing Elements -->
+            <div class="section">
+                <div class="timing-indicator">[5:45 - 6:15]</div>
+                <h2 class="section-title"><i class="fas fa-window-close"></i> Self-Closing Elements</h2>
+                <div class="script-content">
+                    <p>Some HTML elements don't have closing tags because they don't contain content. These are called <strong>empty elements</strong> or <strong>self-closing elements</strong>.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Common self-closing elements --&gt;</span><br>
+                        <span class="code-tag">&lt;br&gt;</span> <span class="code-comment">&lt;!-- Line break --&gt;</span><br>
+                        <span class="code-tag">&lt;hr&gt;</span> <span class="code-comment">&lt;!-- Horizontal rule --&gt;</span><br>
+                        <span class="code-tag">&lt;img src="image.jpg" alt="Text"&gt;</span><br>
+                        <span class="code-tag">&lt;input type="text"&gt;</span><br>
+                        <span class="code-tag">&lt;meta charset="UTF-8"&gt;</span><br>
+                        <span class="code-tag">&lt;link rel="stylesheet" href="style.css"&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-code"></i> XML vs HTML Style</h4>
+                        <p>You might see self-closing elements written two ways:</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- HTML5 style (preferred) --&gt;</span><br>
+                            <span class="code-tag">&lt;br&gt;</span><br>
+                            <span class="code-tag">&lt;img src="pic.jpg" alt="Desc"&gt;</span><br>
+                            <br>
+                            <span class="code-comment">&lt;!-- XHTML/XML style (also valid) --&gt;</span><br>
+                            <span class="code-tag">&lt;br /&gt;</span><br>
+                            <span class="code-tag">&lt;img src="pic.jpg" alt="Desc" /&gt;</span>
+                        </div>
+                        <p>Both work in modern browsers. <strong>HTML5 style is simpler and recommended</strong>, but you'll see both in the wild.</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-camera"></i> Real-World Example: Images</h4>
+                        <p>The <code>&lt;img&gt;</code> tag is the most common self-closing element. It doesn't wrap around content - it <strong>points to content</strong> (an image file).</p>
+                        <p>Think of it like a picture frame. You don't put content <em>inside</em> the frame - you point the frame at a picture on the wall.</p>
+                        <p><code>&lt;img src="family.jpg" alt="Family photo"&gt;</code> means: "Show the image from family.jpg file, and if it can't load, show 'Family photo' text."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes -->
+            <div class="section">
+                <div class="timing-indicator">[6:15 - 6:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes with Elements</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> Element Mistakes to Avoid</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Forgetting closing tags<br>
+                        <strong>Bad:</strong> <code>&lt;p&gt;This is a paragraph</code><br>
+                        <strong>Good:</strong> <code>&lt;p&gt;This is a paragraph&lt;/p&gt;</code></p>
+                        
+                        <p><strong>Mistake 2:</strong> Incorrect nesting (tag overlap)<br>
+                        <strong>Bad:</strong> <code>&lt;strong&gt;&lt;em&gt;Text&lt;/strong&gt;&lt;/em&gt;</code><br>
+                        <strong>Good:</strong> <code>&lt;strong&gt;&lt;em&gt;Text&lt;/em&gt;&lt;/strong&gt;</code></p>
+                        
+                        <p><strong>Mistake 3:</strong> Adding closing tags to self-closing elements<br>
+                        <strong>Bad:</strong> <code>&lt;br&gt;&lt;/br&gt;</code><br>
+                        <strong>Good:</strong> <code>&lt;br&gt;</code></p>
+                        
+                        <p><strong>Mistake 4:</strong> Using block elements inside inline elements<br>
+                        <strong>Bad:</strong> <code>&lt;span&gt;&lt;div&gt;Content&lt;/div&gt;&lt;/span&gt;</code><br>
+                        <strong>Good:</strong> <code>&lt;div&gt;&lt;span&gt;Content&lt;/span&gt;&lt;/div&gt;</code></p>
+                        
+                        <p><strong>Mistake 5:</strong> Case sensitivity (HTML is case-insensitive, but...)<br>
+                        <strong>Bad practice:</strong> <code>&lt;DIV&gt;Content&lt;/DIV&gt;</code><br>
+                        <strong>Good practice:</strong> <code>&lt;div&gt;Content&lt;/div&gt;</code><br>
+                        <em>Always use lowercase for consistency and compatibility with XHTML</em></p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-stethoscope"></i> Debugging Tip</h4>
+                        <p>If your HTML looks wrong in the browser:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li>Check that all opening tags have closing tags</li>
+                            <li>Verify proper nesting (no overlapping)</li>
+                            <li>Use browser Dev Tools (F12) - it will show you the parsed structure</li>
+                            <li>Validate at validator.w3.org</li>
+                        </ol>
+                        <p>VS Code can help: Hover over a tag to see its matching pair highlighted!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:45 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-puzzle-piece"></i> Elements Challenge</h4>
+                        <p><strong>Task 1:</strong> Create an HTML document that uses at least 10 different HTML elements from what we learned today.</p>
+                        
+                        <p><strong>Task 2:</strong> Include examples of:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Block elements and inline elements</li>
+                            <li>Container elements and self-closing elements</li>
+                            <li>Properly nested elements (at least 3 levels deep)</li>
+                            <li>Elements with different types of content</li>
+                        </ul></p>
+                        
+                        <p><strong>Task 3:</strong> Create a "cheat sheet" section in your HTML that lists the elements you used with brief descriptions.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Inspect the HTML of your favorite website and identify 10 different elements they use. Take a screenshot of the Elements tab in Dev Tools and share it in the comments!</p>
+                        
+                        <p>This hands-on practice will help you become familiar with HTML elements - the fundamental building blocks of web development!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now understand HTML elements and tags. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The anatomy of an HTML element (tags + content)</li>
+                        <li>Different types of elements (container vs empty, block vs inline)</li>
+                        <li>The most common HTML elements you'll use daily</li>
+                        <li>How to properly nest elements</li>
+                        <li>Self-closing elements and their syntax</li>
+                        <li>Common mistakes and how to avoid them</li>
+                    </ul>
+                    
+                    <p>Elements are the <strong>vocabulary of HTML</strong>. The more elements you know, the more expressive your webpages can be!</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll learn about HTML attributes - how to provide additional information to elements using attributes like <code>id</code>, <code>class</code>, <code>href</code>, and <code>src</code>.</p>
+                    
+                    <p>If you have questions about elements or want feedback on your challenge, share in the comments below!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-book"></i> Resources & Practice</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                Elements Practice Template
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                Elements Cheat Sheet
+                            </a>
+                            <a href="tutorial-6.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: HTML Attributes
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable practice files, interactive element exercises, and a complete HTML elements reference guide!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If this tutorial helped you understand HTML elements, please give it a thumbs up and subscribe for the rest of the series!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 5: HTML Elements & Tags | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Visual explanations • Common element reference • Nesting examples • Interactive challenges
+            </p>
+        </div>
+    </div>
+</body>
+</html>

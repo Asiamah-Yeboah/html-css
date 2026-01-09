@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 28: CSS Grid | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .css-property {
+            color: #66d9ef;
+        }
+
+        .css-value {
+            color: #e6db74;
+        }
+
+        .css-selector {
+            color: #a6e22e;
+        }
+
+        .grid-demo {
+            display: grid;
+            border: 3px solid #4b6cb7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            min-height: 200px;
+        }
+
+        .grid-item {
+            background: #4b6cb7;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .demo-item {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+
+        .demo-item h4 {
+            color: #182848;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .grid-template-demo {
+            display: grid;
+            height: 200px;
+            border: 2px solid #4b6cb7;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .grid-line {
+            position: absolute;
+            background: rgba(76, 108, 183, 0.2);
+        }
+
+        .grid-track {
+            position: absolute;
+            background: rgba(255, 152, 0, 0.2);
+        }
+
+        .grid-cell {
+            position: absolute;
+            background: rgba(76, 175, 80, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #182848;
+        }
+
+        .area-demo {
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "sidebar main main"
+                "sidebar footer footer";
+            grid-template-rows: 80px 1fr 60px;
+            grid-template-columns: 200px 1fr;
+            gap: 10px;
+            height: 300px;
+            border: 2px solid #4b6cb7;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        .area-item {
+            background: #4b6cb7;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .header-area { grid-area: header; background: #182848; }
+        .sidebar-area { grid-area: sidebar; background: #ff9800; }
+        .main-area { grid-area: main; background: #4caf50; }
+        .footer-area { grid-area: footer; background: #9c27b0; }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .area-demo {
+                grid-template-areas: 
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+                grid-template-rows: 60px 80px 1fr 60px;
+                grid-template-columns: 1fr;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-th"></i> Tutorial 28: CSS Grid</h1>
+            <p>Master two-dimensional layouts with the most powerful CSS system</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 13-16 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Advanced Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:55]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with epic, groundbreaking tone]</p>
+                    <p><strong>Welcome to the most powerful layout system in CSS history!</strong> I'm [Your Name], and after mastering Flexbox for one-dimensional layouts, we're now ready for the ultimate: CSS Grid!</p>
+                    <p>If Flexbox was a revolution, CSS Grid is an <strong>evolutionary leap.</strong> This is the first true two-dimensional layout system in CSS, designed specifically for creating complex, responsive layouts with minimal code.</p>
+                    <p>Today, we're going to learn how to create magazine-like layouts, complex dashboards, and responsive designs that were previously impossible or required dozens of lines of CSS!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-chess-board"></i> The Grid Revolution</h4>
+                        <p>Look at the New York Times website, Apple's product pages, or any modern dashboard. Notice the complex, magazine-like layouts with overlapping elements, varying column widths, and perfect alignment?</p>
+                        <p><strong>That's CSS Grid in action.</strong> It's used by every major website because it solves layout problems that haunted web developers for decades!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid vs Flexbox Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:55 - 2:30]</div>
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i> Grid vs Flexbox</h2>
+                <div class="script-content">
+                    <p>First, let's understand when to use Grid vs Flexbox:</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+                        <div style="padding: 20px; background: #e8f4ff; border-radius: 8px; border: 2px solid #2196F3;">
+                            <h4 style="color: #1976D2; margin-bottom: 15px; text-align: center;">Flexbox</h4>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>One-dimensional</strong> (row OR column)</li>
+                                <li>Content-based sizing</li>
+                                <li>Best for components (navs, cards)</li>
+                                <li>Aligns items in a single direction</li>
+                                <li>Micro layouts</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="padding: 20px; background: #e8f5e9; border-radius: 8px; border: 2px solid #4caf50;">
+                            <h4 style="color: #2e7d32; margin-bottom: 15px; text-align: center;">CSS Grid</h4>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Two-dimensional</strong> (rows AND columns)</li>
+                                <li>Container-based sizing</li>
+                                <li>Best for page layouts</li>
+                                <li>Aligns items in both directions</li>
+                                <li>Macro layouts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Simple comparison */</span><br>
+<span class="code-comment">/* FLEXBOX: One dimension */</span><br>
+<span class="css-selector">.flex-container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">display</span>: <span class="css-value">flex</span>;<br>
+&nbsp;&nbsp;<span class="css-property">flex-direction</span>: <span class="css-value">row</span>; <span class="code-comment">/* OR column */</span><br>
+}<br><br>
+
+<span class="code-comment">/* GRID: Two dimensions */</span><br>
+<span class="css-selector">.grid-container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">display</span>: <span class="css-value">grid</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">1fr 1fr 1fr</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-rows</span>: <span class="css-value">100px auto 100px</span>;<br>
+}
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-handshake"></i> They Work Together!</h4>
+                        <p><strong>Grid and Flexbox are not competitors - they're partners!</strong></p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>Use <strong>Grid for the overall page layout</strong> (header, sidebar, main, footer)</li>
+                            <li>Use <strong>Flexbox for components within grid cells</strong> (navigation, cards, forms)</li>
+                            <li>You can even nest Grid inside Flexbox and vice versa!</li>
+                        </ul>
+                        <p>Think: <strong>Grid for the big picture, Flexbox for the details!</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid Terminology Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:30 - 4:30]</div>
+                <h2 class="section-title"><i class="fas fa-book"></i> Grid Terminology</h2>
+                <div class="script-content">
+                    <p>Understanding Grid terminology is crucial. Let's visualize it:</p>
+                    
+                    <div class="grid-template-demo" style="grid-template-columns: 100px 1fr 100px; grid-template-rows: 80px 1fr 60px; gap: 10px; padding: 10px;">
+                        <!-- Grid Lines -->
+                        <div class="grid-line" style="left: 0; top: 0; bottom: 0; width: 2px;"></div>
+                        <div class="grid-line" style="left: 110px; top: 0; bottom: 0; width: 2px;"></div>
+                        <div class="grid-line" style="left: calc(100% - 110px); top: 0; bottom: 0; width: 2px;"></div>
+                        <div class="grid-line" style="left: calc(100% - 2px); top: 0; bottom: 0; width: 2px;"></div>
+                        
+                        <div class="grid-line" style="top: 0; left: 0; right: 0; height: 2px;"></div>
+                        <div class="grid-line" style="top: 90px; left: 0; right: 0; height: 2px;"></div>
+                        <div class="grid-line" style="top: calc(100% - 70px); left: 0; right: 0; height: 2px;"></div>
+                        <div class="grid-line" style="top: calc(100% - 2px); left: 0; right: 0; height: 2px;"></div>
+                        
+                        <!-- Grid Tracks -->
+                        <div class="grid-track" style="left: 2px; top: 2px; width: 100px; height: calc(100% - 4px);"></div>
+                        <div class="grid-track" style="left: 112px; top: 2px; width: calc(100% - 224px); height: 80px;"></div>
+                        
+                        <!-- Grid Cells -->
+                        <div class="grid-cell" style="left: 112px; top: 92px; width: calc(100% - 224px); height: calc(100% - 162px);">Cell</div>
+                        <div class="grid-cell" style="left: 2px; top: 92px; width: 100px; height: 80px;">Cell</div>
+                        
+                        <!-- Labels -->
+                        <div style="position: absolute; top: 45px; left: -40px; transform: rotate(-90deg); font-weight: bold; color: #4b6cb7;">Grid Lines</div>
+                        <div style="position: absolute; top: 10px; left: 50px; font-weight: bold; color: #ff9800;">Track</div>
+                        <div style="position: absolute; top: 120px; left: 160px; font-weight: bold; color: #4caf50;">Cell</div>
+                    </div>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Key Grid Terms */</span><br>
+<span class="code-comment">/* Grid Container: Parent with display: grid */</span><br>
+<span class="css-selector">.container</span> { <span class="css-property">display</span>: <span class="css-value">grid</span>; }<br><br>
+
+<span class="code-comment">/* Grid Item: Direct children of container */</span><br>
+<span class="code-comment">/* Grid Line: Dividing lines (numbered) */</span><br>
+<span class="code-comment">/* Grid Track: Space between two lines (row or column) */</span><br>
+<span class="code-comment">/* Grid Cell: Single unit where row and column intersect */</span><br>
+<span class="code-comment">/* Grid Area: One or more cells forming a rectangle */</span><br>
+<span class="code-comment">/* Gap: Space between tracks (formerly grid-gap) */</span>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-ruler"></i> Understanding Grid Lines</h4>
+                        <p><strong>Grid lines are numbered from 1, not 0!</strong> This is a common point of confusion.</p>
+                        <div class="code-example" style="margin: 15px 0; font-size: 0.9rem;">
+<span class="code-comment">/* 3 columns = 4 grid lines */</span><br>
+<span class="code-comment">/* Line 1 | Column 1 | Line 2 | Column 2 | Line 3 | Column 3 | Line 4 */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">100px 200px 100px</span>;<br>
+}<br>
+<span class="css-selector">.item</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column-start</span>: <span class="css-value">2</span>; <span class="code-comment">/* Starts at line 2 */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-column-end</span>: <span class="css-value">4</span>; <span class="code-comment">/* Ends at line 4 */</span><br>
+}
+                        </div>
+                        <p><strong>Pro Tip:</strong> You can also use negative numbers to count from the end! <code>-1</code> is the last line.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid Template Properties Section -->
+            <div class="section">
+                <div class="timing-indicator">[4:30 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-vector-square"></i> Grid Template Properties</h2>
+                <div class="script-content">
+                    <p>These properties define your grid structure on the <strong>container</strong>:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Defining columns and rows */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">100px 200px 100px</span>; <span class="code-comment">/* 3 fixed columns */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-template-rows</span>: <span class="css-value">50px auto 100px</span>; <span class="code-comment">/* 3 rows */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Using fr units (fractional units) */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">1fr 2fr 1fr</span>; <span class="code-comment">/* Middle column = 2x others */</span><br>
+}<br><br>
+
+<span class="code-comment">/* The repeat() function */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">repeat(3, 1fr)</span>; <span class="code-comment">/* 3 equal columns */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">repeat(4, 100px)</span>; <span class="code-comment">/* 4 columns of 100px */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">repeat(auto-fit, minmax(200px, 1fr))</span>; <span class="code-comment">/* Responsive! */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Grid template areas (visual layout) */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-areas</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"header header header"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"sidebar main main"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"footer footer footer"</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-rows</span>: <span class="css-value">80px 1fr 60px</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">200px 1fr</span>;<br>
+}
+                    </div>
+                    
+                    <div class="demo-container">
+                        <div class="demo-item">
+                            <h4>Fixed Grid</h4>
+                            <div class="grid-demo" style="grid-template-columns: 80px 120px 80px; grid-template-rows: 60px 60px;">
+                                <div class="grid-item">1</div>
+                                <div class="grid-item">2</div>
+                                <div class="grid-item">3</div>
+                                <div class="grid-item">4</div>
+                                <div class="grid-item">5</div>
+                                <div class="grid-item">6</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Fixed pixel sizes</p>
+                        </div>
+                        
+                        <div class="demo-item">
+                            <h4>Flexible Grid</h4>
+                            <div class="grid-demo" style="grid-template-columns: 1fr 2fr 1fr; grid-template-rows: 1fr 1fr;">
+                                <div class="grid-item">1fr</div>
+                                <div class="grid-item">2fr</div>
+                                <div class="grid-item">1fr</div>
+                                <div class="grid-item">1fr</div>
+                                <div class="grid-item">2fr</div>
+                                <div class="grid-item">1fr</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">fr units for flexibility</p>
+                        </div>
+                        
+                        <div class="demo-item">
+                            <h4>Auto-fit Grid</h4>
+                            <div class="grid-demo" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+                                <div class="grid-item">Auto</div>
+                                <div class="grid-item">Fit</div>
+                                <div class="grid-item">Magic</div>
+                                <div class="grid-item">✨</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Responsive with auto-fit</p>
+                        </div>
+                    </div>
+                    
+                    <div class="area-demo">
+                        <div class="header-area area-item">Header</div>
+                        <div class="sidebar-area area-item">Sidebar</div>
+                        <div class="main-area area-item">Main Content</div>
+                        <div class="footer-area area-item">Footer</div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-crown"></i> The Power of fr Units</h4>
+                        <p>The <code>fr</code> (fraction) unit is Grid's secret weapon:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><code>1fr</code> = one fraction of available space</li>
+                            <li><code>2fr</code> = twice as much space as <code>1fr</code></li>
+                            <li>Works like Flexbox's <code>flex-grow</code> but for both dimensions</li>
+                            <li>Calculates remaining space after fixed items</li>
+                            <li>Perfect for responsive designs</li>
+                        </ul>
+                        <p><strong>Example:</strong> <code>grid-template-columns: 200px 1fr 2fr</code> = fixed 200px sidebar, main area twice as wide as content area!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item Placement Properties Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:30 - 10:00]</div>
+                <h2 class="section-title"><i class="fas fa-arrows-alt"></i> Item Placement Properties</h2>
+                <div class="script-content">
+                    <p>These properties control <strong>individual items</strong> within the grid:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Line-based placement */</span><br>
+<span class="css-selector">.item</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column-start</span>: <span class="css-value">1</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-column-end</span>: <span class="css-value">3</span>; <span class="code-comment">/* Spans columns 1-2 */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-row-start</span>: <span class="css-value">2</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-row-end</span>: <span class="css-value">4</span>; <span class="code-comment">/* Spans rows 2-3 */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Shorthand properties */</span><br>
+<span class="css-selector">.item</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column</span>: <span class="css-value">1 / 3</span>; <span class="code-comment">/* start / end */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-row</span>: <span class="css-value">2 / 4</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-area</span>: <span class="css-value">2 / 1 / 4 / 3</span>; <span class="code-comment">/* row-start / col-start / row-end / col-end */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Span keyword */</span><br>
+<span class="css-selector">.wide-item</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column</span>: <span class="css-value">span 2</span>; <span class="code-comment">/* Spans 2 columns */</span><br>
+&nbsp;&nbsp;<span class="css-property">grid-row</span>: <span class="css-value">span 3</span>; <span class="code-comment">/* Spans 3 rows */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Named grid areas */</span><br>
+<span class="css-selector">.header</span> { <span class="css-property">grid-area</span>: <span class="css-value">header</span>; }<br>
+<span class="css-selector">.sidebar</span> { <span class="css-property">grid-area</span>: <span class="css-value">sidebar</span>; }<br>
+<span class="css-selector">.main</span> { <span class="css-property">grid-area</span>: <span class="css-value">main</span>; }
+                    </div>
+                    
+                    <div class="grid-demo" style="grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 80px);">
+                        <div class="grid-item" style="grid-column: 1 / 3; grid-row: 1; background: #182848;">1-3</div>
+                        <div class="grid-item" style="grid-column: 3 / 5; grid-row: 1 / 3; background: #ff9800;">3-5, 1-3</div>
+                        <div class="grid-item" style="grid-column: 1; grid-row: 2 / 4; background: #4caf50;">1, 2-4</div>
+                        <div class="grid-item" style="grid-column: 2 / 4; grid-row: 3; background: #9c27b0;">2-4, 3</div>
+                        <div class="grid-item" style="grid-column: 4; grid-row: 3; background: #2196F3;">4, 3</div>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-puzzle-piece"></i> Magazine Layout Example</h4>
+                        <p>Grid makes magazine-style layouts trivial. Here's a common pattern:</p>
+                        <div class="code-example" style="margin: 15px 0; font-size: 0.9rem;">
+<span class="css-selector">.magazine</span> {<br>
+&nbsp;&nbsp;<span class="css-property">display</span>: <span class="css-value">grid</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">repeat(12, 1fr)</span>;<br>
+&nbsp;&nbsp;<span class="css-property">gap</span>: <span class="css-value">20px</span>;<br>
+}<br>
+<span class="css-selector">.featured</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column</span>: <span class="css-value">1 / 9</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-row</span>: <span class="css-value">1 / 3</span>;<br>
+}<br>
+<span class="css-selector">.sidebar</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column</span>: <span class="css-value">9 / 13</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-row</span>: <span class="css-value">1 / 4</span>;<br>
+}<br>
+<span class="css-selector">.article</span> {<br>
+&nbsp;&nbsp;<span class="css-property">grid-column</span>: <span class="css-value">span 4</span>; <span class="code-comment">/* Each takes 4 columns */</span><br>
+}
+                        </div>
+                        <p><strong>With 12 lines of CSS</strong>, you have a professional magazine layout that's fully responsive!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alignment & Gap Properties Section -->
+            <div class="section">
+                <div class="timing-indicator">[10:00 - 11:30]</div>
+                <h2 class="section-title"><i class="fas fa-align-center"></i> Alignment & Gap Properties</h2>
+                <div class="script-content">
+                    <p>Grid includes powerful alignment properties similar to Flexbox:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Gap properties (space between tracks) */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">gap</span>: <span class="css-value">20px</span>; <span class="code-comment">/* Both row and column gap */</span><br>
+&nbsp;&nbsp;<span class="css-property">row-gap</span>: <span class="css-value">15px</span>;<br>
+&nbsp;&nbsp;<span class="css-property">column-gap</span>: <span class="css-value">30px</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* Justify/Align Items (within their grid area) */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">justify-items</span>: <span class="css-value">center</span>; <span class="code-comment">/* Horizontal alignment */</span><br>
+&nbsp;&nbsp;<span class="css-property">align-items</span>: <span class="css-value">center</span>; <span class="code-comment">/* Vertical alignment */</span><br>
+&nbsp;&nbsp;<span class="css-property">place-items</span>: <span class="css-value">center center</span>; <span class="code-comment">/* Shorthand: align justify */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Justify/Align Content (entire grid within container) */</span><br>
+<span class="css-selector">.container</span> {<br>
+&nbsp;&nbsp;<span class="css-property">justify-content</span>: <span class="css-value">center</span>;<br>
+&nbsp;&nbsp;<span class="css-property">align-content</span>: <span class="css-value">center</span>;<br>
+&nbsp;&nbsp;<span class="css-property">place-content</span>: <span class="css-value">center center</span>;<br>
+}
+                    </div>
+                    
+                    <div class="demo-container">
+                        <div class="demo-item">
+                            <h4>With Gap</h4>
+                            <div class="grid-demo" style="grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                                <div class="grid-item">1</div>
+                                <div class="grid-item">2</div>
+                                <div class="grid-item">3</div>
+                                <div class="grid-item">4</div>
+                                <div class="grid-item">5</div>
+                                <div class="grid-item">6</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Clean spacing with gap</p>
+                        </div>
+                        
+                        <div class="demo-item">
+                            <h4>Centered Items</h4>
+                            <div class="grid-demo" style="grid-template-columns: repeat(2, 80px); grid-template-rows: repeat(2, 80px); justify-items: center; align-items: center;">
+                                <div class="grid-item" style="width: 60px; height: 40px;">1</div>
+                                <div class="grid-item" style="width: 50px; height: 60px;">2</div>
+                                <div class="grid-item" style="width: 70px; height: 30px;">3</div>
+                                <div class="grid-item" style="width: 40px; height: 50px;">4</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.9rem;">Items centered in cells</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-compress-alt"></i> Gap vs Margin</h4>
+                        <p>Why use <code>gap</code> instead of margins?</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Gap only between items</strong>, not around edges</li>
+                            <li><strong>Consistent spacing</strong> throughout grid</li>
+                            <li><strong>No collapsing issues</strong> like with margins</li>
+                            <li><strong>Cleaner CSS</strong> - one property vs many margins</li>
+                            <li><strong>Works with subgrid</strong> (advanced feature)</li>
+                        </ul>
+                        <p><strong>Always use gap for grid spacing!</strong> It's what it was designed for.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Responsive Grid Patterns Section -->
+            <div class="section">
+                <div class="timing-indicator">[11:30 - 12:45]</div>
+                <h2 class="section-title"><i class="fas fa-mobile-alt"></i> Responsive Grid Patterns</h2>
+                <div class="script-content">
+                    <div class="real-world">
+                        <h4><i class="fas fa-magic"></i> Responsive Grid Magic</h4>
+                        <p>Grid makes responsive design incredibly elegant. Here are must-know patterns:</p>
+                        
+                        <p><strong>1. The Holy Grail (Responsive):</strong></p>
+                        <div class="code-example" style="margin: 10px 0; font-size: 0.9rem;">
+<span class="css-selector">.holy-grail</span> {<br>
+&nbsp;&nbsp;<span class="css-property">display</span>: <span class="css-value">grid</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-areas</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"header"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"main"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"sidebar"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"footer"</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-rows</span>: <span class="css-value">auto 1fr auto auto</span>;<br>
+}<br><br>
+<span class="code-comment">@media (min-width: 768px)</span> {<br>
+&nbsp;&nbsp;<span class="css-selector">.holy-grail</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-property">grid-template-areas</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"header header"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"sidebar main"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">"footer footer"</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">250px 1fr</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+                        </div>
+                        
+                        <p><strong>2. Auto-fit Magic (No Media Queries!):</strong></p>
+                        <div class="code-example" style="margin: 10px 0; font-size: 0.9rem;">
+<span class="css-selector">.responsive-grid</span> {<br>
+&nbsp;&nbsp;<span class="css-property">display</span>: <span class="css-value">grid</span>;<br>
+&nbsp;&nbsp;<span class="css-property">grid-template-columns</span>: <span class="css-value">repeat(auto-fit, minmax(250px, 1fr))</span>;<br>
+&nbsp;&nbsp;<span class="css-property">gap</span>: <span class="css-value">20px</span>;<br>
+}
+                        </div>
+                        <p><strong>This one line</strong> creates a fully responsive grid that adjusts column count based on available space!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[12:45 - 13:15]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> CSS Grid Mastery Challenge</h4>
+                        <p><strong>Task:</strong> Create a responsive magazine homepage using CSS Grid.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>Use a 12-column grid system</li>
+                            <li>Create a featured article that spans 8 columns</li>
+                            <li>Add a sidebar that spans 4 columns</li>
+                            <li>Create an article grid below with 3 equal columns</li>
+                            <li>Implement a footer with 4 equal columns</li>
+                            <li>Make it fully responsive without media queries using auto-fit/minmax</li>
+                            <li>Use grid-template-areas for the main layout</li>
+                            <li>Implement proper gaps between items</li>
+                        </ol>
+                        <p><strong>Bonus Challenge:</strong> Add a hero section that overlaps the grid using z-index and negative grid line values.</p>
+                        <p>Share your magazine layouts in the comments! I'll feature the most creative designs.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[13:15 - 14:00]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Incredible work! You've just mastered the most powerful layout system in CSS. You now understand:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The difference between Grid and Flexbox (and when to use each)</li>
+                        <li>Grid terminology: tracks, lines, cells, areas</li>
+                        <li>How to create complex layouts with minimal code</li>
+                        <li>Responsive patterns without media queries</li>
+                        <li>Advanced placement and alignment techniques</li>
+                        <li>Real-world patterns like magazine layouts</li>
+                    </ul>
+                    
+                    <p>In the <strong>next video</strong>, we'll tackle responsive design! We'll learn about media queries, mobile-first approach, and how to make websites work beautifully on all devices.</p>
+                    
+                    <p><strong>Remember:</strong> CSS Grid is for page layouts, Flexbox is for components. Use them together to create amazing, maintainable designs!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Practice Your Grid Skills!</h3>
+                        <p>Try the CSS Grid Garden game (link in description) - it's the perfect way to practice!</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-29.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next Tutorial: Responsive Design
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for Grid generators, layout inspirations, and advanced techniques!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        With great Grid power comes great layout responsibility. Go create something amazing! See you in the next tutorial!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 28: CSS Grid | Part 2 of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: YouTube timing indicators • Visual demonstrations • Advanced patterns • Practical examples
+            </p>
+        </div>
+    </div>
+</body>
+</html>

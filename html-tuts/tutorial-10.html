@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 10: Links & Navigation | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .nav-demo {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-demo nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .nav-demo a {
+            padding: 10px 20px;
+            background: #4b6cb7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-demo a:hover {
+            background: #182848;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .nav-demo nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-link"></i> Tutorial 10: Links & Navigation</h1>
+            <p>Creating hyperlinks and navigation menus for website navigation</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 9-11 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with enthusiastic tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> In the last video, we learned how to add images to our web pages. Today, we're going to learn about one of the most important aspects of web development: <strong>links and navigation</strong>!</p>
+                    <p>Links are what make the "web" in "World Wide Web" - they connect pages, documents, and resources together. Without links, every webpage would be an island!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-mouse-pointer"></i> Real-World Hook</h4>
+                        <p>Think about how you use the internet every day. You click links on Google search results, navigate between pages on Amazon, click on YouTube video suggestions - all of that is made possible by HTML links!</p>
+                        <p>In this tutorial, you'll learn how to create all types of links and build professional navigation menus that users expect on modern websites.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- The Anchor Tag Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-anchor"></i> The Anchor Tag: &lt;a&gt;</h2>
+                <div class="script-content">
+                    <p>The HTML anchor tag <code>&lt;a&gt;</code> is used to create hyperlinks. It's one of the most important HTML elements you'll ever learn!</p>
+                    
+                    <p>Basic syntax:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic link structure --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"url"</span><span class="code-tag">&gt;</span>Clickable Text<span class="code-tag">&lt;/a&gt;</span>
+                    </div>
+                    
+                    <p>The <code>href</code> attribute (which stands for "Hypertext REFerence") specifies the destination of the link.</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-lightbulb"></i> Quick Example</h4>
+                        <p>Here's how you'd create a link to Google:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://www.google.com"</span><span class="code-tag">&gt;</span>Visit Google<span class="code-tag">&lt;/a&gt;</span>
+                        </div>
+                        <p>This would display as: <a href="#" style="color: #4b6cb7; text-decoration: underline;">Visit Google</a> (This is a demo - it won't actually navigate)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Types of Links Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Different Types of Links</h2>
+                <div class="script-content">
+                    <p>HTML links can point to different types of resources. Let's look at the main categories:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- 1. External Links (to other websites) --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://www.example.com"</span><span class="code-tag">&gt;</span>External Website<span class="code-tag">&lt;/a&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- 2. Internal Links (within your own site) --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"about.html"</span><span class="code-tag">&gt;</span>About Page<span class="code-tag">&lt;/a&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- 3. Same Page Links (anchors) --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"#section2"</span><span class="code-tag">&gt;</span>Jump to Section 2<span class="code-tag">&lt;/a&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- 4. Email Links --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"mailto:contact@example.com"</span><span class="code-tag">&gt;</span>Email Us<span class="code-tag">&lt;/a&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- 5. Phone Links --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"tel:+1234567890"</span><span class="code-tag">&gt;</span>Call Us<span class="code-tag">&lt;/a&gt;</span><br><br>
+                        
+                        <span class="code-comment">&lt;!-- 6. Download Links --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"document.pdf"</span> <span class="code-attr">download</span><span class="code-tag">&gt;</span>Download PDF<span class="code-tag">&lt;/a&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-external-link-alt"></i> Best Practice: External Links</h4>
+                        <p>For external links, it's a good practice to add <code>target="_blank"</code> to open them in a new tab, and <code>rel="noopener noreferrer"</code> for security:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://example.com"</span> <span class="code-attr">target</span>=<span class="code-value">"_blank"</span> <span class="code-attr">rel</span>=<span class="code-value">"noopener noreferrer"</span><span class="code-tag">&gt;</span>External Site<span class="code-tag">&lt;/a&gt;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Link Attributes Section -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Important Link Attributes</h2>
+                <div class="script-content">
+                    <p>Besides <code>href</code>, anchor tags have several important attributes:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Multiple attributes example --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <br>
+                        &nbsp;&nbsp;<span class="code-attr">href</span>=<span class="code-value">"about.html"</span><br>
+                        &nbsp;&nbsp;<span class="code-attr">title</span>=<span class="code-value">"Learn more about our company"</span><br>
+                        &nbsp;&nbsp;<span class="code-attr">target</span>=<span class="code-value">"_self"</span><br>
+                        &nbsp;&nbsp;<span class="code-attr">rel</span>=<span class="code-value">"nofollow"</span><br>
+                        &nbsp;&nbsp;<span class="code-attr">id</span>=<span class="code-value">"about-link"</span><br>
+                        &nbsp;&nbsp;<span class="code-attr">class</span>=<span class="code-value">"nav-link"</span><br>
+                        <span class="code-tag">&gt;</span>About Us<span class="code-tag">&lt;/a&gt;</span>
+                    </div>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li><strong>title</strong>: Shows a tooltip when hovering over the link</li>
+                        <li><strong>target</strong>: Controls where the link opens (<code>_blank</code>, <code>_self</code>, <code>_parent</code>, <code>_top</code>)</li>
+                        <li><strong>rel</strong>: Defines the relationship between current and linked document</li>
+                        <li><strong>id</strong>: Unique identifier for the link</li>
+                        <li><strong>class</strong>: For CSS styling</li>
+                    </ul>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> SEO Tip</h4>
+                        <p>The <code>rel="nofollow"</code> attribute tells search engines not to follow the link for ranking purposes. This is important for user-generated content, paid links, or untrusted sites.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Menus Section -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 7:30]</div>
+                <h2 class="section-title"><i class="fas fa-bars"></i> Creating Navigation Menus</h2>
+                <div class="script-content">
+                    <p>Now let's build a real navigation menu using semantic HTML:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Semantic navigation menu --&gt;</span><br>
+                        <span class="code-tag">&lt;nav</span> <span class="code-attr">class</span>=<span class="code-value">"main-nav"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"index.html"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"about.html"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"services.html"</span><span class="code-tag">&gt;</span>Services<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"contact.html"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        <span class="code-tag">&lt;/nav&gt;</span>
+                    </div>
+                    
+                    <div class="nav-demo">
+                        <p><strong>Live Demo:</strong> This is what the above code creates (with basic CSS):</p>
+                        <nav>
+                            <a href="#">Home</a>
+                            <a href="#">About</a>
+                            <a href="#">Services</a>
+                            <a href="#">Contact</a>
+                        </nav>
+                        <p>With CSS (which we'll learn in Part 2), we can make this look like professional website navigation!</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-mobile-alt"></i> Mobile Navigation Tip</h4>
+                        <p>For mobile-friendly websites, we often create a "hamburger" menu (three lines icon) that expands when clicked. We'll build one of these in our projects section!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Breadcrumbs Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:30 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Breadcrumb Navigation</h2>
+                <div class="script-content">
+                    <p>Breadcrumbs show users their current location within a website hierarchy:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Breadcrumb navigation --&gt;</span><br>
+                        <span class="code-tag">&lt;nav</span> <span class="code-attr">aria-label</span>=<span class="code-value">"breadcrumb"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;ol</span> <span class="code-attr">class</span>=<span class="code-value">"breadcrumb"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"index.html"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"products.html"</span><span class="code-tag">&gt;</span>Products<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li</span> <span class="code-attr">aria-current</span>=<span class="code-value">"page"</span><span class="code-tag">&gt;</span>Smartphones<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/ol&gt;</span><br>
+                        <span class="code-tag">&lt;/nav&gt;</span>
+                    </div>
+                    
+                    <p>This would display something like: <strong>Home > Products > Smartphones</strong></p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-shopping-cart"></i> E-commerce Example</h4>
+                        <p>On Amazon, breadcrumbs help users navigate back to broader categories. For example: Electronics > Computers & Accessories > Laptops > Gaming Laptops</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessibility Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:30 - 9:00]</div>
+                <h2 class="section-title"><i class="fas fa-universal-access"></i> Accessibility Considerations</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-wheelchair"></i> Making Links Accessible</h4>
+                        <p>For screen readers and keyboard navigation:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Use descriptive link text</strong>: Instead of "Click here", use "Download the user manual"</li>
+                            <li><strong>Add aria-label for icons</strong>: <code>&lt;a href="#" aria-label="Search"&gt;&lt;i class="fas fa-search"&gt;&lt;/i&gt;&lt;/a&gt;</code></li>
+                            <li><strong>Ensure keyboard navigation</strong>: All links should be accessible via Tab key</li>
+                            <li><strong>Skip navigation links</strong>: Add a link at the top that lets keyboard users skip to main content</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Skip navigation for accessibility --&gt;</span><br>
+                        <span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"#main-content"</span> <span class="code-attr">class</span>=<span class="code-value">"skip-link"</span><span class="code-tag">&gt;</span>Skip to main content<span class="code-tag">&lt;/a&gt;</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:00 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes to Avoid</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-bug"></i> Link Mistakes Beginners Make</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Broken links</strong>: Always test your links work correctly</li>
+                            <li><strong>Non-descriptive link text</strong>: Avoid "click here" or "read more"</li>
+                            <li><strong>Missing href attribute</strong>: <code>&lt;a&gt;Link&lt;/a&gt;</code> without href does nothing</li>
+                            <li><strong>Opening too many external links in new tabs</strong>: Let users decide</li>
+                            <li><strong>Forgetting to style visited links</strong>: Use CSS <code>:visited</code> pseudo-class</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:30 - 10:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Your Links & Navigation Challenge</h4>
+                        <p><strong>Task 1:</strong> Create a complete website navigation with 5 pages (Home, About, Services, Portfolio, Contact)</p>
+                        <p><strong>Task 2:</strong> Add a breadcrumb trail for a product page: Home > Electronics > Smartphones > iPhone 15</p>
+                        <p><strong>Task 3:</strong> Create an email link, a phone link, and a download link (use # for the download href)</p>
+                        <p><strong>Bonus Challenge:</strong> Add proper accessibility attributes to all your links</p>
+                        <p><strong>Share your code:</strong> Post your HTML in the comments and I'll review it!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[10:00 - 11:00]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Excellent work! You've now mastered HTML links and navigation. You learned:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>How to create different types of links (external, internal, email, phone)</li>
+                        <li>Important link attributes like target, rel, and title</li>
+                        <li>How to build semantic navigation menus</li>
+                        <li>Breadcrumb navigation for better UX</li>
+                        <li>Accessibility considerations for links</li>
+                    </ul>
+                    
+                    <p>In the <strong>next tutorial</strong>, we'll learn how to add images to our web pages! We'll cover image formats, optimization, responsive images, and image accessibility with alt text.</p>
+                    
+                    <p>If you have questions about links or want feedback on your challenge, drop them in the comments below. <strong>I'm here to help!</strong></p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Support the Series!</h3>
+                        <p>If this tutorial helped you understand links and navigation:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-11.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Images Tutorial
+                            </a>
+                            <a href="tutorial-9.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous: Lists Tutorial
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for downloadable code examples and link cheat sheets!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Thanks for watching, and happy linking! I'll see you in the next tutorial.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 10: Links & Navigation | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: YouTube timing indicators • Live demos • Accessibility tips • Practical challenges
+            </p>
+        </div>
+    </div>
+</body>
+</html>

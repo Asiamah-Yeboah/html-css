@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 22: CSS Selectors | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .css-property {
+            color: #66d9ef;
+        }
+
+        .css-value {
+            color: #e6db74;
+        }
+
+        .css-selector {
+            color: #a6e22e;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-crosshairs"></i> Tutorial 22: CSS Selectors</h1>
+            <p>Master the art of targeting HTML elements with precision</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 9-11 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:50]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with energetic, focused tone]</p>
+                    <p><strong>Welcome back to our CSS journey!</strong> I'm [Your Name], and in our last tutorial, we learned what CSS is and how it works. But there's one crucial skill we need to master before we can truly style our web pages effectively.</p>
+                    <p>Think of CSS selectors like a sniper rifle. <strong>Basic selectors are like using a shotgun - they hit a lot of things at once.</strong> But advanced selectors? Those are precision tools that let you target exactly what you want.</p>
+                    <p>Today, we're going to master CSS selectors - the secret weapon that separates amateur CSS from professional, maintainable code!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-bullseye"></i> The Selector Challenge</h4>
+                        <p>Look at any professional website. Notice how only some buttons are blue while others are gray? How some links are underlined while others aren't? How the first paragraph in each section is bolded?</p>
+                        <p><strong>All of these precise styling choices are made possible by CSS selectors!</strong> Without them, you'd have to manually style every single element.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Basic Selectors Review Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:50 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-redo"></i> Quick Review: Basic Selectors</h2>
+                <div class="script-content">
+                    <p>Let's quickly review the basic selectors we learned about:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. Element Selector */</span><br>
+<span class="css-selector">p</span> { <span class="css-property">color</span>: <span class="css-value">black</span>; }<br><br>
+
+<span class="code-comment">/* 2. Class Selector */</span><br>
+<span class="css-selector">.button</span> { <span class="css-property">padding</span>: <span class="css-value">10px</span>; }<br><br>
+
+<span class="code-comment">/* 3. ID Selector */</span><br>
+<span class="css-selector">#header</span> { <span class="css-property">background</span>: <span class="css-value">blue</span>; }<br><br>
+
+<span class="code-comment">/* 4. Universal Selector */</span><br>
+<span class="css-selector">*</span> { <span class="css-property">margin</span>: <span class="css-value">0</span>; }
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-building"></i> The Problem with Basic Selectors</h4>
+                        <p>Imagine you're building a large website with hundreds of pages. Using only basic selectors would be like trying to organize a library where every book is just labeled "Book" - you'd never find what you need!</p>
+                        <p><strong>What if you want to style only paragraphs inside articles? Or buttons when they're being hovered over? Or every other list item?</strong> That's where advanced selectors come in!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Combinator Selectors Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-project-diagram"></i> Combinator Selectors</h2>
+                <div class="script-content">
+                    <p>Combinator selectors combine two or more basic selectors to be more specific. There are <strong>four main types</strong>:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. Descendant Selector (space) */</span><br>
+<span class="code-comment">/* Targets ANY paragraph inside ANY article */</span><br>
+<span class="css-selector">article p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">blue</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 2. Child Selector (>) */</span><br>
+<span class="code-comment">/* Targets ONLY direct children paragraphs of articles */</span><br>
+<span class="css-selector">article > p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-weight</span>: <span class="css-value">bold</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 3. Adjacent Sibling Selector (+) */</span><br>
+<span class="code-comment">/* Targets ONLY the first paragraph AFTER each h2 */</span><br>
+<span class="css-selector">h2 + p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">margin-top</span>: <span class="css-value">0</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 4. General Sibling Selector (~) */</span><br>
+<span class="code-comment">/* Targets ALL paragraphs that come AFTER h2 (same parent) */</span><br>
+<span class="css-selector">h2 ~ p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">#666</span>;<br>
+}
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> Pro Tip: Visualizing Combinators</h4>
+                        <p>Think of HTML as a family tree:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Descendant (space)</strong>: Grandchildren, great-grandchildren, etc.</li>
+                            <li><strong>Child (>)</strong>: Only direct children</li>
+                            <li><strong>Adjacent Sibling (+)</strong>: Immediate next sibling</li>
+                            <li><strong>General Sibling (~)</strong>: All younger siblings</li>
+                        </ul>
+                        <p>This mental model will help you remember which combinator to use!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Attribute Selectors Section -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-tag"></i> Attribute Selectors</h2>
+                <div class="script-content">
+                    <p>Attribute selectors target elements based on their attributes or attribute values. These are incredibly powerful!</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. Has attribute */</span><br>
+<span class="css-selector">a[target]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">red</span>; <span class="code-comment">/* All links with target attribute */</span><br>
+}<br><br>
+
+<span class="code-comment">/* 2. Attribute equals value */</span><br>
+<span class="css-selector">input[type="submit"]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background</span>: <span class="css-value">green</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 3. Attribute contains word */</span><br>
+<span class="css-selector">div[class~="warning"]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">border</span>: <span class="css-value">2px solid yellow</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 4. Attribute starts with */</span><br>
+<span class="css-selector">a[href^="https"]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">green</span>; <span class="code-comment">/* Secure links */</span><br>
+}<br><br>
+
+<span class="code-comment">/* 5. Attribute ends with */</span><br>
+<span class="css-selector">a[href$=".pdf"]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background</span>: <span class="css-value">url('pdf-icon.png')</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 6. Attribute contains substring */</span><br>
+<span class="css-selector">a[href*="youtube"]</span> {<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">red</span>; <span class="code-comment">/* YouTube links */</span><br>
+}
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-search"></i> Real-World Use Case</h4>
+                        <p>Many websites use attribute selectors to:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>Style external links differently (links starting with "http")</li>
+                            <li>Add icons to different file types (.pdf, .doc, .zip)</li>
+                            <li>Highlight required form fields (inputs with "required" attribute)</li>
+                            <li>Style navigation links to the current page differently</li>
+                        </ul>
+                        <p><strong>Attribute selectors give you precise control without adding extra classes!</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pseudo-classes Section -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 7:00]</div>
+                <h2 class="section-title"><i class="fas fa-ghost"></i> Pseudo-classes</h2>
+                <div class="script-content">
+                    <p>Pseudo-classes select elements in a specific <strong>state</strong>. They start with a colon (:).</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. User action pseudo-classes */</span><br>
+<span class="css-selector">a:hover</span> { <span class="css-property">color</span>: <span class="css-value">red</span>; }<br>
+<span class="css-selector">input:focus</span> { <span class="css-property">border-color</span>: <span class="css-value">blue</span>; }<br>
+<span class="css-selector">button:active</span> { <span class="css-property">transform</span>: <span class="css-value">scale(0.95)</span>; }<br><br>
+
+<span class="code-comment">/* 2. Structural pseudo-classes */</span><br>
+<span class="css-selector">li:first-child</span> { <span class="css-property">font-weight</span>: <span class="css-value">bold</span>; }<br>
+<span class="css-selector">li:last-child</span> { <span class="css-property">border-bottom</span>: <span class="css-value">none</span>; }<br>
+<span class="css-selector">tr:nth-child(odd)</span> { <span class="css-property">background</span>: <span class="css-value">#f0f0f0</span>; }<br>
+<span class="css-selector">tr:nth-child(even)</span> { <span class="css-property">background</span>: <span class="css-value">white</span>; }<br>
+<span class="css-selector">p:nth-of-type(2)</span> { <span class="css-property">color</span>: <span class="css-value">blue</span>; }<br><br>
+
+<span class="code-comment">/* 3. Form pseudo-classes */</span><br>
+<span class="css-selector">input:required</span> { <span class="css-property">border-left</span>: <span class="css-value">3px solid red</span>; }<br>
+<span class="css-selector">input:checked</span> { <span class="css-property">accent-color</span>: <span class="css-value">green</span>; }<br>
+<span class="css-selector">input:disabled</span> { <span class="css-property">opacity</span>: <span class="css-value">0.5</span>; }
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-magic"></i> nth-child Magic</h4>
+                        <p>The <code>:nth-child()</code> selector is incredibly versatile:</p>
+                        <div class="code-example" style="margin: 15px 0; font-size: 0.9rem;">
+<span class="css-selector">li:nth-child(3)</span> <span class="code-comment">/* Every 3rd item */</span><br>
+<span class="css-selector">li:nth-child(2n)</span> <span class="code-comment">/* Every even item */</span><br>
+<span class="css-selector">li:nth-child(2n+1)</span> <span class="code-comment">/* Every odd item */</span><br>
+<span class="css-selector">li:nth-child(3n)</span> <span class="code-comment">/* Every 3rd item */</span><br>
+<span class="css-selector">li:nth-child(3n+2)</span> <span class="code-comment">/* Every 3rd item starting from 2nd */</span><br>
+<span class="css-selector">li:nth-child(-n+3)</span> <span class="code-comment">/* First 3 items */</span><br>
+<span class="css-selector">li:nth-child(n+4)</span> <span class="code-comment">/* All items from 4th onwards */</span>
+                        </div>
+                        <p>This gives you incredible control over styling patterns and zebra-striping!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pseudo-elements Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:00 - 8:00]</div>
+                <h2 class="section-title"><i class="fas fa-wand-magic-sparkles"></i> Pseudo-elements</h2>
+                <div class="script-content">
+                    <p>Pseudo-elements style <strong>specific parts</strong> of an element. They start with two colons (::).</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* 1. ::before and ::after - add content */</span><br>
+<span class="css-selector">blockquote::before</span> {<br>
+&nbsp;&nbsp;<span class="css-property">content</span>: <span class="css-value">"“"</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">2em</span>;<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">gray</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 2. ::first-line and ::first-letter */</span><br>
+<span class="css-selector">p::first-line</span> { <span class="css-property">font-weight</span>: <span class="css-value">bold</span>; }<br>
+<span class="css-selector">p::first-letter</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">2em</span>;<br>
+&nbsp;&nbsp;<span class="css-property">float</span>: <span class="css-value">left</span>;<br>
+&nbsp;&nbsp;<span class="css-property">margin-right</span>: <span class="css-value">5px</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 3. ::selection - user selected text */</span><br>
+<span class="css-selector">::selection</span> {<br>
+&nbsp;&nbsp;<span class="css-property">background</span>: <span class="css-value">yellow</span>;<br>
+&nbsp;&nbsp;<span class="css-property">color</span>: <span class="css-value">black</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* 4. ::marker - list item markers */</span><br>
+<span class="css-selector">li::marker</span> { <span class="css-property">color</span>: <span class="css-value">red</span>; }
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-paint-brush"></i> Creative Uses of Pseudo-elements</h4>
+                        <p>Professional websites use pseudo-elements for:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li>Adding icons before/after links (no extra HTML needed!)</li>
+                            <li>Creating custom list bullets</li>
+                            <li>Styling drop caps in articles</li>
+                            <li>Adding decorative quotes around blockquotes</li>
+                            <li>Creating custom checkboxes and radio buttons</li>
+                        </ul>
+                        <p><strong>Pseudo-elements keep your HTML clean while adding visual flair!</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Specificity & Best Practices Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:00 - 8:45]</div>
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i> Specificity & Best Practices</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-sitemap"></i> Understanding Specificity</h4>
+                        <p>CSS has a specificity hierarchy (from highest to lowest):</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li><strong>Inline styles</strong> (style="...")</li>
+                            <li><strong>ID selectors</strong> (#id)</li>
+                            <li><strong>Class/Attribute/Pseudo-class selectors</strong> (.class, [type], :hover)</li>
+                            <li><strong>Element/Pseudo-element selectors</strong> (p, div, ::before)</li>
+                        </ol>
+                        <p><strong>Pro Tip:</strong> Try to avoid using IDs for styling. Classes are more reusable and have lower specificity, making your CSS easier to maintain.</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-check-circle"></i> Selector Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Keep selectors as simple as possible</strong> - don't over-qualify</li>
+                            <li><strong>Use classes for reusable styles</strong>, IDs for unique elements</li>
+                            <li><strong>Avoid the !important flag</strong> - it breaks the cascade</li>
+                            <li><strong>Organize selectors logically</strong> - group related styles</li>
+                            <li><strong>Use descriptive class names</strong> (.btn-primary not .blue-button)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:45 - 9:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Selector Mastery Challenge</h4>
+                        <p><strong>Task:</strong> Create an HTML page with various elements and style them using at least 10 different types of selectors.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>Use at least 2 combinator selectors</li>
+                            <li>Use at least 2 attribute selectors</li>
+                            <li>Use at least 3 pseudo-classes</li>
+                            <li>Use at least 2 pseudo-elements</li>
+                            <li>Create a zebra-striped table using :nth-child</li>
+                            <li>Style external links differently using attribute selectors</li>
+                        </ol>
+                        <p><strong>Bonus Challenge:</strong> Create a navigation menu where the current page link is styled differently using attribute selectors, and hover effects use pseudo-classes.</p>
+                        <p>Share your code in the comments! I'll feature the most creative solutions in our next video.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:00 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Congratulations! You've just leveled up your CSS skills significantly! You now understand:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>Combinator selectors for precise targeting</li>
+                        <li>Attribute selectors for smart styling</li>
+                        <li>Pseudo-classes for state-based styling</li>
+                        <li>Pseudo-elements for decorative effects</li>
+                        <li>CSS specificity and best practices</li>
+                    </ul>
+                    
+                    <p>In the <strong>next video</strong>, we'll dive into colors and backgrounds! We'll learn about color systems, gradients, background images, and how to create visually stunning designs.</p>
+                    
+                    <p><strong>Remember:</strong> CSS selectors are your precision tools. The better you master them, the cleaner and more maintainable your CSS will be!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Practice Makes Perfect!</h3>
+                        <p>Selectors are the foundation of efficient CSS. The more you practice, the more intuitive they become!</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-23.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next Tutorial: Colors & Backgrounds
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for selector cheat sheets, specificity calculators, and practice exercises!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Master your selectors, and you'll master CSS! See you in the next tutorial!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 22: CSS Selectors | Part 2 of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: YouTube timing indicators • Code demonstrations • Real-world examples • Progressive difficulty
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 25: Typography | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@400;700&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Source Code Pro', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .css-property {
+            color: #66d9ef;
+        }
+
+        .css-value {
+            color: #e6db74;
+        }
+
+        .css-selector {
+            color: #a6e22e;
+        }
+
+        .font-demo {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+        }
+
+        .font-sample {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .font-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .font-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+
+        .font-card h4 {
+            margin-bottom: 15px;
+            color: #182848;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-card p {
+            margin-bottom: 10px;
+        }
+
+        .typography-demo {
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border: 1px solid #ddd;
+        }
+
+        .typography-demo h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #182848;
+        }
+
+        .typography-demo p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .letter-spacing-demo {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .spacing-example {
+            text-align: center;
+        }
+
+        .spacing-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .spacing-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .font-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .letter-spacing-demo {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-font"></i> Tutorial 25: Typography</h1>
+            <p>Master the art of beautiful, readable text on the web</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 9-11 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Intermediate Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with clear, engaging tone]</p>
+                    <p><strong>Welcome to the art of beautiful text on the web!</strong> I'm [Your Name], and after mastering the Box Model, we're now ready to tackle one of the most visible aspects of web design: Typography.</p>
+                    <p>Did you know that <strong>95% of web content is text</strong>? That means typography isn't just about making things look pretty - it's about communication, readability, and creating emotional connections with your users.</p>
+                    <p>Today, we're going beyond just choosing fonts. We'll learn how to create text that's not only beautiful but also functional, accessible, and impactful!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-newspaper"></i> The Power of Typography</h4>
+                        <p>Look at The New York Times website. Notice how the headlines command attention, the body text is easy to read, and the different sections have distinct feels?</p>
+                        <p><strong>That's not accidental.</strong> Every font choice, every line height, every letter spacing decision is intentional. And today, you'll learn how to make those intentional choices too!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Font Families Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:30]</div>
+                <h2 class="section-title"><i class="fas fa-font"></i> Font Families & Categories</h2>
+                <div class="script-content">
+                    <p>Let's start with the basics - understanding different font categories:</p>
+                    
+                    <div class="font-grid">
+                        <div class="font-card">
+                            <h4>Serif Fonts</h4>
+                            <div class="font-sample" style="font-family: 'Times New Roman', serif;">
+                                Times New Roman
+                            </div>
+                            <p><strong>Characteristics:</strong> Small strokes at ends of letters</p>
+                            <p><strong>Best for:</strong> Long-form content, print, traditional designs</p>
+                            <p><strong>Example:</strong> The New York Times, academic papers</p>
+                        </div>
+                        
+                        <div class="font-card">
+                            <h4>Sans-Serif Fonts</h4>
+                            <div class="font-sample" style="font-family: 'Arial', sans-serif;">
+                                Arial
+                            </div>
+                            <p><strong>Characteristics:</strong> Clean, no decorative strokes</p>
+                            <p><strong>Best for:</strong> Web content, modern designs, interfaces</p>
+                            <p><strong>Example:</strong> Google, Medium, most websites</p>
+                        </div>
+                        
+                        <div class="font-card">
+                            <h4>Monospace Fonts</h4>
+                            <div class="font-sample" style="font-family: 'Courier New', monospace;">
+                                Courier New
+                            </div>
+                            <p><strong>Characteristics:</strong> Equal character width</p>
+                            <p><strong>Best for:</strong> Code, technical documentation</p>
+                            <p><strong>Example:</strong> Code editors, terminal interfaces</p>
+                        </div>
+                        
+                        <div class="font-card">
+                            <h4>Display Fonts</h4>
+                            <div class="font-sample" style="font-family: 'Impact', sans-serif; font-size: 1.3rem;">
+                                Impact
+                            </div>
+                            <p><strong>Characteristics:</strong> Decorative, attention-grabbing</p>
+                            <p><strong>Best for:</strong> Headlines, logos, short text</p>
+                            <p><strong>Example:</strong> Movie posters, advertising</p>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Font Family Stack - Always provide fallbacks */</span><br>
+<span class="css-selector">body</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'Roboto', 'Segoe UI', Arial, sans-serif</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* Different fonts for different elements */</span><br>
+<span class="css-selector">h1, h2, h3</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'Montserrat', sans-serif</span>;<br>
+}<br>
+<span class="css-selector">code, pre</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'Source Code Pro', monospace</span>;<br>
+}
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> Font Stack Strategy</h4>
+                        <p>Always create a <strong>font stack</strong> - a list of fonts in order of preference:</p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>Your preferred web font</li>
+                            <li>Similar system font as fallback</li>
+                            <li>Generic font family (sans-serif, serif, etc.)</li>
+                        </ol>
+                        <p>This ensures your design looks good even if your custom font fails to load!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Fonts Section -->
+            <div class="section">
+                <div class="timing-indicator">[2:30 - 4:00]</div>
+                <h2 class="section-title"><i class="fas fa-globe"></i> Using Web Fonts</h2>
+                <div class="script-content">
+                    <p>Web fonts let you use custom fonts beyond the standard system fonts. Here's how:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Method 1: Google Fonts (Easiest) */</span><br>
+<span class="code-comment">&lt;!-- In your HTML head --&gt;</span><br>
+&lt;link href="https://fonts.googleapis.com/css2?family=<span class="css-value">Roboto</span>:wght@<span class="css-value">300;400;700</span>&display=swap" rel="stylesheet"&gt;<br><br>
+
+<span class="code-comment">/* Method 2: @font-face (Full control) */</span><br>
+<span class="css-selector">@font-face</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-family</span>: <span class="css-value">'MyCustomFont'</span>;<br>
+&nbsp;&nbsp;<span class="css-property">src</span>: <span class="css-value">url('fonts/myfont.woff2') format('woff2')</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="css-value">url('fonts/myfont.woff') format('woff')</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-weight</span>: <span class="css-value">normal</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-style</span>: <span class="css-value">normal</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-display</span>: <span class="css-value">swap</span>; <span class="code-comment">/* Prevents invisible text */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Method 3: Font Services */</span><br>
+<span class="code-comment">&lt;!-- Adobe Fonts, Fonts.com, etc. --&gt;</span><br>
+&lt;link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css"&gt;
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-rocket"></i> Performance Considerations</h4>
+                        <p>Web fonts can slow down your website if not optimized:</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Use WOFF2 format</strong> (modern, compressed)</li>
+                            <li><strong>Limit font weights</strong> (don't load all 10 weights)</li>
+                            <li><strong>Use font-display: swap</strong> to prevent FOIT</li>
+                            <li><strong>Subset fonts</strong> if you only need certain characters</li>
+                            <li><strong>Preload critical fonts</strong> for above-the-fold content</li>
+                        </ul>
+                        <div class="code-example" style="margin: 15px 0; font-size: 0.9rem;">
+<span class="code-comment">&lt;!-- Preload critical fonts --&gt;</span><br>
+&lt;link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin&gt;
+                        </div>
+                        <p><strong>Aim for 2-3 font families max</strong> for better performance and design consistency!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Properties Section -->
+            <div class="section">
+                <div class="timing-indicator">[4:00 - 6:00]</div>
+                <h2 class="section-title"><i class="fas fa-text-height"></i> Text Properties & Styling</h2>
+                <div class="script-content">
+                    <p>Now let's explore the CSS properties that give you precise control over text:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Font Weight & Style */</span><br>
+<span class="css-selector">.light</span> { <span class="css-property">font-weight</span>: <span class="css-value">300</span>; }<br>
+<span class="css-selector">.normal</span> { <span class="css-property">font-weight</span>: <span class="css-value">400</span>; }<br>
+<span class="css-selector">.bold</span> { <span class="css-property">font-weight</span>: <span class="css-value">700</span>; }<br>
+<span class="css-selector">.italic</span> { <span class="css-property">font-style</span>: <span class="css-value">italic</span>; }<br>
+<span class="css-selector">.oblique</span> { <span class="css-property">font-style</span>: <span class="css-value">oblique</span>; }<br><br>
+
+<span class="code-comment">/* Font Size - Multiple Units */</span><br>
+<span class="css-selector">.pixels</span> { <span class="css-property">font-size</span>: <span class="css-value">16px</span>; } <span class="code-comment">/* Fixed */</span><br>
+<span class="css-selector">.ems</span> { <span class="css-property">font-size</span>: <span class="css-value">1em</span>; } <span class="code-comment">/* Relative to parent */</span><br>
+<span class="css-selector">.rems</span> { <span class="css-property">font-size</span>: <span class="css-value">1rem</span>; } <span class="code-comment">/* Relative to root */</span><br>
+<span class="css-selector">.percent</span> { <span class="css-property">font-size</span>: <span class="css-value">100%</span>; } <span class="code-comment">/* Percentage */</span><br><br>
+
+<span class="code-comment">/* Line Height - Critical for readability */</span><br>
+<span class="css-selector">body</span> { <span class="css-property">line-height</span>: <span class="css-value">1.6</span>; } <span class="code-comment">/* Unitless - best practice */</span><br>
+<span class="css-selector">.tight</span> { <span class="css-property">line-height</span>: <span class="css-value">1.2</span>; }<br>
+<span class="css-selector">.loose</span> { <span class="css-property">line-height</span>: <span class="css-value">2</span>; }<br><br>
+
+<span class="code-comment">/* Letter Spacing & Text Transform */</span><br>
+<span class="css-selector">.tight-spacing</span> { <span class="css-property">letter-spacing</span>: <span class="css-value">-0.5px</span>; }<br>
+<span class="css-selector">.loose-spacing</span> { <span class="css-property">letter-spacing</span>: <span class="css-value">2px</span>; }<br>
+<span class="css-selector">.uppercase</span> { <span class="css-property">text-transform</span>: <span class="css-value">uppercase</span>; }<br>
+<span class="css-selector">.capitalize</span> { <span class="css-property">text-transform</span>: <span class="css-value">capitalize</span>; }
+                    </div>
+                    
+                    <div class="letter-spacing-demo">
+                        <div class="spacing-example">
+                            <div class="spacing-label">Tight (-0.5px)</div>
+                            <div class="spacing-text" style="letter-spacing: -0.5px;">Readability</div>
+                        </div>
+                        <div class="spacing-example">
+                            <div class="spacing-label">Normal (0px)</div>
+                            <div class="spacing-text" style="letter-spacing: 0px;">Readability</div>
+                        </div>
+                        <div class="spacing-example">
+                            <div class="spacing-label">Loose (2px)</div>
+                            <div class="spacing-text" style="letter-spacing: 2px;">Readability</div>
+                        </div>
+                    </div>
+                    
+                    <div class="typography-demo">
+                        <h3>Perfect Typography in Action</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.8; font-weight: 300;">
+                            This paragraph demonstrates optimal typography settings. Notice the comfortable line height (1.8), appropriate font size (1.2rem), and light font weight (300) for extended reading.
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.6; font-weight: 400;">
+                            For body text, aim for 16px (1rem) minimum size. The line height should be 1.5-1.8 times the font size. These settings reduce eye strain and improve reading speed by up to 30%.
+                        </p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-ruler"></i> Font Size Units Guide</h4>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>px</strong>: Absolute, good for precise control</li>
+                            <li><strong>rem</strong>: Relative to root (html) font size, best for scalability</li>
+                            <li><strong>em</strong>: Relative to parent, can compound unexpectedly</li>
+                            <li><strong>%</strong>: Percentage of parent element</li>
+                            <li><strong>vw/vh</strong>: Viewport units, responsive but use carefully</li>
+                        </ul>
+                        <p><strong>Pro Tip:</strong> Use rem for most sizes, px for borders and small details!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Text Alignment & Decoration Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:00 - 7:15]</div>
+                <h2 class="section-title"><i class="fas fa-align-left"></i> Alignment & Decoration</h2>
+                <div class="script-content">
+                    <p>Text alignment and decoration complete your typography toolkit:</p>
+                    
+                    <div class="code-example">
+<span class="code-comment">/* Text Alignment */</span><br>
+<span class="css-selector">.left</span> { <span class="css-property">text-align</span>: <span class="css-value">left</span>; }<br>
+<span class="css-selector">.center</span> { <span class="css-property">text-align</span>: <span class="css-value">center</span>; }<br>
+<span class="css-selector">.right</span> { <span class="css-property">text-align</span>: <span class="css-value">right</span>; }<br>
+<span class="css-selector">.justify</span> {<br>
+&nbsp;&nbsp;<span class="css-property">text-align</span>: <span class="css-value">justify</span>;<br>
+&nbsp;&nbsp;<span class="css-property">text-align-last</span>: <span class="css-value">left</span>; <span class="code-comment">/* Better for last line */</span><br>
+}<br><br>
+
+<span class="code-comment">/* Text Decoration */</span><br>
+<span class="css-selector">.underline</span> { <span class="css-property">text-decoration</span>: <span class="css-value">underline</span>; }<br>
+<span class="css-selector">.line-through</span> { <span class="css-property">text-decoration</span>: <span class="css-value">line-through</span>; }<br>
+<span class="css-selector">.no-underline</span> { <span class="css-property">text-decoration</span>: <span class="css-value">none</span>; }<br>
+<span class="css-selector">.fancy-underline</span> {<br>
+&nbsp;&nbsp;<span class="css-property">text-decoration</span>: <span class="css-value">underline wavy #ff5733</span>;<br>
+}<br><br>
+
+<span class="code-comment">/* Text Shadow - Adds depth */</span><br>
+<span class="css-selector">.subtle-shadow</span> {<br>
+&nbsp;&nbsp;<span class="css-property">text-shadow</span>: <span class="css-value">1px 1px 2px rgba(0,0,0,0.1)</span>;<br>
+}<br>
+<span class="css-selector">.glow-effect</span> {<br>
+&nbsp;&nbsp;<span class="css-property">text-shadow</span>: <span class="css-value">0 0 10px rgba(76, 108, 183, 0.5)</span>;<br>
+}
+                    </div>
+                    
+                    <div class="font-demo" style="text-align: center; padding: 30px;">
+                        <h3 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2); margin-bottom: 20px;">Text Effects Demo</h3>
+                        <p style="text-decoration: underline wavy #ff5733; font-size: 1.2rem; margin-bottom: 15px;">
+                            Wavy underline effect
+                        </p>
+                        <p style="text-shadow: 0 0 8px rgba(76, 108, 183, 0.3); font-size: 1.2rem;">
+                            Glowing text effect
+                        </p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-book-open"></i> Alignment Best Practices</h4>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Left-align body text</strong> for best readability in Latin scripts</li>
+                            <li><strong>Avoid justified text</strong> on the web - it creates "rivers" of white space</li>
+                            <li><strong>Center-align</strong> for headlines, short quotes, and call-to-actions</li>
+                            <li><strong>Right-align</strong> numbers in tables for easier comparison</li>
+                            <li><strong>Use text-decoration: none</strong> to remove underlines from links when appropriate</li>
+                        </ul>
+                        <p><strong>Remember:</strong> Alignment affects reading flow and comprehension!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Typography Hierarchy Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:15 - 8:15]</div>
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Creating Typography Hierarchy</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-layer-group"></i> Building a Type Scale</h4>
+                        <p>A type scale creates visual harmony and hierarchy. Here's a professional approach:</p>
+                        
+                        <div class="code-example" style="background: #f8f9fa; color: #333; margin: 15px 0;">
+<strong>Modular Scale (1.25 ratio):</strong><br>
+h1: 3.052rem (≈49px)<br>
+h2: 2.441rem (≈39px)<br>
+h3: 1.953rem (≈31px)<br>
+h4: 1.563rem (≈25px)<br>
+h5: 1.25rem (≈20px)<br>
+Body: 1rem (16px)<br>
+Small: 0.8rem (≈13px)
+                        </div>
+                        
+                        <div class="code-example">
+<span class="code-comment">/* Implementing a type scale */</span><br>
+<span class="css-selector">:root</span> {<br>
+&nbsp;&nbsp;<span class="css-property">--text-base-size</span>: <span class="css-value">1rem</span>; <span class="code-comment">/* 16px */</span><br>
+&nbsp;&nbsp;<span class="css-property">--text-scale-ratio</span>: <span class="css-value">1.25</span>;<br>
+}<br><br>
+
+<span class="css-selector">h1</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">calc(var(--text-base-size) * var(--text-scale-ratio) * 3)</span>;<br>
+&nbsp;&nbsp;<span class="css-property">line-height</span>: <span class="css-value">1.2</span>;<br>
+&nbsp;&nbsp;<span class="css-property">font-weight</span>: <span class="css-value">800</span>;<br>
+}<br><br>
+
+<span class="css-selector">p</span> {<br>
+&nbsp;&nbsp;<span class="css-property">font-size</span>: <span class="css-value">var(--text-base-size)</span>;<br>
+&nbsp;&nbsp;<span class="css-property">line-height</span>: <span class="css-value">1.6</span>;<br>
+&nbsp;&nbsp;<span class="css-property">margin-bottom</span>: <span class="css-value">1.5em</span>; <span class="code-comment">/* Vertical rhythm */</span><br>
+}
+                        </div>
+                        
+                        <p><strong>Key Principle:</strong> Establish a clear visual hierarchy where headings stand out and body text is comfortable to read.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:15 - 8:45]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Typography Mastery Challenge</h4>
+                        <p><strong>Task:</strong> Create a blog article page with professional typography.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>Use at least 2 web fonts (one for headings, one for body)</li>
+                            <li>Implement a type scale for headings (h1-h6)</li>
+                            <li>Set optimal line height for body text (1.5-1.8)</li>
+                            <li>Create proper vertical rhythm using margin-bottom</li>
+                            <li>Style blockquotes and code blocks appropriately</li>
+                            <li>Ensure text has sufficient contrast for accessibility</li>
+                            <li>Make typography responsive (adjust sizes for mobile)</li>
+                        </ol>
+                        <p><strong>Bonus Challenge:</strong> Create a dark mode version with appropriate text colors and contrast.</p>
+                        <p>Share your blog designs in the comments! I'll feature the most readable and beautiful implementations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:45 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Fantastic work! You've just leveled up your web design skills significantly. You now understand:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>Font categories and when to use each</li>
+                        <li>How to implement and optimize web fonts</li>
+                        <li>All essential text properties and their effects</li>
+                        <li>How to create readable, accessible text</li>
+                        <li>The importance of typography hierarchy</li>
+                        <li>Professional type scales and vertical rhythm</li>
+                    </ul>
+                    
+                    <p>In the <strong>next video</strong>, we'll dive into Layout Basics! We'll learn about display properties, positioning, floats, and how to start creating complex layouts.</p>
+                    
+                    <p><strong>Remember:</strong> Great typography is invisible. When done right, people don't notice the fonts - they just enjoy reading!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Practice Your Typography Skills!</h3>
+                        <p>Try analyzing and recreating the typography from websites you admire. Notice their choices!</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-26.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next Tutorial: Layout Basics
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for font pairing tools, type scale generators, and accessibility checkers!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Good typography is the difference between reading and enjoying reading. Go create beautiful text! See you in the next tutorial!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 25: Typography | Part 2 of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: YouTube timing indicators • Multiple font examples • Practical demonstrations • Hierarchy principles
+            </p>
+        </div>
+    </div>
+</body>
+</html>

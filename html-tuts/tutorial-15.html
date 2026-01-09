@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 15: HTML Forms | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .form-demo {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+
+        .form-demo form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #182848;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4b6cb7;
+            box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.1);
+        }
+
+        .input-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .input-type-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .input-type-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #4b6cb7;
+        }
+
+        .input-type-card h4 {
+            color: #182848;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-type-card code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .form-comparison {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-box {
+            flex: 1;
+            min-width: 300px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .form-bad {
+            border: 2px solid #ff6b6b;
+        }
+
+        .form-good {
+            border: 2px solid #51cf66;
+        }
+
+        .validation-demo {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .validation-demo input:invalid {
+            border-color: #ff6b6b;
+        }
+
+        .validation-demo input:valid {
+            border-color: #51cf66;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .input-types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-comparison {
+                flex-direction: column;
+            }
+            
+            .comparison-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to All Tutorials
+            </a>
+            <h1><i class="fas fa-edit"></i> Tutorial 15: HTML Forms</h1>
+            <p>Creating interactive forms with validation and accessibility</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 12-15 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Intermediate Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-video"></i> Video Script
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with engaging, interactive tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series! 🚀</strong> We just mastered tables, and now we're diving into one of the most interactive and essential parts of web development: <strong>HTML Forms!</strong></p>
+                    <p>Think about it: Every time you log into a website, search on Google, post on social media, or shop online, you're using forms. Forms are how users communicate with websites, making them absolutely crucial for any interactive web application.</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-shopping-cart"></i> Real-World Impact</h4>
+                        <p>A well-designed form can <strong>increase conversions by 300%</strong>, while a poor form can lose 80% of potential customers. By the end of this tutorial, you'll know how to create forms that are not just functional, but user-friendly and accessible!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Basic Form Structure -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:00]</div>
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Basic Form Structure</h2>
+                <div class="script-content">
+                    <p>Every HTML form starts with the <code>&lt;form&gt;</code> element. Here's the basic structure:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic form structure --&gt;</span><br>
+                        <span class="code-tag">&lt;form</span> <span class="code-attr">action</span>=<span class="code-value">"/submit-form"</span> <span class="code-attr">method</span>=<span class="code-value">"POST"</span><span class="code-tag">&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Form controls go here --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"name"</span><span class="code-tag">&gt;</span>Name:<span class="code-tag">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">id</span>=<span class="code-value">"name"</span> <span class="code-attr">name</span>=<span class="code-value">"name"</span><span class="code-tag">&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-value">"submit"</span><span class="code-tag">&gt;</span>Submit<span class="code-tag">&lt;/button&gt;</span><br>
+                        <span class="code-tag">&lt;/form&gt;</span>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 10px 0; color: #182848;">Key Form Attributes:</h3>
+                    
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li><strong>action</strong>: Where the form data is sent (URL)</li>
+                        <li><strong>method</strong>: HTTP method to use (GET or POST)</li>
+                        <li><strong>GET</strong>: Data visible in URL (for searches)</li>
+                        <li><strong>POST</strong>: Data hidden (for passwords, sensitive info)</li>
+                        <li><strong>name</strong>: Identifies data on server (required!)</li>
+                    </ul>
+                    
+                    <div class="form-demo">
+                        <form onsubmit="event.preventDefault(); alert('Form submitted! (Demo only)');">
+                            <div class="form-group">
+                                <label for="demo-name">Name:</label>
+                                <input type="text" id="demo-name" name="name" placeholder="Enter your name">
+                            </div>
+                            <button type="submit">Submit Form</button>
+                        </form>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #666; text-align: center;">
+                            This is a live demo - try submitting it!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Types Gallery -->
+            <div class="section">
+                <div class="timing-indicator">[2:00 - 4:30]</div>
+                <h2 class="section-title"><i class="fas fa-keyboard"></i> Input Types Gallery</h2>
+                <div class="script-content">
+                    <p>HTML5 introduced many new input types that improve user experience and validation. Here are the most important ones:</p>
+                    
+                    <div class="input-types-grid">
+                        <!-- Row 1 -->
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-font"></i> Text Input</h4>
+                            <code>&lt;input type="text"&gt;</code>
+                            <p>Single line text input. Most common form element.</p>
+                            <input type="text" placeholder="Enter text" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-envelope"></i> Email Input</h4>
+                            <code>&lt;input type="email"&gt;</code>
+                            <p>Validates email format automatically.</p>
+                            <input type="email" placeholder="email@example.com" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-lock"></i> Password Input</h4>
+                            <code>&lt;input type="password"&gt;</code>
+                            <p>Hides characters with dots or asterisks.</p>
+                            <input type="password" placeholder="Enter password" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <!-- Row 2 -->
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-phone"></i> Telephone Input</h4>
+                            <code>&lt;input type="tel"&gt;</code>
+                            <p>Optimized for phone numbers on mobile.</p>
+                            <input type="tel" placeholder="(123) 456-7890" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-link"></i> URL Input</h4>
+                            <code>&lt;input type="url"&gt;</code>
+                            <p>Validates website URLs.</p>
+                            <input type="url" placeholder="https://example.com" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-calendar"></i> Date Input</h4>
+                            <code>&lt;input type="date"&gt;</code>
+                            <p>Shows date picker on supported browsers.</p>
+                            <input type="date" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <!-- Row 3 -->
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-search"></i> Search Input</h4>
+                            <code>&lt;input type="search"&gt;</code>
+                            <p>Styled for search with clear button.</p>
+                            <input type="search" placeholder="Search..." style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-sliders-h"></i> Range Input</h4>
+                            <code>&lt;input type="range"&gt;</code>
+                            <p>Slider for selecting a value.</p>
+                            <input type="range" min="0" max="100" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        
+                        <div class="input-type-card">
+                            <h4><i class="fas fa-hashtag"></i> Number Input</h4>
+                            <code>&lt;input type="number"&gt;</code>
+                            <p>Only accepts numbers with increment buttons.</p>
+                            <input type="number" placeholder="0" min="0" max="100" style="width: 100%; margin-top: 10px;">
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-mobile-alt"></i> Mobile Optimization</h4>
+                        <p>Different input types trigger different mobile keyboards! <code>type="email"</code> shows @ key, <code>type="tel"</code> shows number pad, <code>type="url"</code> shows .com key. This small detail greatly improves mobile user experience!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Controls Deep Dive -->
+            <div class="section">
+                <div class="timing-indicator">[4:30 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Form Controls Deep Dive</h2>
+                <div class="script-content">
+                    <p>Beyond basic inputs, forms have specialized controls for different data types:</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Complete form with various controls --&gt;</span><br>
+                        <span class="code-tag">&lt;form&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Textarea for multi-line text --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"message"</span><span class="code-tag">&gt;</span>Message:<span class="code-tag">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;textarea</span> <span class="code-attr">id</span>=<span class="code-value">"message"</span> <span class="code-attr">name</span>=<span class="code-value">"message"</span> <span class="code-attr">rows</span>=<span class="code-value">"4"</span> <span class="code-attr">cols</span>=<span class="code-value">"50"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Default text here...<br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/textarea&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Select dropdown --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"country"</span><span class="code-tag">&gt;</span>Country:<span class="code-tag">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;select</span> <span class="code-attr">id</span>=<span class="code-value">"country"</span> <span class="code-attr">name</span>=<span class="code-value">"country"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">""</span><span class="code-tag">&gt;</span>Select a country<span class="code-tag">&lt;/option&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">"us"</span><span class="code-tag">&gt;</span>United States<span class="code-tag">&lt;/option&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">"uk"</span><span class="code-tag">&gt;</span>United Kingdom<span class="code-tag">&lt;/option&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">"ca"</span><span class="code-tag">&gt;</span>Canada<span class="code-tag">&lt;/option&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/select&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Radio buttons (single selection) --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;fieldset&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;legend&gt;</span>Preferred Contact Method:<span class="code-tag">&lt;/legend&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"radio"</span> <span class="code-attr">id</span>=<span class="code-value">"contact-email"</span> <span class="code-attr">name</span>=<span class="code-value">"contact"</span> <span class="code-attr">value</span>=<span class="code-value">"email"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"contact-email"</span><span class="code-tag">&gt;</span>Email<span class="code-tag">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;br&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"radio"</span> <span class="code-attr">id</span>=<span class="code-value">"contact-phone"</span> <span class="code-attr">name</span>=<span class="code-value">"contact"</span> <span class="code-attr">value</span>=<span class="code-value">"phone"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"contact-phone"</span><span class="code-tag">&gt;</span>Phone<span class="code-tag">&lt;/label&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/fieldset&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-comment">&lt;!-- Checkboxes (multiple selection) --&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"checkbox"</span> <span class="code-attr">id</span>=<span class="code-value">"newsletter"</span> <span class="code-attr">name</span>=<span class="code-value">"newsletter"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"newsletter"</span><span class="code-tag">&gt;</span>Subscribe to newsletter<span class="code-tag">&lt;/label&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-value">"submit"</span><span class="code-tag">&gt;</span>Submit<span class="code-tag">&lt;/button&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-value">"reset"</span><span class="code-tag">&gt;</span>Reset<span class="code-tag">&lt;/button&gt;</span><br>
+                        <span class="code-tag">&lt;/form&gt;</span>
+                    </div>
+                    
+                    <div class="form-demo">
+                        <form onsubmit="event.preventDefault(); alert('Form submitted! (Demo only)');">
+                            <div class="form-group">
+                                <label for="demo-message">Message:</label>
+                                <textarea id="demo-message" name="message" rows="4" placeholder="Enter your message"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-country">Country:</label>
+                                <select id="demo-country" name="country">
+                                    <option value="">Select a country</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="ca">Canada</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <fieldset style="border: 1px solid #ddd; padding: 15px; border-radius: 6px;">
+                                    <legend style="padding: 0 10px; font-weight: 600;">Preferred Contact Method:</legend>
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                        <div>
+                                            <input type="radio" id="demo-email" name="contact" value="email">
+                                            <label for="demo-email">Email</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="demo-phone" name="contact" value="phone">
+                                            <label for="demo-phone">Phone</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="checkbox" id="demo-newsletter" name="newsletter">
+                                <label for="demo-newsletter">Subscribe to newsletter</label>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit">Submit</button>
+                                <button type="reset" style="background: #f8f9fa; border: 2px solid #ddd;">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Validation -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-check-double"></i> HTML5 Form Validation</h2>
+                <div class="script-content">
+                    <p>HTML5 introduced built-in validation attributes that work without JavaScript!</p>
+                    
+                    <div class="validation-demo">
+                        <form onsubmit="event.preventDefault(); alert('Form validated!');">
+                            <div class="form-group">
+                                <label for="required-field">Required Field:*</label>
+                                <input type="text" id="required-field" name="required" required placeholder="This field is required">
+                                <small style="color: #666; font-size: 0.9rem;">Try submitting without filling this</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email-field">Email:*</label>
+                                <input type="email" id="email-field" name="email" required placeholder="Valid email required">
+                                <small style="color: #666; font-size: 0.9rem;">Try entering an invalid email</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="minlength-field">Minimum 6 characters:*</label>
+                                <input type="text" id="minlength-field" name="minlength" minlength="6" required placeholder="Enter at least 6 characters">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="maxlength-field">Maximum 10 characters:</label>
+                                <input type="text" id="maxlength-field" name="maxlength" maxlength="10" placeholder="Max 10 characters">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="pattern-field">Phone Pattern (###-###-####):</label>
+                                <input type="text" id="pattern-field" name="pattern" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890">
+                                <small style="color: #666; font-size: 0.9rem;">Must match pattern: 123-456-7890</small>
+                            </div>
+                            
+                            <button type="submit">Validate Form</button>
+                        </form>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Common validation attributes --&gt;</span><br>
+                        <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Field must be filled --&gt;</span><br><br>
+                        
+                        <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"email"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Must be valid email format --&gt;</span><br><br>
+                        
+                        <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">minlength</span>=<span class="code-value">"6"</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-comment">&lt;!-- At least 6 characters --&gt;</span><br><br>
+                        
+                        <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">maxlength</span>=<span class="code-value">"10"</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Maximum 10 characters --&gt;</span><br><br>
+                        
+                        <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">pattern</span>=<span class="code-value">"\d{3}-\d{3}-\d{4}"</span><span class="code-tag">&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Must match regex pattern --&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-exclamation-circle"></i> Validation Best Practices</h4>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Always validate on server too</strong> - client-side validation can be bypassed</li>
+                            <li><strong>Show helpful error messages</strong> - use <code>title</code> attribute or custom validation</li>
+                            <li><strong>Validate as user types</strong> - use JavaScript for real-time feedback</li>
+                            <li><strong>Don't over-validate</strong> - only require what's truly necessary</li>
+                            <li><strong>Test without JavaScript</strong> - ensure basic HTML validation works</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Accessibility -->
+            <div class="section">
+                <div class="timing-indicator">[8:30 - 9:30]</div>
+                <h2 class="section-title"><i class="fas fa-universal-access"></i> Form Accessibility</h2>
+                <div class="script-content">
+                    <p>Forms can be challenging for users with disabilities. Here's how to make them accessible:</p>
+                    
+                    <div class="form-comparison">
+                        <div class="comparison-box form-bad">
+                            <h3>❌ Inaccessible Form</h3>
+                            <div class="code-example" style="margin: 10px 0; padding: 10px; font-size: 0.9rem;">
+                                Name:<br>
+                                <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span><span class="code-tag">&gt;</span><br>
+                                <span class="code-tag">&lt;br&gt;</span><br>
+                                Subscribe:<br>
+                                <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"checkbox"</span><span class="code-tag">&gt;</span>
+                            </div>
+                            <p><strong>Problems:</strong> No labels, screen readers can't associate labels with inputs, keyboard navigation fails</p>
+                        </div>
+                        
+                        <div class="comparison-box form-good">
+                            <h3>✅ Accessible Form</h3>
+                            <div class="code-example" style="margin: 10px 0; padding: 10px; font-size: 0.9rem;">
+                                <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"name"</span><span class="code-tag">&gt;</span>Name:<span class="code-tag">&lt;/label&gt;</span><br>
+                                <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">id</span>=<span class="code-value">"name"</span><span class="code-tag">&gt;</span><br>
+                                <span class="code-tag">&lt;br&gt;</span><br>
+                                <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"checkbox"</span> <span class="code-attr">id</span>=<span class="code-value">"subscribe"</span><span class="code-tag">&gt;</span><br>
+                                <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"subscribe"</span><span class="code-tag">&gt;</span>Subscribe<span class="code-tag">&lt;/label&gt;</span>
+                            </div>
+                            <p><strong>Benefits:</strong> Screen readers announce labels, keyboard navigation works, clear associations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-guidelines"></i> Accessibility Checklist</h4>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>Always use &lt;label&gt; elements</strong> with <code>for</code> attributes</li>
+                            <li><strong>Group related fields</strong> with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></li>
+                            <li><strong>Use proper input types</strong> for mobile optimization</li>
+                            <li><strong>Add ARIA attributes</strong> for complex forms (<code>aria-describedby</code>, <code>aria-invalid</code>)</li>
+                            <li><strong>Ensure keyboard navigation</strong> - Tab order should be logical</li>
+                            <li><strong>Provide clear instructions</strong> and error messages</li>
+                            <li><strong>Test with screen readers</strong> like NVDA or VoiceOver</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes Section -->
+            <div class="section">
+                <div class="timing-indicator">[9:30 - 10:00]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes to Avoid</h2>
+                <div class="script-content">
+                    <div class="note">
+                        <h4><i class="fas fa-bug"></i> Form Mistakes Beginners Make</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Missing labels</strong>: The #1 accessibility violation</li>
+                            <li><strong>Too many required fields</strong>: Reduces completion rates</li>
+                            <li><strong>Poor error messages</strong>: "Invalid input" instead of helpful guidance</li>
+                            <li><strong>No validation feedback</strong>: Users don't know what's wrong</li>
+                            <li><strong>Ignoring mobile users</strong>: Tiny buttons, wrong keyboards</li>
+                            <li><strong>Security issues</strong>: Client-side only validation</li>
+                            <li><strong>Bad tab order</strong>: Confusing keyboard navigation</li>
+                            <li><strong>Forgetting the name attribute</strong>: Data won't be sent to server</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-chart-line"></i> Form Optimization Tip</h4>
+                        <p>Studies show that <strong>reducing a form from 4 fields to 3 can increase conversions by 50%</strong>. Every field you remove increases completion rate. Only ask for what you absolutely need!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[10:00 - 11:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-trophy"></i> Your Form Mastery Challenge</h4>
+                        <p><strong>Task 1:</strong> Create a complete contact form with name, email, subject, message, and submit button</p>
+                        <p><strong>Task 2:</strong> Build a registration form with validation (password confirmation, email format, required fields)</p>
+                        <p><strong>Task 3:</strong> Design a survey form with radio buttons, checkboxes, and a dropdown</p>
+                        <p><strong>Task 4:</strong> Create a product filter form with range sliders and multiple checkboxes</p>
+                        <p><strong>Bonus Challenge:</strong> Make your forms fully accessible with ARIA attributes and test with a screen reader</p>
+                        <p><strong>Share your code:</strong> Post your best form creation in the comments - I'll review for accessibility and usability!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[11:00 - 12:00]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p>Amazing work! You've now mastered HTML forms. You learned:</p>
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>Basic form structure and attributes</li>
+                        <li>All major input types and their uses</li>
+                        <li>Specialized form controls (textarea, select, radio, checkbox)</li>
+                        <li>HTML5 form validation techniques</li>
+                        <li>Essential accessibility practices</li>
+                        <li>Common mistakes and optimization tips</li>
+                    </ul>
+                    
+                    <p>In the <strong>next tutorial</strong>, we'll explore a crucial modern web development concept: <strong>Semantic HTML</strong>! We'll learn how to use semantic tags for better accessibility, SEO, and maintainable code.</p>
+                    
+                    <p>If you have questions about forms or want feedback on your challenge, drop them in the comments. <strong>I'll help you create perfect, accessible forms!</strong></p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-heart"></i> Support the Series!</h3>
+                        <p>If this tutorial helped you master HTML forms:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-thumbs-up"></i>
+                                Like this Video
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-bell"></i>
+                                Subscribe & Notify
+                            </a>
+                            <a href="tutorial-16.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Semantic HTML
+                            </a>
+                            <a href="tutorial-14.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous: HTML Tables
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Check the description for form validation libraries, accessibility testing tools, and form design inspiration!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        Thanks for watching! See you in the next tutorial where we'll dive into semantic HTML! 🎯
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 15: HTML Forms | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Interactive form demos • Input type gallery • Validation examples • Accessibility comparison
+            </p>
+        </div>
+    </div>
+</body>
+</html>

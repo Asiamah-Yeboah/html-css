@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 7: Headings & Paragraphs | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .code-tag {
+            color: #569cd6;
+        }
+
+        .code-attr {
+            color: #9cdcfe;
+        }
+
+        .code-value {
+            color: #ce9178;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .tip h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .headings-demo {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4b6cb7;
+        }
+
+        .headings-demo h1, 
+        .headings-demo h2,
+        .headings-demo h3,
+        .headings-demo h4,
+        .headings-demo h5,
+        .headings-demo h6 {
+            margin: 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #4b6cb7;
+        }
+
+        .headings-demo h1 {
+            font-size: 2.5rem;
+            color: #182848;
+            border-left-width: 8px;
+        }
+
+        .headings-demo h2 {
+            font-size: 2rem;
+            color: #1a3a7a;
+            border-left-width: 7px;
+        }
+
+        .headings-demo h3 {
+            font-size: 1.75rem;
+            color: #1f4ba3;
+            border-left-width: 6px;
+        }
+
+        .headings-demo h4 {
+            font-size: 1.5rem;
+            color: #2a5dc4;
+            border-left-width: 5px;
+        }
+
+        .headings-demo h5 {
+            font-size: 1.25rem;
+            color: #3c6fd6;
+            border-left-width: 4px;
+        }
+
+        .headings-demo h6 {
+            font-size: 1rem;
+            color: #4b6cb7;
+            border-left-width: 3px;
+        }
+
+        .paragraph-demo {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .hierarchy-visual {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4caf50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .hierarchy-visual .level {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .hierarchy-visual .level::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .headings-demo h1 {
+                font-size: 2rem;
+            }
+            
+            .headings-demo h2 {
+                font-size: 1.75rem;
+            }
+            
+            .headings-demo h3 {
+                font-size: 1.5rem;
+            }
+            
+            .headings-demo h4 {
+                font-size: 1.25rem;
+            }
+            
+            .headings-demo h5 {
+                font-size: 1.1rem;
+            }
+            
+            .headings-demo h6 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-6.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-8.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-heading"></i> Tutorial 7: Headings & Paragraphs</h1>
+            <p>Structuring text content properly with semantic HTML</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 6-8 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-align-left"></i> Text Structure
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:45]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with clear, instructional tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned about HTML attributes. Today, we're learning about the <strong>most fundamental text elements in HTML: Headings and Paragraphs</strong>.</p>
+                    <p>If a webpage was a book, headings would be the <strong>chapter titles</strong> and paragraphs would be the <strong>story content</strong>. These elements create the readable structure of every webpage.</p>
+                    <p>By the end of this video, you'll know how to use headings and paragraphs properly to create well-structured, accessible, and SEO-friendly content. Let's begin!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-newspaper"></i> Real-World Analogy</h4>
+                        <p>Think of a newspaper article:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Main headline</strong> = <code>&lt;h1&gt;</code> (biggest, most important)</li>
+                            <li><strong>Section headings</strong> = <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code></li>
+                            <li><strong>Article paragraphs</strong> = <code>&lt;p&gt;</code> (the actual story)</li>
+                            <li><strong>Photo captions</strong> = Smaller headings or styled paragraphs</li>
+                        </ul>
+                        <p>This hierarchy helps readers understand the content structure instantly!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Headings: h1 to h6 -->
+            <div class="section">
+                <div class="timing-indicator">[0:45 - 2:15]</div>
+                <h2 class="section-title"><i class="fas fa-heading"></i> HTML Headings: h1 to h6</h2>
+                <div class="script-content">
+                    <p>HTML provides <strong>six levels of headings</strong>, from <code>&lt;h1&gt;</code> (most important) to <code>&lt;h6&gt;</code> (least important).</p>
+                    
+                    <div class="headings-demo">
+                        <h1>This is an &lt;h1&gt; Heading (Level 1)</h1>
+                        <h2>This is an &lt;h2&gt; Heading (Level 2)</h2>
+                        <h3>This is an &lt;h3&gt; Heading (Level 3)</h3>
+                        <h4>This is an &lt;h4&gt; Heading (Level 4)</h4>
+                        <h5>This is an &lt;h5&gt; Heading (Level 5)</h5>
+                        <h6>This is an &lt;h6&gt; Heading (Level 6)</h6>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- HTML code for the headings above --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>This is an &lt;h1&gt; Heading (Level 1)<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-tag">&lt;h2&gt;</span>This is an &lt;h2&gt; Heading (Level 2)<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>This is an &lt;h3&gt; Heading (Level 3)<span class="code-tag">&lt;/h3&gt;</span><br>
+                        <span class="code-tag">&lt;h4&gt;</span>This is an &lt;h4&gt; Heading (Level 4)<span class="code-tag">&lt;/h4&gt;</span><br>
+                        <span class="code-tag">&lt;h5&gt;</span>This is an &lt;h5&gt; Heading (Level 5)<span class="code-tag">&lt;/h5&gt;</span><br>
+                        <span class="code-tag">&lt;h6&gt;</span>This is an &lt;h6&gt; Heading (Level 6)<span class="code-tag">&lt;/h6&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-info-circle"></i> Heading Characteristics</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Block elements:</strong> Start on new line, take full width</li>
+                            <li><strong>Bold text:</strong> Headings are bold by default</li>
+                            <li><strong>Decreasing size:</strong> h1 largest, h6 smallest</li>
+                            <li><strong>Semantic meaning:</strong> Conveys importance hierarchy</li>
+                            <li><strong>Built-in spacing:</strong> Have margin above and below</li>
+                        </ul>
+                        <p><strong>Note:</strong> The exact size and styling can be changed with CSS, but the semantic hierarchy remains.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Proper Heading Hierarchy -->
+            <div class="section">
+                <div class="timing-indicator">[2:15 - 3:30]</div>
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Proper Heading Hierarchy</h2>
+                <div class="script-content">
+                    <p>The most important rule with headings: <strong>Maintain a logical hierarchy</strong>. Don't skip heading levels!</p>
+                    
+                    <div class="hierarchy-visual">
+                        <h4 style="color: #2e7d32; margin-bottom: 20px;">
+                            <i class="fas fa-project-diagram"></i> Correct Heading Structure
+                        </h4>
+                        
+                        <div class="level" style="font-size: 1.3rem; font-weight: bold; color: #182848;">
+                            h1: Main Page Title
+                        </div>
+                        
+                        <div class="level" style="margin-left: 20px; font-size: 1.1rem;">
+                            h2: Main Section 1
+                        </div>
+                        <div class="level" style="margin-left: 40px; font-size: 1rem;">
+                            h3: Subsection 1.1
+                        </div>
+                        <div class="level" style="margin-left: 40px; font-size: 1rem;">
+                            h3: Subsection 1.2
+                        </div>
+                        
+                        <div class="level" style="margin-left: 20px; font-size: 1.1rem;">
+                            h2: Main Section 2
+                        </div>
+                        <div class="level" style="margin-left: 40px; font-size: 1rem;">
+                            h3: Subsection 2.1
+                        </div>
+                        <div class="level" style="margin-left: 60px; font-size: 0.9rem;">
+                            h4: Detail 2.1.1
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- CORRECT: Proper heading hierarchy --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>My Travel Blog<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;h2&gt;</span>Paris Adventures<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>Day 1: Arrival<span class="code-tag">&lt;/h3&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>Day 2: Eiffel Tower<span class="code-tag">&lt;/h3&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;h2&gt;</span>Rome Experiences<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>Colosseum Visit<span class="code-tag">&lt;/h3&gt;</span><br>
+                        <span class="code-tag">&lt;h4&gt;</span>Ticket Information<span class="code-tag">&lt;/h4&gt;</span><br>
+                        <span class="code-tag">&lt;h4&gt;</span>Tour Guide Tips<span class="code-tag">&lt;/h4&gt;</span>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- WRONG: Skipping heading levels --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Never do this! --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>Main Title<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>Skipped h2!<span class="code-tag">&lt;/h3&gt;</span> <span class="code-comment">&lt;!-- BAD: Missing h2 --&gt;</span><br>
+                        <span class="code-tag">&lt;h5&gt;</span>Skipped h4!<span class="code-tag">&lt;/h5&gt;</span> <span class="code-comment">&lt;!-- BAD: Missing h4 --&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-search"></i> Why Hierarchy Matters for SEO</h4>
+                        <p>Search engines like Google <strong>use heading hierarchy to understand your content</strong>:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><code>&lt;h1&gt;</code> tells Google the main topic of the page</li>
+                            <li><code>&lt;h2&gt;</code> sections indicate major content areas</li>
+                            <li><code>&lt;h3&gt;</code> to <code>&lt;h6&gt;</code> show sub-topics and details</li>
+                            <li>Proper hierarchy improves search rankings</li>
+                            <li>Skipping levels confuses search engines</li>
+                        </ul>
+                        <p>Good heading structure = Better SEO = More visitors!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paragraphs: The <p> Element -->
+            <div class="section">
+                <div class="timing-indicator">[3:30 - 4:45]</div>
+                <h2 class="section-title"><i class="fas fa-paragraph"></i> Paragraphs: The &lt;p&gt; Element</h2>
+                <div class="script-content">
+                    <p>The <code>&lt;p&gt;</code> element defines a <strong>paragraph</strong> - a block of text that forms a coherent unit.</p>
+                    
+                    <div class="paragraph-demo">
+                        <p>This is a paragraph of text. Paragraphs are the building blocks of written content on the web. They group related sentences together to form coherent thoughts and ideas.</p>
+                        
+                        <p>This is another paragraph. Notice how it's separated from the first paragraph by some vertical space. This spacing makes content easier to read and understand.</p>
+                        
+                        <p>Paragraphs can contain various inline elements like <strong>bold text</strong>, <em>italic text</em>, and even <a href="#">links</a>. But the paragraph itself is a block-level element.</p>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- HTML code for the paragraphs above --&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>This is a paragraph of text. Paragraphs are the building blocks of written content on the web. They group related sentences together to form coherent thoughts and ideas.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span>This is another paragraph. Notice how it's separated from the first paragraph by some vertical space. This spacing makes content easier to read and understand.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p&gt;</span>Paragraphs can contain various inline elements like <span class="code-tag">&lt;strong&gt;</span>bold text<span class="code-tag">&lt;/strong&gt;</span>, <span class="code-tag">&lt;em&gt;</span>italic text<span class="code-tag">&lt;/em&gt;</span>, and even <span class="code-tag">&lt;a href="#"&gt;</span>links<span class="code-tag">&lt;/a&gt;</span>. But the paragraph itself is a block-level element.<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-check-circle"></i> Paragraph Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>One idea per paragraph:</strong> Keep paragraphs focused</li>
+                            <li><strong>3-5 sentences average:</strong> Don't make paragraphs too long</li>
+                            <li><strong>Use proper closing tags:</strong> Always close <code>&lt;p&gt;</code> tags</li>
+                            <li><strong>No empty paragraphs:</strong> Don't use <code>&lt;p&gt;&lt;/p&gt;</code> for spacing</li>
+                            <li><strong>Semantic meaning:</strong> Use for actual text content, not layout</li>
+                        </ul>
+                        <p>For visual spacing, use CSS margin/padding instead of empty paragraphs!</p>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-book-open"></i> Real-World Example: News Article</h4>
+                        <p>Look at any news website (BBC, CNN, etc.). The article structure typically follows this pattern:</p>
+                        <div class="code-example">
+                            <span class="code-tag">&lt;h1&gt;</span>Breaking News Headline<span class="code-tag">&lt;/h1&gt;</span><br>
+                            <span class="code-tag">&lt;p&gt;</span><em>By Author Name | Date</em><span class="code-tag">&lt;/p&gt;</span><br>
+                            <span class="code-tag">&lt;p&gt;</span>First paragraph summarizing the news...<span class="code-tag">&lt;/p&gt;</span><br>
+                            <span class="code-tag">&lt;p&gt;</span>Second paragraph with more details...<span class="code-tag">&lt;/p&gt;</span><br>
+                            <span class="code-tag">&lt;h2&gt;</span>Background Information<span class="code-tag">&lt;/h2&gt;</span><br>
+                            <span class="code-tag">&lt;p&gt;</span>Paragraph explaining background...<span class="code-tag">&lt;/p&gt;</span>
+                        </div>
+                        <p>This structure helps readers scan and understand content quickly!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Attributes for Headings & Paragraphs -->
+            <div class="section">
+                <div class="timing-indicator">[4:45 - 5:30]</div>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Common Attributes for Headings & Paragraphs</h2>
+                <div class="script-content">
+                    <p>Headings and paragraphs can use various HTML attributes we learned about earlier:</p>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Use Case</th>
+                                <th>Example</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td>Both</td>
+                                <td><code>id="main-heading"</code></td>
+                                <td>Unique identifier for linking/styling</td>
+                            </tr>
+                            <tr>
+                                <td><code>class</code></td>
+                                <td>Both</td>
+                                <td><code>class="intro"</code></td>
+                                <td>CSS styling group</td>
+                            </tr>
+                            <tr>
+                                <td><code>style</code></td>
+                                <td>Both</td>
+                                <td><code>style="color: blue;"</code></td>
+                                <td>Inline CSS (use sparingly)</td>
+                            </tr>
+                            <tr>
+                                <td><code>lang</code></td>
+                                <td>Both</td>
+                                <td><code>lang="fr"</code></td>
+                                <td>Language of text content</td>
+                            </tr>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td>Both</td>
+                                <td><code>title="Tooltip text"</code></td>
+                                <td>Tooltip on hover</td>
+                            </tr>
+                            <tr>
+                                <td><code>align</code></td>
+                                <td>Both</td>
+                                <td><code>align="center"</code></td>
+                                <td>Text alignment (deprecated - use CSS)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Headings and paragraphs with attributes --&gt;</span><br>
+                        <span class="code-tag">&lt;h1</span> <span class="code-attr">id=</span><span class="code-value">"page-title"</span> <span class="code-attr">class=</span><span class="code-value">"main-heading"</span><span class="code-tag">&gt;</span>Welcome<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p</span> <span class="code-attr">class=</span><span class="code-value">"intro"</span> <span class="code-attr">style=</span><span class="code-value">"font-size: 18px;"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;This is an introductory paragraph with custom styling.<br>
+                        <span class="code-tag">&lt;/p&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;h2</span> <span class="code-attr">id=</span><span class="code-value">"about-section"</span> <span class="code-attr">title=</span><span class="code-value">"Learn more about us"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;About Our Company<br>
+                        <span class="code-tag">&lt;/h2&gt;</span><br>
+                        <br>
+                        <span class="code-tag">&lt;p</span> <span class="code-attr">lang=</span><span class="code-value">"es"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<em>Este párrafo está en español.</em><br>
+                        <span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="warning">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Avoid Deprecated Attributes!</h4>
+                        <p>Some attributes like <code>align</code>, <code>bgcolor</code>, and <code>font</code> are <strong>deprecated</strong> (outdated) in HTML5:</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- DON'T USE THESE (deprecated) --&gt;</span><br>
+                            <span class="code-tag">&lt;p</span> <span class="code-attr">align=</span><span class="code-value">"center"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/p&gt;</span> <span class="code-comment">&lt;!-- Use CSS instead --&gt;</span><br>
+                            <span class="code-tag">&lt;h1&gt;</span><span class="code-tag">&lt;font</span> <span class="code-attr">color=</span><span class="code-value">"red"</span><span class="code-tag">&gt;</span>...<span class="code-tag">&lt;/font&gt;&lt;/h1&gt;</span> <span class="code-comment">&lt;!-- Use CSS instead --&gt;</span>
+                        </div>
+                        <p><strong>Always use CSS for styling:</strong> Create CSS classes like <code>.center-text { text-align: center; }</code> instead of deprecated HTML attributes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessibility Considerations -->
+            <div class="section">
+                <div class="timing-indicator">[5:30 - 6:00]</div>
+                <h2 class="section-title"><i class="fas fa-universal-access"></i> Accessibility Considerations</h2>
+                <div class="script-content">
+                    <p>Proper use of headings and paragraphs is <strong>crucial for accessibility</strong>. Screen readers and other assistive technologies rely on semantic structure.</p>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-assistive-listening-systems"></i> Accessibility Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>One h1 per page:</strong> Screen readers announce this as the main content</li>
+                            <li><strong>Logical hierarchy:</strong> Helps screen reader users navigate</li>
+                            <li><strong>Descriptive text:</strong> Make headings clear and meaningful</li>
+                            <li><strong>Don't use headings for styling:</strong> Use CSS for visual effects</li>
+                            <li><strong>Paragraphs for actual content:</strong> Screen readers read paragraphs as continuous text</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- ACCESSIBLE: Good for screen readers --&gt;</span><br>
+                        <span class="code-tag">&lt;h1&gt;</span>How to Bake Chocolate Chip Cookies<span class="code-tag">&lt;/h1&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>Follow these simple steps to make delicious cookies.<span class="code-tag">&lt;/p&gt;</span><br>
+                        <span class="code-tag">&lt;h2&gt;</span>Ingredients<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>You will need the following ingredients...<span class="code-tag">&lt;/p&gt;</span><br>
+                        <span class="code-tag">&lt;h2&gt;</span>Instructions<span class="code-tag">&lt;/h2&gt;</span><br>
+                        <span class="code-tag">&lt;h3&gt;</span>Step 1: Mix Dry Ingredients<span class="code-tag">&lt;/h3&gt;</span><br>
+                        <span class="code-tag">&lt;p&gt;</span>In a large bowl, combine flour...<span class="code-tag">&lt;/p&gt;</span>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-eye"></i> Screen Reader Demonstration</h4>
+                        <p>A screen reader would navigate this page like this:</p>
+                        <ol style="margin: 15px 0 15px 20px;">
+                            <li>"Heading level 1: How to Bake Chocolate Chip Cookies"</li>
+                            <li>"Paragraph: Follow these simple steps..."</li>
+                            <li>"Heading level 2: Ingredients" (user can jump to this section)</li>
+                            <li>"Heading level 2: Instructions"</li>
+                            <li>"Heading level 3: Step 1: Mix Dry Ingredients"</li>
+                        </ol>
+                        <p>Proper structure = Better experience for all users!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes -->
+            <div class="section">
+                <div class="timing-indicator">[6:00 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common Mistakes with Headings & Paragraphs</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> Common Mistakes to Avoid</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Using headings for styling instead of structure<br>
+                        <strong>Bad:</strong> <code>&lt;h4&gt;</code> because you want small bold text<br>
+                        <strong>Good:</strong> Use <code>&lt;p class="small-bold"&gt;</code> with CSS</p>
+                        
+                        <p><strong>Mistake 2:</strong> Skipping heading levels<br>
+                        <strong>Bad:</strong> <code>&lt;h1&gt;</code> then <code>&lt;h3&gt;</code> (missing h2)<br>
+                        <strong>Good:</strong> Maintain sequential hierarchy</p>
+                        
+                        <p><strong>Mistake 3:</strong> Multiple h1 elements on one page<br>
+                        <strong>Bad:</strong> Several <code>&lt;h1&gt;</code> tags<br>
+                        <strong>Good:</strong> One <code>&lt;h1&gt;</code> per page (main title)</p>
+                        
+                        <p><strong>Mistake 4:</strong> Very long paragraphs<br>
+                        <strong>Bad:</strong> One paragraph with 20 sentences<br>
+                        <strong>Good:</strong> Break into multiple focused paragraphs</p>
+                        
+                        <p><strong>Mistake 5:</strong> Empty paragraphs for spacing<br>
+                        <strong>Bad:</strong> <code>&lt;p&gt;&nbsp;&lt;/p&gt;</code> for white space<br>
+                        <strong>Good:</strong> Use CSS margin or padding</p>
+                        
+                        <p><strong>Mistake 6:</strong> Not closing paragraph tags<br>
+                        <strong>Bad:</strong> <code>&lt;p&gt;Text here</code> (missing <code>&lt;/p&gt;</code>)<br>
+                        <strong>Good:</strong> Always close your tags</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-lightbulb"></i> Quick Fix: VS Code Emmet</h4>
+                        <p>In VS Code, you can use Emmet abbreviations to create headings quickly:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Type <code>h1</code> then press Tab → <code>&lt;h1&gt;&lt;/h1&gt;</code></li>
+                            <li>Type <code>h2</code> then press Tab → <code>&lt;h2&gt;&lt;/h2&gt;</code></li>
+                            <li>Type <code>p</code> then press Tab → <code>&lt;p&gt;&lt;/p&gt;</code></li>
+                            <li>Type <code>h1{Title}</code> then Tab → <code>&lt;h1&gt;Title&lt;/h1&gt;</code></li>
+                        </ul>
+                        <p>This saves time and ensures proper syntax!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 6:45]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-file-alt"></i> Headings & Paragraphs Challenge</h4>
+                        <p><strong>Task 1:</strong> Create an HTML page about your favorite hobby using proper heading hierarchy.</p>
+                        
+                        <p><strong>Task 2:</strong> Include:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>One <code>&lt;h1&gt;</code> as the main title</li>
+                            <li>At least three <code>&lt;h2&gt;</code> sections</li>
+                            <li>Some <code>&lt;h3&gt;</code> sub-sections</li>
+                            <li>Multiple <code>&lt;p&gt;</code> paragraphs with actual content</li>
+                            <li>Proper attributes (id, class) on some elements</li>
+                        </ul></p>
+                        
+                        <p><strong>Task 3:</strong> Write at least 5 paragraphs with 3-5 sentences each about why you enjoy this hobby.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Find a webpage with poor heading structure (you can search for "lorem ipsum" demo pages). Take a screenshot and explain in the comments what's wrong with their heading hierarchy!</p>
+                        
+                        <p>This practice will help you create well-structured, readable, and accessible content - a fundamental skill for web development!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[6:45 - 7:15]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now understand HTML headings and paragraphs. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The six heading levels (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) and their hierarchy</li>
+                        <li>How to use the <code>&lt;p&gt;</code> element for paragraphs</li>
+                        <li>The importance of proper heading hierarchy for SEO and accessibility</li>
+                        <li>Common attributes for headings and paragraphs</li>
+                        <li>Accessibility considerations for screen readers</li>
+                        <li>Common mistakes and how to avoid them</li>
+                    </ul>
+                    
+                    <p>Headings and paragraphs are the <strong>backbone of readable web content</strong>. Mastering them is essential for creating professional, accessible websites.</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll learn about text formatting - how to make text bold, italic, underlined, and more using HTML elements!</p>
+                    
+                    <p>If you have questions about headings/paragraphs or want feedback on your challenge, share in the comments below!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-book"></i> Resources & Practice</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                Practice Template
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                Hierarchy Checklist
+                            </a>
+                            <a href="tutorial-8.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Text Formatting
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable templates, accessibility testing tools, and heading hierarchy examples!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If this tutorial helped you understand HTML headings and paragraphs, please give it a thumbs up and subscribe for the rest of the series!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 7: Headings & Paragraphs | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: Visual hierarchy examples • SEO & accessibility guidance • Common mistakes • Practice exercises
+            </p>
+        </div>
+    </div>
+</body>
+</html>

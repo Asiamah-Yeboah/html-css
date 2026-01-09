@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial 9: HTML Lists | HTML Tutorial Series</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button.prev i {
+            margin-right: 5px;
+        }
+
+        .nav-button.next i {
+            margin-left: 5px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #4b6cb7;
+        }
+
+        .script-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .script-content p {
+            margin-bottom: 20px;
+        }
+
+        .real-world {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .real-world h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .code-tag {
+            color: #569cd6;
+        }
+
+        .code-attr {
+            color: #9cdcfe;
+        }
+
+        .code-value {
+            color: #ce9178;
+        }
+
+        .challenge {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .challenge h4 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .note {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .note h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning {
+            background-color: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #f44336;
+        }
+
+        .warning h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .tip h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .call-to-action {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .call-to-action h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: white;
+            color: #4b6cb7;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .timing-indicator {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .lists-demo {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #4b6cb7;
+        }
+
+        .lists-demo .list-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .lists-demo .list-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .lists-demo .list-box h4 {
+            color: #182848;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4b6cb7;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .nesting-demo {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .style-demo {
+            background: #fff8e1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .style-demo ul, .style-demo ol {
+            margin-left: 30px;
+        }
+
+        .style-demo .custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .style-demo .custom-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .style-demo .custom-list li:before {
+            content: "✓";
+            color: #4caf50;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-button, .nav-buttons {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .lists-demo .list-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                All Tutorials
+            </a>
+            
+            <div class="nav-buttons">
+                <a href="tutorial-8.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="tutorial-10.html" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <h1><i class="fas fa-list"></i> Tutorial 9: HTML Lists</h1>
+            <p>Organizing content with ordered, unordered, and description lists</p>
+            
+            <div class="tutorial-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i> 8-10 minutes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-signal"></i> Beginner Level
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tasks"></i> Content Organization
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Introduction Section -->
+            <div class="section">
+                <div class="timing-indicator">[0:00 - 0:50]</div>
+                <h2 class="section-title"><i class="fas fa-play-circle"></i> Introduction</h2>
+                <div class="script-content">
+                    <p>[Start with organized, clear tone]</p>
+                    <p><strong>Welcome back to our HTML tutorial series!</strong> I'm [Your Name], and in our last video, we learned about text formatting. Today, we're learning how to <strong>organize content with HTML lists</strong>.</p>
+                    <p>Lists are everywhere on the web - from navigation menus to product features, from recipes to step-by-step instructions. They help break down complex information into digestible chunks.</p>
+                    <p>By the end of this video, you'll master all three types of HTML lists and know when to use each one. Let's dive in!</p>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-shopping-cart"></i> Real-World List Examples</h4>
+                        <p>Lists are all around us on the web:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Shopping websites:</strong> Product features bullet points</li>
+                            <li><strong>Recipe sites:</strong> Ordered lists of ingredients and steps</li>
+                            <li><strong>Navigation menus:</strong> Lists of links</li>
+                            <li><strong>Blog articles:</strong> Key takeaways or summary points</li>
+                            <li><strong>Documentation:</strong> Step-by-step instructions</li>
+                        </ul>
+                        <p>Mastering lists is essential for creating well-organized web content!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Three Types of HTML Lists -->
+            <div class="section">
+                <div class="timing-indicator">[0:50 - 2:15]</div>
+                <h2 class="section-title"><i class="fas fa-boxes"></i> Three Types of HTML Lists</h2>
+                <div class="script-content">
+                    <p>HTML provides three main types of lists, each with a specific purpose:</p>
+                    
+                    <div class="lists-demo">
+                        <div class="list-container">
+                            <div class="list-box">
+                                <h4><i class="fas fa-circle"></i> Unordered Lists (<code>&lt;ul&gt;</code>)</h4>
+                                <p>Bulleted lists for items without specific order:</p>
+                                <ul>
+                                    <li>Shopping list items</li>
+                                    <li>Features of a product</li>
+                                    <li>Navigation menu items</li>
+                                    <li>Key points in an article</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="list-box">
+                                <h4><i class="fas fa-list-ol"></i> Ordered Lists (<code>&lt;ol&gt;</code>)</h4>
+                                <p>Numbered lists for sequential items:</p>
+                                <ol>
+                                    <li>Step-by-step instructions</li>
+                                    <li>Rankings or priorities</li>
+                                    <li>Recipes</li>
+                                    <li>Assembly instructions</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="list-box">
+                                <h4><i class="fas fa-indent"></i> Description Lists (<code>&lt;dl&gt;</code>)</h4>
+                                <p>Term-description pairs (like a dictionary):</p>
+                                <dl>
+                                    <dt>HTML</dt>
+                                    <dd>HyperText Markup Language</dd>
+                                    <dt>CSS</dt>
+                                    <dd>Cascading Style Sheets</dd>
+                                    <dt>JavaScript</dt>
+                                    <dd>Programming language for the web</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>List Type</th>
+                                <th>Tag</th>
+                                <th>Item Tag</th>
+                                <th>Default Style</th>
+                                <th>When to Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Unordered List</td>
+                                <td><code>&lt;ul&gt;</code></td>
+                                <td><code>&lt;li&gt;</code></td>
+                                <td>Bullets (•)</td>
+                                <td>Items without specific order</td>
+                            </tr>
+                            <tr>
+                                <td>Ordered List</td>
+                                <td><code>&lt;ol&gt;</code></td>
+                                <td><code>&lt;li&gt;</code></td>
+                                <td>Numbers (1, 2, 3)</td>
+                                <td>Sequential items, steps, rankings</td>
+                            </tr>
+                            <tr>
+                                <td>Description List</td>
+                                <td><code>&lt;dl&gt;</code></td>
+                                <td><code>&lt;dt&gt;</code> + <code>&lt;dd&gt;</code></td>
+                                <td>Indented descriptions</td>
+                                <td>Term-definition pairs, metadata</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-info-circle"></i> Key List Characteristics</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Block elements:</strong> Lists create new blocks</li>
+                            <li><strong>Automatic indentation:</strong> Browser adds default spacing</li>
+                            <li><strong>Semantic meaning:</strong> Different list types convey different meanings</li>
+                            <li><strong>Stylable with CSS:</strong> Can customize bullets, numbers, spacing</li>
+                            <li><strong>Accessibility friendly:</strong> Screen readers announce list types</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unordered Lists: <ul> -->
+            <div class="section">
+                <div class="timing-indicator">[2:15 - 3:30]</div>
+                <h2 class="section-title"><i class="fas fa-circle"></i> Unordered Lists: &lt;ul&gt;</h2>
+                <div class="script-content">
+                    <p>Unordered lists are for <strong>items without a specific sequence or order</strong>. They're the most commonly used list type.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic unordered list --&gt;</span><br>
+                        <span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Apples<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Bananas<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Oranges<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Grapes<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Unordered list with attributes --&gt;</span><br>
+                        <span class="code-tag">&lt;ul</span> <span class="code-attr">id=</span><span class="code-value">"shopping-list"</span> <span class="code-attr">class=</span><span class="code-value">"custom-bullets"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li</span> <span class="code-attr">class=</span><span class="code-value">"fruit"</span><span class="code-tag">&gt;</span>Apples<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li</span> <span class="code-attr">class=</span><span class="code-value">"fruit"</span><span class="code-tag">&gt;</span>Bananas<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li</span> <span class="code-attr">class=</span><span class="code-value">"dairy"</span><span class="code-tag">&gt;</span>Milk<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li</span> <span class="code-attr">class=</span><span class="code-value">"bakery"</span><span class="code-tag">&gt;</span>Bread<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-check-circle"></i> Common Uses for Unordered Lists</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Navigation menus:</strong> Lists of links</li>
+                            <li><strong>Feature lists:</strong> Product/service features</li>
+                            <li><strong>Checklists:</strong> Items to complete</li>
+                            <li><strong>Bulleted content:</strong> Breaking up text</li>
+                            <li><strong>Social media links:</strong> Icons/links in footer</li>
+                            <li><strong>Sidebar widgets:</strong> Recent posts, categories</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-sitemap"></i> Real-World Example: Navigation Menu</h4>
+                        <p>Most website navigation menus are actually unordered lists:</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- Navigation menu as unordered list --&gt;</span><br>
+                            <span class="code-tag">&lt;nav&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;ul</span> <span class="code-attr">class=</span><span class="code-value">"main-nav"</span><span class="code-tag">&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"index.html"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"about.html"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"services.html"</span><span class="code-tag">&gt;</span>Services<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"contact.html"</span><span class="code-tag">&gt;</span>Contact<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                            <span class="code-tag">&lt;/nav&gt;</span>
+                        </div>
+                        <p>This semantic structure helps screen readers understand navigation!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ordered Lists: <ol> -->
+            <div class="section">
+                <div class="timing-indicator">[3:30 - 4:45]</div>
+                <h2 class="section-title"><i class="fas fa-list-ol"></i> Ordered Lists: &lt;ol&gt;</h2>
+                <div class="script-content">
+                    <p>Ordered lists are for <strong>items that have a specific sequence, order, or priority</strong>.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic ordered list --&gt;</span><br>
+                        <span class="code-tag">&lt;ol&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Preheat oven to 350°F (175°C)<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Mix dry ingredients in a bowl<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Add wet ingredients and stir<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Pour into pan and bake for 30 minutes<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ol&gt;</span>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Ordered list with attributes --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- start: Starting number --&gt;</span><br>
+                        <span class="code-tag">&lt;ol</span> <span class="code-attr">start=</span><span class="code-value">"5"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Step 5<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Step 6<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ol&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- reversed: Count backwards --&gt;</span><br>
+                        <span class="code-tag">&lt;ol</span> <span class="code-attr">reversed</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Third place<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Second place<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>First place<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ol&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- type: Numbering style --&gt;</span><br>
+                        <span class="code-tag">&lt;ol</span> <span class="code-attr">type=</span><span class="code-value">"A"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Option A<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Option B<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ol&gt;</span>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Values</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>start</code></td>
+                                <td>Number (1, 5, 10)</td>
+                                <td>Starting number</td>
+                                <td><code>start="5"</code> → 5, 6, 7...</td>
+                            </tr>
+                            <tr>
+                                <td><code>reversed</code></td>
+                                <td>Boolean (no value)</td>
+                                <td>Count backwards</td>
+                                <td><code>reversed</code> → 3, 2, 1</td>
+                            </tr>
+                            <tr>
+                                <td><code>type</code></td>
+                                <td>1, A, a, I, i</td>
+                                <td>Numbering style</td>
+                                <td><code>type="A"</code> → A, B, C...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-list-alt"></i> Ordered List Numbering Types</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><code>type="1"</code> - Numbers: 1, 2, 3 (default)</li>
+                            <li><code>type="A"</code> - Uppercase letters: A, B, C</li>
+                            <li><code>type="a"</code> - Lowercase letters: a, b, c</li>
+                            <li><code>type="I"</code> - Uppercase Roman: I, II, III</li>
+                            <li><code>type="i"</code> - Lowercase Roman: i, ii, iii</li>
+                        </ul>
+                        <p><strong>Tip:</strong> For complex numbering (like legal documents), CSS counters offer more control.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description Lists: <dl> -->
+            <div class="section">
+                <div class="timing-indicator">[4:45 - 5:45]</div>
+                <h2 class="section-title"><i class="fas fa-indent"></i> Description Lists: &lt;dl&gt;</h2>
+                <div class="script-content">
+                    <p>Description lists are for <strong>term-description pairs</strong>, like a dictionary or glossary.</p>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Basic description list --&gt;</span><br>
+                        <span class="code-tag">&lt;dl&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>HTML<span class="code-tag">&lt;/dt&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>HyperText Markup Language - The standard markup language for web pages.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>CSS<span class="code-tag">&lt;/dt&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Cascading Style Sheets - Used to style HTML documents.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>JavaScript<span class="code-tag">&lt;/dt&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>A programming language that enables interactive web pages.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        <span class="code-tag">&lt;/dl&gt;</span>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Multiple descriptions per term --&gt;</span><br>
+                        <span class="code-tag">&lt;dl&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>Web Browser<span class="code-tag">&lt;/dt&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>A software application for accessing the web.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Examples: Chrome, Firefox, Safari, Edge.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        <br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>Responsive Design<span class="code-tag">&lt;/dt&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Web design approach that makes pages render well on all devices.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Uses flexible layouts, images, and CSS media queries.<span class="code-tag">&lt;/dd&gt;</span><br>
+                        <span class="code-tag">&lt;/dl&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-book"></i> Common Uses for Description Lists</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Glossaries:</strong> Term definitions</li>
+                            <li><strong>FAQs:</strong> Questions and answers</li>
+                            <li><strong>Metadata:</strong> Key-value pairs</li>
+                            <li><strong>Product specs:</strong> Feature descriptions</li>
+                            <li><strong>Event schedules:</strong> Time and description</li>
+                            <li><strong>Dialogue:</strong> Speaker and lines</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="real-world">
+                        <h4><i class="fas fa-question-circle"></i> Real-World Example: FAQ Section</h4>
+                        <p>Description lists are perfect for FAQ sections:</p>
+                        <div class="code-example">
+                            <span class="code-comment">&lt;!-- FAQ section using description list --&gt;</span><br>
+                            <span class="code-tag">&lt;h2&gt;</span>Frequently Asked Questions<span class="code-tag">&lt;/h2&gt;</span><br>
+                            <span class="code-tag">&lt;dl</span> <span class="code-attr">class=</span><span class="code-value">"faq"</span><span class="code-tag">&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>What is your return policy?<span class="code-tag">&lt;/dt&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>We accept returns within 30 days of purchase with original receipt.<span class="code-tag">&lt;/dd&gt;</span><br>
+                            <br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>Do you ship internationally?<span class="code-tag">&lt;/dt&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Yes, we ship to over 50 countries worldwide.<span class="code-tag">&lt;/dd&gt;</span><br>
+                            <br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dt&gt;</span>How long does shipping take?<span class="code-tag">&lt;/dt&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;dd&gt;</span>Domestic orders: 3-5 business days. International: 7-14 business days.<span class="code-tag">&lt;/dd&gt;</span><br>
+                            <span class="code-tag">&lt;/dl&gt;</span>
+                        </div>
+                        <p>This semantic structure helps search engines understand FAQ content!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nesting Lists -->
+            <div class="section">
+                <div class="timing-indicator">[5:45 - 6:30]</div>
+                <h2 class="section-title"><i class="fas fa-sitemap"></i> Nesting Lists (Lists within Lists)</h2>
+                <div class="script-content">
+                    <p>You can place lists inside other lists to create <strong>hierarchical structures</strong> like outlines or multi-level navigation.</p>
+                    
+                    <div class="nesting-demo">
+                        <h5 style="color: #1976D2; margin-bottom: 15px;">
+                            <i class="fas fa-project-diagram"></i> Nested List Example
+                        </h5>
+                        
+                        <ul>
+                            <li>Main Category 1
+                                <ul>
+                                    <li>Subcategory 1.1</li>
+                                    <li>Subcategory 1.2
+                                        <ul>
+                                            <li>Detail 1.2.1</li>
+                                            <li>Detail 1.2.2</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Main Category 2
+                                <ol>
+                                    <li>Step 2.1</li>
+                                    <li>Step 2.2</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- Nested list structure --&gt;</span><br>
+                        <span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Main Category 1<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Subcategory 1.1<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Subcategory 1.2<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Detail 1.2.1<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Detail 1.2.2<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ul&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Main Category 2<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;ol&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Step 2.1<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Step 2.2<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;/ol&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="note">
+                        <h4><i class="fas fa-layer-group"></i> Nesting Best Practices</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><strong>Proper indentation:</strong> Makes nested structure visible</li>
+                            <li><strong>Limit depth:</strong> Avoid nesting more than 3-4 levels deep</li>
+                            <li><strong>Mix list types:</strong> Can mix <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;dl&gt;</code></li>
+                            <li><strong>Accessibility:</strong> Screen readers announce nesting levels</li>
+                            <li><strong>CSS styling:</strong> Different bullet styles for different levels</li>
+                        </ul>
+                        <p><strong>Tip:</strong> Use CSS to style different nesting levels with different bullet types or indentation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Styling Lists with CSS -->
+            <div class="section">
+                <div class="timing-indicator">[6:30 - 7:15]</div>
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> Styling Lists with CSS</h2>
+                <div class="script-content">
+                    <p>While HTML provides basic list styling, CSS gives you complete control over appearance:</p>
+                    
+                    <div class="style-demo">
+                        <h5 style="color: #ff9800; margin-bottom: 15px;">
+                            <i class="fas fa-magic"></i> Custom Styled Lists
+                        </h5>
+                        
+                        <p><strong>Custom bullet points:</strong></p>
+                        <ul style="list-style-type: square;">
+                            <li>Square bullets</li>
+                            <li>Different from default</li>
+                        </ul>
+                        
+                        <p><strong>No bullets:</strong></p>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li>Clean, no bullets</li>
+                            <li>Great for navigation</li>
+                        </ul>
+                        
+                        <p><strong>Custom checkmarks:</strong></p>
+                        <ul class="custom-list">
+                            <li>Feature one</li>
+                            <li>Feature two</li>
+                            <li>Feature three</li>
+                        </ul>
+                        
+                        <p><strong>Inline lists:</strong></p>
+                        <ul style="display: flex; gap: 20px; list-style: none; padding: 0;">
+                            <li>Home</li>
+                            <li>About</li>
+                            <li>Services</li>
+                            <li>Contact</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-example">
+                        <span class="code-comment">&lt;!-- HTML with CSS classes for styling --&gt;</span><br>
+                        <span class="code-comment">&lt;!-- Unordered list with custom styling --&gt;</span><br>
+                        <span class="code-tag">&lt;ul</span> <span class="code-attr">class=</span><span class="code-value">"feature-list"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>24/7 Customer Support<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>30-Day Money Back Guarantee<span class="code-tag">&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span>Free Shipping Worldwide<span class="code-tag">&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ul&gt;</span><br>
+                        <br>
+                        <span class="code-comment">&lt;!-- Navigation as styled list --&gt;</span><br>
+                        <span class="code-tag">&lt;ul</span> <span class="code-attr">class=</span><span class="code-value">"nav-menu"</span><span class="code-tag">&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"#"</span><span class="code-tag">&gt;</span>Home<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"#"</span><span class="code-tag">&gt;</span>About<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        &nbsp;&nbsp;<span class="code-tag">&lt;li&gt;</span><span class="code-tag">&lt;a href=</span><span class="code-value">"#"</span><span class="code-tag">&gt;</span>Services<span class="code-tag">&lt;/a&gt;&lt;/li&gt;</span><br>
+                        <span class="code-tag">&lt;/ul&gt;</span>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-css3-alt"></i> Common CSS List Properties</h4>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li><code>list-style-type</code>: bullet/number style</li>
+                            <li><code>list-style-position</code>: inside/outside</li>
+                            <li><code>list-style-image</code>: custom bullet image</li>
+                            <li><code>padding-left</code>: control indentation</li>
+                            <li><code>margin</code>: space between lists</li>
+                            <li><code>display: flex</code>: horizontal lists</li>
+                        </ul>
+                        <p><strong>Remember:</strong> Use CSS for presentation, HTML for structure and semantics!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Mistakes -->
+            <div class="section">
+                <div class="timing-indicator">[7:15 - 7:45]</div>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Common List Mistakes</h2>
+                <div class="script-content">
+                    <div class="warning">
+                        <h4><i class="fas fa-bug"></i> List Mistakes to Avoid</h4>
+                        
+                        <p><strong>Mistake 1:</strong> Using paragraphs instead of list items<br>
+                        <strong>Bad:</strong> <code>&lt;p&gt;• Item 1&lt;/p&gt;&lt;p&gt;• Item 2&lt;/p&gt;</code><br>
+                        <strong>Good:</strong> <code>&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;li&gt;Item 2&lt;/li&gt;&lt;/ul&gt;</code></p>
+                        
+                        <p><strong>Mistake 2:</strong> Missing closing tags<br>
+                        <strong>Bad:</strong> <code>&lt;ul&gt;&lt;li&gt;Item&lt;/ul&gt;</code> (missing <code>&lt;/li&gt;</code>)<br>
+                        <strong>Good:</strong> Always close <code>&lt;li&gt;</code> tags</p>
+                        
+                        <p><strong>Mistake 3:</strong> Using wrong list type<br>
+                        <strong>Bad:</strong> <code>&lt;ul&gt;</code> for step-by-step instructions<br>
+                        <strong>Good:</strong> Use <code>&lt;ol&gt;</code> for sequential items</p>
+                        
+                        <p><strong>Mistake 4:</strong> Poor indentation in nested lists<br>
+                        <strong>Bad:</strong> All code on same line, can't see structure<br>
+                        <strong>Good:</strong> Proper indentation for readability</p>
+                        
+                        <p><strong>Mistake 5:</strong> Using <code>&lt;br&gt;</code> for list spacing<br>
+                        <strong>Bad:</strong> <code>Item 1&lt;br&gt;Item 2&lt;br&gt;Item 3</code><br>
+                        <strong>Good:</strong> Use proper list elements</p>
+                        
+                        <p><strong>Mistake 6:</strong> Forgetting list semantics for navigation<br>
+                        <strong>Bad:</strong> Using <code>&lt;div&gt;</code> for navigation<br>
+                        <strong>Good:</strong> Use <code>&lt;nav&gt;</code> with <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code></p>
+                    </div>
+                    
+                    <div class="tip">
+                        <h4><i class="fas fa-code"></i> VS Code List Shortcuts</h4>
+                        <p>In VS Code, use Emmet to create lists quickly:</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Type <code>ul&gt;li*3</code> then Tab → 3 list items</li>
+                            <li>Type <code>ol&gt;li*5</code> then Tab → 5 numbered items</li>
+                            <li>Type <code>dl&gt;(dt+dd)*3</code> then Tab → 3 term-description pairs</li>
+                            <li>Use <strong>Ctrl+/</strong> to comment/uncomment list items</li>
+                            <li>Use <strong>Alt+↑/↓</strong> to move list items up/down</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenge Section -->
+            <div class="section">
+                <div class="timing-indicator">[7:45 - 8:00]</div>
+                <h2 class="section-title"><i class="fas fa-tasks"></i> Challenge for Viewers</h2>
+                <div class="script-content">
+                    <div class="challenge">
+                        <h4><i class="fas fa-list-check"></i> Lists Challenge</h4>
+                        <p><strong>Task 1:</strong> Create an HTML page with examples of all three list types.</p>
+                        
+                        <p><strong>Task 2:</strong> Include:
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>An unordered list for a shopping list or features</li>
+                            <li>An ordered list for recipe steps or instructions</li>
+                            <li>A description list for a mini glossary or FAQ</li>
+                            <li>A nested list (at least 2 levels deep)</li>
+                            <li>Lists with proper attributes (id, class)</li>
+                        </ul></p>
+                        
+                        <p><strong>Task 3:</strong> Create a navigation menu using an unordered list with at least 5 items.</p>
+                        
+                        <p><strong>Bonus Challenge:</strong> Find a website that uses lists creatively (like an interactive timeline or complex navigation). Take a screenshot and analyze in the comments how they structured their lists!</p>
+                        
+                        <p>This practice will help you master HTML lists - essential for organizing content and creating navigation on the web!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outro Section -->
+            <div class="section">
+                <div class="timing-indicator">[8:00 - 8:30]</div>
+                <h2 class="section-title"><i class="fas fa-sign-out-alt"></i> Outro & Next Steps</h2>
+                <div class="script-content">
+                    <p><strong>Excellent work!</strong> You now understand HTML lists. Let's recap what you learned:</p>
+                    
+                    <ul style="margin: 20px 0 20px 30px;">
+                        <li>The three types of HTML lists and when to use each</li>
+                        <li>How to create unordered lists (<code>&lt;ul&gt;</code>) with bullet points</li>
+                        <li>How to create ordered lists (<code>&lt;ol&gt;</code>) with various numbering styles</li>
+                        <li>How to create description lists (<code>&lt;dl&gt;</code>) for term-definition pairs</li>
+                        <li>How to nest lists to create hierarchical structures</li>
+                        <li>How to style lists with CSS for custom appearance</li>
+                        <li>Common mistakes and best practices</li>
+                    </ul>
+                    
+                    <p>Lists are <strong>fundamental for organizing content</strong> on the web. They improve readability, accessibility, and SEO!</p>
+                    
+                    <p>In the <strong>next video</strong>, we'll learn about links and navigation - how to connect web pages together and create website navigation!</p>
+                    
+                    <p>If you have questions about lists or want feedback on your challenge, share in the comments below!</p>
+                    
+                    <div class="call-to-action">
+                        <h3><i class="fas fa-book"></i> Resources & Practice</h3>
+                        <p>Check the description for:</p>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="btn">
+                                <i class="fas fa-file-code"></i>
+                                Lists Practice Template
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-clipboard-list"></i>
+                                List Type Decision Guide
+                            </a>
+                            <a href="tutorial-10.html" class="btn btn-secondary">
+                                <i class="fas fa-arrow-right"></i>
+                                Next: Links & Navigation
+                            </a>
+                        </div>
+                        
+                        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                            Downloadable templates, CSS list styling examples, and navigation menu patterns!
+                        </p>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                        If this tutorial helped you understand HTML lists, please give it a thumbs up and subscribe for the rest of the series!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Tutorial 9: HTML Lists | Part of Complete HTML Tutorial Series</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+                Script includes: All three list types • Nesting examples • CSS styling • Real-world applications
+            </p>
+        </div>
+    </div>
+</body>
+</html>
